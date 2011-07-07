@@ -26,5 +26,16 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+  
+  <permission
+      id="apyb.registration.AddRegistration"
+      title="apyb.registration: Add Registration"
+      />
+
+  <permission
+      id="apyb.registration.AddAttendee"
+      title="apyb.registration: Add Attendee"
+      />
+  
 
 </configure>
