@@ -8,4 +8,6 @@
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
   <!-- -*- extra stuff goes here -*- -->
+  <object name="apyb.registration.attendee" meta_type="Dexterity FTI" />
+  <object name="apyb.registration.registration" meta_type="Dexterity FTI" />
 </object>
