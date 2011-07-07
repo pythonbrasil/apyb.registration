@@ -1,0 +1,17 @@
+apyb.registration Installation
+------------------------------
+
+To install apyb.registration using zc.buildout and the plone.recipe.zope2instance
+recipe to manage your project, you can do this:
+
+* Add ``apyb.registration`` to the list of eggs to install, e.g.:
+
+    [buildout]
+    ...
+    eggs =
+        ...
+        apyb.registration
+       
+* Re-run buildout, e.g. with:
+
+    $ ./bin/buildout
