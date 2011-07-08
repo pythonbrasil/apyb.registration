@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<rolemap>
+  <permissions>
+    <permission name="apyb.registration: Add Attendee" acquire="False">
+      <role name="Manager"/>
+      <role name="Member"/>
+    </permission>
+    <permission name="apyb.registration: Add Registration" acquire="False">
+      <role name="Manager"/>
+      <role name="Member"/>
+    </permission>
+  </permissions>
+</rolemap>
