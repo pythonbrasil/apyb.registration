@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="registration_workflow" title="Registration workflow" description="Workflow to manage registrations to a conference" state_variable="state" manager_bypass="False">
+<dc-workflow workflow_id="registration_workflow" title="Registration workflow" description="Workflow to manage registrations to a conference" state_variable="state" initial_state="new" manager_bypass="False">
  <permission>Access contents information</permission>
  <permission>View</permission>
  <permission>apyb.registration: Add Attendee</permission>

@@ -9,7 +9,7 @@
     i18n:translate="">A registration in a conference</property>
   <property name="icon_expr">string:${portal_url}/++resource++apyb.registration/registration_icon.png</property>
   <property name="factory">apyb.registration.registration</property>
-  <property name="global_allow">True</property>
+  <property name="global_allow">False</property>
   <property name="filter_content_types">True</property>  
   <property name="allowed_content_types">
       <element value="apyb.registration.attendee"/>

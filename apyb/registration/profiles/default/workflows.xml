@@ -9,5 +9,8 @@
   <type type_id="apyb.registration.registration">
    <bound-workflow workflow_id="registration_workflow"/>
   </type>
+  <type type_id="apyb.registration.registrations">
+   <bound-workflow workflow_id="registrations_workflow"/>
+  </type>
  </bindings>
 </object>

@@ -9,5 +9,9 @@
       <role name="Manager"/>
       <role name="Member"/>
     </permission>
+    <permission name="apyb.registration: Add Registrations" acquire="False">
+      <role name="Manager"/>
+      <role name="Editor"/>
+    </permission>
   </permissions>
 </rolemap>
