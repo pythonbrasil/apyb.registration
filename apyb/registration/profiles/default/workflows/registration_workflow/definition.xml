@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="registration_workflow" title="Registration workflow" description="Workflow to manage registrations to a conference" state_variable="state" manager_bypass="False">
+ <permission>Access contents information</permission>
+ <permission>View</permission>
+ <permission>apyb.registration: Add Attendee</permission>
+ <permission>Modify portal content</permission>
+ <state state_id="cancelled" title="">
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="apyb.registration: Add Attendee" acquired="False">
+  </permission-map>
+ </state>
+ <state state_id="confirmed" title="Registration confirmed">
+  <description>Registration confirmed</description>
+  <exit-transition transition_id="cancel"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="apyb.registration: Add Attendee" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="new" title="Registration created">
+  <description>Registration was created</description>
+  <exit-transition transition_id="confirm"/>
+  <exit-transition transition_id="submit"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="apyb.registration: Add Attendee" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="pending" title="Pending registration">
+  <description>Waiting for confirmation</description>
+  <exit-transition transition_id="cancel"/>
+  <exit-transition transition_id="confirm"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+  </permission-map>
+  <permission-map name="apyb.registration: Add Attendee" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="cancel" title="Cancel" new_state="cancelled" trigger="USER" before_script="" after_script="">
+  <description>Cancel a registration</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=cancel" category="workflow" icon="">Cancel</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="confirm" title="Confirm" new_state="confirmed" trigger="USER" before_script="" after_script="">
+  <description>Confirm a registration</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=confirm" category="workflow" icon="">Confirm</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="submit" title="Submit" new_state="pending" trigger="USER" before_script="" after_script="">
+  <description>Wait for confirmation</description>
+  <action url="%(content_url)s/content_status_modify?workflow_action=submit" category="workflow" icon="">Submit registration</action>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+  </guard>
+ </transition>
+</dc-workflow>
