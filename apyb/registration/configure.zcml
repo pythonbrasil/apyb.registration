@@ -27,6 +27,11 @@
       />
 
   <permission
+      id="apyb.registration.AddRegistrations"
+      title="apyb.registration: Add Registrations"
+      />
+
+  <permission
       id="apyb.registration.AddAttendee"
       title="apyb.registration: Add Attendee"
       />
