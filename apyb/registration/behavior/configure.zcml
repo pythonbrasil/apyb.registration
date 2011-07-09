@@ -1,0 +1,31 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:grok="http://namespaces.zope.org/grok"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="apyb.registration">
+    
+    <!-- Grok schemata -->
+    <grok:grok package="." />
+    
+    <!-- -*- extra stuff goes here -*- -->
+    <plone:behavior
+        title="Exclude from nav"
+        description="Exclude an item from navigation"
+        provides=".exclude.IExcludeFromNavigation"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        />
+    <plone:behavior
+        title="Payment Information"
+        description="Payment information"
+        provides=".paymentinformation.IPaymentInformation"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        />
+    
+    <plone:behavior
+        title="OptIn Information"
+        description="OptIn information"
+        provides=".optininformation.IOptInInformation"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        />
+</configure>
+
