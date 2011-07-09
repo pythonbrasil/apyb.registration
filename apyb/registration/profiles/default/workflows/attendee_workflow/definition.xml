@@ -1,76 +1,128 @@
 <?xml version="1.0"?>
-<dc-workflow workflow_id="attendee_workflow" title="Workflow for a conference attendee" description="Workflow to manage conference attendees" state_variable="state" initial_state="pending" manager_bypass="False">
- <permission>Access contents information</permission>
- <permission>View</permission>
- <permission>Modify portal content</permission>
- <state state_id="cancelled" title="Cancelled">
-  <description>Attendee will not be at the conference</description>
-  <permission-map name="Access contents information" acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content" acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-  </permission-map>
-  <permission-map name="View" acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-  </permission-map>
- </state>
- <state state_id="confirmed" title="Confirmed">
-  <description>Confirmed attendee</description>
-  <exit-transition transition_id="cancel"/>
-  <permission-map name="Access contents information" acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content" acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-  </permission-map>
-  <permission-map name="View" acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-  </permission-map>
- </state>
- <state state_id="pending" title="Pending">
-  <description>Attendee presence at conference still in pending state</description>
-  <exit-transition transition_id="cancel"/>
-  <exit-transition transition_id="confirm"/>
-  <permission-map name="Access contents information" acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-  </permission-map>
-  <permission-map name="Modify portal content" acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-  </permission-map>
-  <permission-map name="View" acquired="False">
-   <permission-role>Editor</permission-role>
-   <permission-role>Manager</permission-role>
-   <permission-role>Owner</permission-role>
-  </permission-map>
- </state>
- <transition transition_id="cancel" title="Cancel" new_state="cancelled" trigger="USER" before_script="" after_script="">
-  <description>Attendee will not be at the conference</description>
-  <action url="%(content_url)s/content_status_modify?workflow_action=cancel" category="workflow" icon="">Cancel</action>
-  <guard>
-   <guard-permission>Review portal content</guard-permission>
+<dc-workflow xmlns:i18n="http://xml.zope.org/namespaces/i18n" i18n:domain="apyb.registration" workflow_id="attendee_workflow" title="Attendee workflow" description=" Workflow to manage an attendee status in a conference." state_variable="review_state" initial_state="pending" i18n:attributes="title; description">
+    <permission>Access contents information</permission>
+    <permission>View</permission>
+    <permission>Modify portal content</permission>
+    <state state_id="cancelled" title="Cancelled" i18n:attributes="title">
+        <description i18n:translate="">Participation canceled.</description>
+        <permission-map name="Access contents information" acquired="False">
+         <permission-role>Editor</permission-role>
+         <permission-role>Manager</permission-role>
+         <permission-role>Owner</permission-role>
+        </permission-map>
+        <permission-map name="Modify portal content" acquired="False">
+         <permission-role>Editor</permission-role>
+         <permission-role>Manager</permission-role>
+        </permission-map>
+        <permission-map name="View" acquired="False">
+         <permission-role>Editor</permission-role>
+         <permission-role>Manager</permission-role>
+         <permission-role>Owner</permission-role>
+        </permission-map>
+    </state>
+    <state state_id="confirmed" title="Confirmed" i18n:attributes="title">
+        <description i18n:translate="">Participation confirmed.</description>
+        <exit-transition transition_id="cancel"/>
+        <permission-map name="Access contents information" acquired="False">
+         <permission-role>Editor</permission-role>
+         <permission-role>Manager</permission-role>
+         <permission-role>Owner</permission-role>
+        </permission-map>
+        <permission-map name="Modify portal content" acquired="False">
+         <permission-role>Editor</permission-role>
+         <permission-role>Manager</permission-role>
+         <permission-role>Owner</permission-role>
+        </permission-map>
+        <permission-map name="View" acquired="False">
+         <permission-role>Editor</permission-role>
+         <permission-role>Manager</permission-role>
+         <permission-role>Owner</permission-role>
+        </permission-map>
+    </state>
+    <state state_id="pending" title="Pending" i18n:attributes="title">
+        <description i18n:translate="">Participation pending confirmation.</description>
+        <exit-transition transition_id="confirm"/>
+        <exit-transition transition_id="cancel"/>
+        <permission-map name="Access contents information" acquired="False">
+         <permission-role>Editor</permission-role>
+         <permission-role>Manager</permission-role>
+         <permission-role>Owner</permission-role>
+        </permission-map>
+        <permission-map name="Modify portal content" acquired="False">
+         <permission-role>Editor</permission-role>
+         <permission-role>Manager</permission-role>
+         <permission-role>Owner</permission-role>
+        </permission-map>
+        <permission-map name="View" acquired="False">
+         <permission-role>Editor</permission-role>
+         <permission-role>Manager</permission-role>
+         <permission-role>Owner</permission-role>
+        </permission-map>
+    </state>
+
+    <transition transition_id="cancel" new_state="cancelled" title="Cancel registration" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+        <description i18n:translate="">Cancel a participation.</description>
+        <action url="%(content_url)s/content_status_modify?workflow_action=cancel" category="workflow" i18n:translate="">Cancel participation</action>
+        <guard>
+            <guard-permission>Review portal content</guard-permission>
+        </guard>
+    </transition>
+    <transition transition_id="confirm" new_state="confirm" title="Confirm registration" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+        <description i18n:translate="">Confirm a partipation.</description>
+        <action url="%(content_url)s/content_status_modify?workflow_action=confirm" category="workflow" i18n:translate="">Confirm participation</action>
+        <guard>
+            <guard-permission>Review portal content</guard-permission>
+        </guard>
+    </transition>
+
+    <worklist worklist_id="reviewer_queue" title="">
+        <description>Reviewer tasks</description>
+        <action url="%(portal_url)s/search?review_state=pending" category="global">Pending (%(count)d)</action>
+        <guard>
+            <guard-permission>Review portal content</guard-permission>
+        </guard>
+        <match name="review_state" values="pending"/>
+    </worklist>
+    <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
+        <description>Previous transition</description>
+        <default>
+            <expression>transition/getId|nothing</expression>
+        </default>
+        <guard>
   </guard>
- </transition>
- <transition transition_id="confirm" title="Confirm" new_state="confirmed" trigger="USER" before_script="" after_script="">
-  <description>Confirm presence</description>
-  <action url="%(content_url)s/content_status_modify?workflow_action=confirm" category="workflow" icon="">Confirm</action>
-  <guard>
-   <guard-permission>Review portal content</guard-permission>
+    </variable>
+    <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
+        <description>The ID of the user who performed the previous transition</description>
+        <default>
+            <expression>user/getId</expression>
+        </default>
+        <guard>
   </guard>
- </transition>
+    </variable>
+    <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
+        <description>Comment about the last transition</description>
+        <default>
+            <expression>python:state_change.kwargs.get('comment', '')</expression>
+        </default>
+        <guard>
+  </guard>
+    </variable>
+    <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
+        <description>Provides access to workflow history</description>
+        <default>
+            <expression>state_change/getHistory</expression>
+        </default>
+        <guard>
+            <guard-permission>Request review</guard-permission>
+            <guard-permission>Review portal content</guard-permission>
+        </guard>
+    </variable>
+    <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
+        <description>When the previous transition was performed</description>
+        <default>
+            <expression>state_change/getDateTime</expression>
+        </default>
+        <guard>
+  </guard>
+    </variable>
 </dc-workflow>
