@@ -2,6 +2,7 @@
 <object name="portal_workflow" meta_type="Plone Workflow Tool">
  <object name="attendee_workflow" meta_type="Workflow"/>
  <object name="registration_workflow" meta_type="Workflow"/>
+ <object name="registrations_workflow" meta_type="Workflow"/>
  <bindings>
   <type type_id="apyb.registration.attendee">
    <bound-workflow workflow_id="attendee_workflow"/>
