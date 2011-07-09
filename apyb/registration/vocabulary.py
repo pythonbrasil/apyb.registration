@@ -52,3 +52,15 @@ class TypesVocabulary(object):
 
 grok.global_utility(TypesVocabulary, name=u"apyb.registration.types")
 
+class PaymentServicesVocabulary(object):
+    """Vocabulary factory for payment service providers
+    """
+    grok.implements(IVocabularyFactory)
+    
+    def __call__(self, context):
+        services = [('paypal','PayPal'),('pagseguro','Pagseguro'),]
+        items = [SimpleTerm(k,k,v) for k,v in services]
+        return SimpleVocabulary(items)
+
+grok.global_utility(TypesVocabulary, name=u"apyb.registration.paymentservices")
+
