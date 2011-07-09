@@ -24,6 +24,7 @@ class IRegistration(form.Schema):
         )
     registration_type = schema.Choice(
         title=_(u'Type'),
+        description=_(u'Select the category of your registration'),
         required=True,
         vocabulary="apyb.registration.types"
         )
