@@ -8,19 +8,6 @@
     i18n_domain="apyb.registration">
 
   <includeDependencies package="." />
-
-  <grok:grok package="." />
-  
-  <i18n:registerTranslations directory="locales" />
-
-  <genericsetup:registerProfile
-      name="default"
-      title="Conference registration package"
-      directory="profiles/default"
-      description="Extension profile for Conference registration package"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-  
   <permission
       id="apyb.registration.AddRegistration"
       title="apyb.registration: Add Registration"
@@ -36,5 +23,17 @@
       title="apyb.registration: Add Attendee"
       />
   
+  <grok:grok package="." />
+   
+  <include package=".behavior" />
+  <i18n:registerTranslations directory="locales" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Conference registration package"
+      directory="profiles/default"
+      description="Extension profile for Conference registration package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
 
 </configure>
