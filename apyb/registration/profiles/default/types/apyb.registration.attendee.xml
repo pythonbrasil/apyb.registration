@@ -20,6 +20,8 @@
 
   <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
+     <element value="apyb.registration.behavior.optininformation.IOptInInformation" />
+     <element value="apyb.registration.behavior.exclude.IExcludeFromNavigation" />
    </property>
 
   <!-- View information -->
