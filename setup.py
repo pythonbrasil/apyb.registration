@@ -29,6 +29,7 @@ setup(name='apyb.registration',
           'plone.app.dexterity',
           # -*- Extra requirements: -*-
           'collective.autopermission',
+          'collective.behavior.contactinfo',
       ],
       entry_points="""
       # -*- Entry points: -*-
