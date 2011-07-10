@@ -67,7 +67,7 @@
             <guard-permission>Review portal content</guard-permission>
         </guard>
     </transition>
-    <transition transition_id="confirm" new_state="confirm" title="Confirm registration" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+    <transition transition_id="confirm" new_state="confirmed" title="Confirm registration" trigger="USER" before_script="" after_script="" i18n:attributes="title">
         <description i18n:translate="">Confirm a partipation.</description>
         <action url="%(content_url)s/content_status_modify?workflow_action=confirm" category="workflow" i18n:translate="">Confirm participation</action>
         <guard>

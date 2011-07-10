@@ -103,14 +103,14 @@
             <guard-permission>Review portal content</guard-permission>
         </guard>
     </transition>
-    <transition transition_id="confirm" new_state="confirm" title="Confirm registration" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+    <transition transition_id="confirm" new_state="confirmed" title="Confirm registration" trigger="USER" before_script="" after_script="" i18n:attributes="title">
         <description i18n:translate="">Confirm a registration.</description>
         <action url="%(content_url)s/content_status_modify?workflow_action=confirm" category="workflow" i18n:translate="">Confirm registration</action>
         <guard>
             <guard-permission>Review portal content</guard-permission>
         </guard>
     </transition>
-    <transition transition_id="submit" new_state="submit" title="Submit a registration" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+    <transition transition_id="submit" new_state="pending" title="Submit a registration" trigger="USER" before_script="" after_script="" i18n:attributes="title">
         <description i18n:translate="">Cancel a registration.</description>
         <action url="%(content_url)s/content_status_modify?workflow_action=submit" category="workflow" i18n:translate="">Submit registration</action>
         <guard>
