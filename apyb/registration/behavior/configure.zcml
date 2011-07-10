@@ -9,12 +9,6 @@
     
     <!-- -*- extra stuff goes here -*- -->
     <plone:behavior
-        title="Exclude from nav"
-        description="Exclude an item from navigation"
-        provides=".exclude.IExcludeFromNavigation"
-        for="plone.dexterity.interfaces.IDexterityContent"
-        />
-    <plone:behavior
         title="Payment Information"
         description="Payment information"
         provides=".paymentinformation.IPaymentInformation"
