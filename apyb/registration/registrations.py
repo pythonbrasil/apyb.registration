@@ -1,4 +1,9 @@
+# -*- coding:utf-8 -*-
 from five import grok
+
+from Acquisition import aq_inner
+from Products.CMFCore.utils import getToolByName
+
 from plone.directives import dexterity, form
 
 from zope import schema
@@ -24,4 +29,24 @@ class Registrations(dexterity.Container):
 class View(grok.View):
     grok.context(IRegistrations)
     grok.require('zope2.View')
+    
+    def update(self):
+        context = aq_inner(self.context)
+        self._path = '/'.join(context.getPhysicalPath())
+        self._ct = getToolByName(context,'portal_catalog')
+    
+    def registrations(self):
+        ''' List registrations'''
+        ct = self._ct
+        results = ct.searchResults(portal_type='apyb.registration.registration',
+                                   path=self._path)
+        return results
+    
+    def attendees(self):
+        ''' List attenddees'''
+        ct = self._ct
+        results = ct.searchResults(portal_type='apyb.registration.attendee',
+                                   path=self._path)
+        return results
+    
     
