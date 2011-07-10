@@ -35,8 +35,11 @@ class AttendeeGroup(group.Group):
 class LocaleGroup(group.Group):
     label=u"Location"
     description=u"Where are you from?"
-    fields = field.Fields(IAddress).select('country','state','city')   
+    fields = field.Fields(IAddress).select('country','state','city')
     
+    def updateWidgets(self):
+        super(LocaleGroup, self).updateWidgets()
+        self.widgets['country'].field.default='br'
     
 
 class OptInGroup(group.Group):
@@ -66,6 +69,8 @@ class RegistrationForm(group.GroupForm, form.Form):
     def update(self):
         # disable Plone's editable border
         self.request.set('disable_border', True)
+        if not self.request.get('form.widgets.country',''):
+            self.request.set('form.widgets.country','br')
         self.ignoreContext = True
         super(RegistrationForm, self).update()
 
@@ -79,7 +84,6 @@ class RegistrationForm(group.GroupForm, form.Form):
         if errors:
             self.status = self.formErrorsMessage
             return
-        import pdb;pdb.set_trace()
         reg_fields = ['registration_type','discount_code',]
         reg_data = dict([(k,data[k]) for k in reg_fields])
         registration = createContentInContainer(self.context, 'apyb.registration.registration', 
