@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<contentrules>
+ <rule name="rule-transition-registration" 
+       title="Transition new registration to pending state"
+    description="Transition new registration to pending state" enabled="True"
+    event="zope.app.container.interfaces.IObjectAddedEvent"
+    stop-after="False">
+  <conditions>
+   <condition type="plone.conditions.PortalType">
+    <property name="check_types">
+     <element>apyb.registration.registration</element>
+    </property>
+   </condition>
+  </conditions>
+  <actions>
+   <action type="plone.actions.Workflow">
+    <property name="transition">submit</property>
+   </action>
+  </actions>
+ </rule>
+</contentrules>
