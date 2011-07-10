@@ -37,10 +37,11 @@ class LocaleGroup(group.Group):
     description=u"Where are you from?"
     fields = field.Fields(IAddress).select('country','state','city')
     
-    def updateWidgets(self):
-        super(LocaleGroup, self).updateWidgets()
-        self.widgets['country'].field.default='br'
-    
+    def update(self):
+        # define default country
+        if not self.request.get('form.widgets.country',''):
+            self.request.set('form.widgets.country','br')
+        super(LocaleGroup, self).update()
 
 class OptInGroup(group.Group):
     label=u"OptIn"
@@ -69,8 +70,6 @@ class RegistrationForm(group.GroupForm, form.Form):
     def update(self):
         # disable Plone's editable border
         self.request.set('disable_border', True)
-        if not self.request.get('form.widgets.country',''):
-            self.request.set('form.widgets.country','br')
         self.ignoreContext = True
         super(RegistrationForm, self).update()
 
@@ -84,12 +83,15 @@ class RegistrationForm(group.GroupForm, form.Form):
         if errors:
             self.status = self.formErrorsMessage
             return
+        # Create registration object
         reg_fields = ['registration_type','discount_code',]
         reg_data = dict([(k,data[k]) for k in reg_fields])
+        reg_data['title'] = data['fullname']
         registration = createContentInContainer(self.context, 'apyb.registration.registration', 
                                                 checkConstraints=True, **reg_data)
         
         for k in reg_fields + ['uid']:
             del data[k]
+        # Create attendee object
         attendee = createContentInContainer(registration, 'apyb.registration.attendee', 
                                                 checkConstraints=True, **data)
