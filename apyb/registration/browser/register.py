@@ -11,6 +11,7 @@ from plone.directives import form
 
 from apyb.registration.behavior.optininformation import IOptInInformation
 from collective.behavior.contactinfo.behavior.contactinfo import INetContactInfo
+from collective.behavior.contactinfo.behavior.address import IAddress
 
 from apyb.registration.registration import IRegistration
 from apyb.registration.attendee import IAttendee
@@ -31,6 +32,13 @@ class AttendeeGroup(group.Group):
     fields=field.Fields(IAttendee).omit('uid')
     fields = fields + field.Fields(INetContactInfo)
 
+class LocaleGroup(group.Group):
+    label=u"Location"
+    description=u"Where are you from?"
+    fields = field.Fields(IAddress).select('country','state','city')   
+    
+    
+
 class OptInGroup(group.Group):
     label=u"OptIn"
     description=u"OptIn."
@@ -50,7 +58,7 @@ class RegistrationForm(group.GroupForm, form.Form):
     
     fields=field.Fields(IRegistration).select('uid')
     
-    groups = (TicketGroup, AttendeeGroup, DiscountGroup, OptInGroup,)
+    groups = (TicketGroup, AttendeeGroup, LocaleGroup, DiscountGroup, OptInGroup,)
     
     label = _(u"Register")
     enable_form_tabbing = False
