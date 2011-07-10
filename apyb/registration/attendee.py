@@ -21,36 +21,36 @@ class IAttendee(form.Schema):
         required=False,
         )
     fullname = schema.TextLine(
-        title=u'Fullname',
-        description=u'Please inform your fullname',
+        title=_(u'Fullname'),
+        description=_(u'Please inform your fullname'),
         required=True,
     )
     
+    badge_name = schema.TextLine(
+        title=_(u'Badge name'),
+        description=_(u'Please inform the name that will appear on your badge -- Leave it blank to use your fullname in the badge'),
+        required=False,
+        missing_value=u'',
+    )
+    
     organization = schema.TextLine(
-        title=u'Organization',
-        description=u'Please inform the name of the organization you will represent',
+        title=_(u'Organization'),
+        description=_(u'Please inform the name of the organization you will represent'),
         required=False,
         missing_value=u'',
     )
     
     gender = schema.Choice(
-        title=u'Gender',
+        title=_(u'Gender'),
         required=True,
         vocabulary="apyb.registration.gender"
         )
 
     t_shirt_size = schema.Choice(
-        title=u'T-Shirt Size',
+        title=_(u'T-Shirt Size'),
         required=True,
         vocabulary="apyb.registration.tshirt"
         )
-
-    badge_name = schema.TextLine(
-        title=u'Badge name',
-        description=u'Please inform the name badge',
-        required=False,
-        missing_value=u'',
-    )
 
 
 class Attendee(dexterity.Item):
