@@ -1,13 +1,19 @@
 # -*- coding:utf-8 -*-
 from five import grok
+from zope.event import notify
+from zope.lifecycleevent import ObjectCreatedEvent
+from zope import schema
 from zope import component
 from zope.app.intid.interfaces import IIntIds
 from z3c.form import button, field, group
 from z3c.form.interfaces import HIDDEN_MODE
 from z3c.form.form import applyChanges
 from z3c.form.interfaces import IWidgets
-from plone.dexterity.utils import createContentInContainer
+from plone.dexterity.utils import addContentToContainer
+from plone.dexterity.utils import createContent
 from plone.directives import form
+
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from apyb.registration.behavior.optininformation import IOptInInformation
 from collective.behavior.contactinfo.behavior.contactinfo import INetContactInfo
@@ -19,79 +25,111 @@ from apyb.registration.registrations import IRegistrations
 
 from apyb.registration import MessageFactory as _
 
-class TicketGroup(group.Group):
-    label=u"Ticket Type"
-    description=u"Please select your price."
-    fields=field.Fields(IRegistration).select(
-        'registration_type',
+class IIndividualForm(IRegistration,IAttendee,IAddress,INetContactInfo,IOptInInformation):
+    """
+    A registration in a conference
+    """
+    form.fieldset('default',
+            label=_(u"Personal information"),
+            fields=['fullname', 'badge_name','organization','gender','t_shirt_size']
         )
-
-class AttendeeGroup(group.Group):
-    label=u"Personal"
-    description=u"Please inform your personal data for registration."
-    fields=field.Fields(IAttendee).omit('uid')
-    fields = fields + field.Fields(INetContactInfo)
-
-class LocaleGroup(group.Group):
-    label=u"Location"
-    description=u"Where are you from?"
-    fields = field.Fields(IAddress).select('country','state','city')
+    form.fieldset('contact',
+            label=_(u"Contact Info"),
+            fields=['email', 'twitter','irc_nickname','site',]
+        )
+    form.fieldset('location',
+            label=_(u"Location"),
+            fields=['country', 'state','city',]
+        )
+    form.fieldset('opting',
+            label=_(u"Opt-In"),
+            fields=['conference', 'partners',]
+        )
+    form.fieldset('extra',
+            label=_(u"Discount"),
+            fields=['discount_code',]
+        )
     
-    def update(self):
-        # define default country
+    email = schema.TextLine(
+       title=_(u'E-mail'),
+       description=_(u'Please provide an email address'),
+       required=True,
+    )
+    
+    form.omitted('uid')
+    form.omitted('address')
+    form.omitted('postcode')
+    form.omitted('registration_type')
+
+class AddForm(form.SchemaAddForm):
+    grok.context(IRegistrations)
+    grok.require('apyb.registration.AddRegistration')
+    
+    label = (u"Register")
+    description = (u"Register to this conference")
+    
+    template = ViewPageTemplateFile('register_templates/register.pt')
+    
+    schema = IIndividualForm
+    
+    enable_form_tabbing = False
+    registration_type = u''
+    
+    def __init__(self, context, request):
+        super(AddForm,self).__init__(context, request)
         if not self.request.get('form.widgets.country',''):
             self.request.set('form.widgets.country','br')
-        super(LocaleGroup, self).update()
-
-class OptInGroup(group.Group):
-    label=u"OptIn"
-    description=u"OptIn."
-    fields=field.Fields(IOptInInformation)
-
-class DiscountGroup(group.Group):
-    label=u"Discount code"
-    description=u"Please select your price."
-    fields=field.Fields(IRegistration).select(
-        'discount_code',
-    )
-
-class RegistrationForm(group.GroupForm, form.Form):
-    grok.name('registration')
-    grok.require('apyb.registration.AddRegistration')
-    grok.context(IRegistrations)
     
-    fields=field.Fields(IRegistration).select('uid')
+    def price(self):
+        ''' Given a registration type and a data, we return
+            a price (in cents)
+        '''
+        return 10000
     
-    groups = (TicketGroup, AttendeeGroup, LocaleGroup, DiscountGroup, OptInGroup,)
-    
-    label = _(u"Register")
-    enable_form_tabbing = False
-    
-    def update(self):
-        # disable Plone's editable border
-        self.request.set('disable_border', True)
-        self.ignoreContext = True
-        super(RegistrationForm, self).update()
-
-    def updateWidgets(self):
-        super(RegistrationForm, self).updateWidgets()
-        self.widgets['uid'].mode = HIDDEN_MODE
-    
-    @button.buttonAndHandler(u'Register')
-    def handleApply(self, action):
-        data, errors = self.extractData()
-        if errors:
-            self.status = self.formErrorsMessage
-            return
-        # Create registration object
-        reg_fields = ['registration_type','discount_code',]
+    def create(self, data):
+        ''' Create objects '''
+        reg_fields = ['discount_code',]
         reg_data = dict([(k,data[k]) for k in reg_fields])
         reg_data['title'] = data['fullname']
-        registration = createContentInContainer(self.context, 'apyb.registration.registration', 
-                                                checkConstraints=True, **reg_data)
+        reg_data['registration_type'] = self.registration_type
+        registration = createContent('apyb.registration.registration', 
+                                    checkConstraints=True, **reg_data)
         
-        for k in reg_fields + ['uid']:
+        for k in reg_fields:
             del data[k]
         # Create attendee object
-        attendee = createContentInContainer(registration, 'apyb.registration.attendee', 
-                                                checkConstraints=True, **data)
+        attendee = createContent('apyb.registration.attendee', 
+                                 checkConstraints=True, **data)
+        return [registration,attendee]
+    
+    def add(self, object):
+        registration, attendee = object
+        context = self.context
+        regObject = addContentToContainer(context,registration)
+        attObject = addContentToContainer(regObject,attendee)
+        event = ObjectCreatedEvent(regObject)
+        notify(event)
+        self.immediate_view = "%s/%s" % (context.absolute_url(), regObject.id)
+        
+    
+
+class APyBRegistrationForm(AddForm):
+    grok.name('registration-apyb')
+    
+    label = _(u"APyB Member Registration")
+    registration_type = u'apyb'
+    
+
+class StudentRegistrationForm(AddForm):
+    grok.name('registration-student')
+    
+    label = _(u"Student registration")
+    registration_type = u'student'
+    
+
+class IndividualRegistrationForm(AddForm):
+    grok.name('registration-individual')
+    
+    label = _(u"Student registration")
+    registration_type = u'individual'
+    
