@@ -4,17 +4,7 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 
-class CountriesVocabulary(object):
-    """Vocabulary factory for a list of countries
-    """
-    grok.implements(IVocabularyFactory)
-    
-    def __call__(self, context):
-        paises = [('BR','Brasil'),('AR','Argentina'),]
-        items = [SimpleTerm(k,k,v) for k,v in paises]
-        return SimpleVocabulary(items)
-
-grok.global_utility(CountriesVocabulary, name=u"apyb.registration.countries")
+from apyb.registration import MessageFactory as _
 
 class GenderVocabulary(object):
     """Vocabulary factory for gender options
@@ -22,8 +12,10 @@ class GenderVocabulary(object):
     grok.implements(IVocabularyFactory)
     
     def __call__(self, context):
-        paises = [('m','Male'),('f','Female'),]
-        items = [SimpleTerm(k,k,v) for k,v in paises]
+        gender = [('m',_(u'Male')),
+                  ('f',_(u'Female')),
+                 ]
+        items = [SimpleTerm(k,k,v) for k,v in gender]
         return SimpleVocabulary(items)
 
 grok.global_utility(GenderVocabulary, name=u"apyb.registration.gender")
@@ -34,8 +26,13 @@ class TShirtVocabulary(object):
     grok.implements(IVocabularyFactory)
     
     def __call__(self, context):
-        paises = [('s','Small'),('m','Medium'),]
-        items = [SimpleTerm(k,k,v) for k,v in paises]
+        sizes = [
+                 ('S',_(u'Small')),
+                 ('M',_(u'Medium')),
+                 ('L',_(u'Large')),
+                 ('X',_(u'X-Large')),
+                ]
+        items = [SimpleTerm(k,k,v) for k,v in sizes]
         return SimpleVocabulary(items)
 
 grok.global_utility(TShirtVocabulary, name=u"apyb.registration.tshirt")
@@ -46,8 +43,14 @@ class TypesVocabulary(object):
     grok.implements(IVocabularyFactory)
     
     def __call__(self, context):
-        paises = [('apyb','APyB Members'),('indiv','Individual'),]
-        items = [SimpleTerm(k,k,v) for k,v in paises]
+        types = [
+                 ('apyb',_(u'APyB Members')),
+                 ('student',_(u'Student')),
+                 ('individual',_(u'Individual')),
+                 ('government',_(u'Government')),
+                 ('group',_(u'Group/Corporate')),
+                ]
+        items = [SimpleTerm(k,k,v) for k,v in types]
         return SimpleVocabulary(items)
 
 grok.global_utility(TypesVocabulary, name=u"apyb.registration.types")
@@ -58,7 +61,10 @@ class PaymentServicesVocabulary(object):
     grok.implements(IVocabularyFactory)
     
     def __call__(self, context):
-        services = [('paypal','PayPal'),('pagseguro','Pagseguro'),]
+        services = [
+                    ('paypal',_(u'PayPal')),
+                    ('pagseguro',_(u'Pagseguro')),
+                   ]
         items = [SimpleTerm(k,k,v) for k,v in services]
         return SimpleVocabulary(items)
 
