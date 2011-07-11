@@ -1,0 +1,338 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-07-11 14:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ../profiles/default/types/apyb.registration.registration.xml
+msgid "A registration in a conference"
+msgstr ""
+
+#: ../browser/register.py:119
+msgid "APyB Member Registration"
+msgstr ""
+
+#: ../vocabulary.py:47
+msgid "APyB Members"
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Allow registrations"
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Allow registrations to be added to this conference."
+msgstr ""
+
+#: ../profiles/default/types/apyb.registration.attendee.xml
+msgid "An attenddee at a conference"
+msgstr ""
+
+#: ../profiles/default/types/apyb.registration.attendee.xml
+msgid "Attendee"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Attendee workflow"
+msgstr ""
+
+#: ../attendee.py:30
+msgid "Badge name"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Cancel a participation."
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Cancel a registration."
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Cancel participation"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Cancel registration"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Cancelled"
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Close registration process"
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Close registrations"
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Close the registration process to this conference."
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Closed"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Confirm a partipation."
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Confirm a registration."
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Confirm participation"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Confirm registration"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Confirmed"
+msgstr ""
+
+#: ../browser/register.py:37
+msgid "Contact Info"
+msgstr ""
+
+#: ../browser/register.py:49
+msgid "Discount"
+msgstr ""
+
+#: ../registration.py:33
+msgid "Discount code"
+msgstr ""
+
+#: ../browser/register.py:54
+msgid "E-mail"
+msgstr ""
+
+#: ../vocabulary.py:16
+msgid "Female"
+msgstr ""
+
+#: ../profiles/default/types/apyb.registration.registrations.xml
+msgid "Folderish content that contains registrations"
+msgstr ""
+
+#: ../attendee.py:24
+msgid "Fullname"
+msgstr ""
+
+#: ../attendee.py:44
+msgid "Gender"
+msgstr ""
+
+#: ../vocabulary.py:50
+msgid "Government"
+msgstr ""
+
+#: ../vocabulary.py:51
+msgid "Group/Corporate"
+msgstr ""
+
+#: ../registration.py:34
+msgid "If you have a discount code, please inform here"
+msgstr ""
+
+#: ../vocabulary.py:49
+msgid "Individual"
+msgstr ""
+
+#: ../vocabulary.py:32
+msgid "Large"
+msgstr ""
+
+#: ../browser/register.py:41
+msgid "Location"
+msgstr ""
+
+#: ../vocabulary.py:15
+msgid "Male"
+msgstr ""
+
+#: ../vocabulary.py:31
+msgid "Medium"
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "New"
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Opened"
+msgstr ""
+
+#: ../browser/register.py:45
+msgid "Opt-In"
+msgstr ""
+
+#: ../attendee.py:37
+msgid "Organization"
+msgstr ""
+
+#: ../vocabulary.py:66
+msgid "Pagseguro"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Participation canceled."
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Participation confirmed."
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Participation pending confirmation."
+msgstr ""
+
+#: ../vocabulary.py:65
+msgid "PayPal"
+msgstr ""
+
+#: ../behavior/paymentinformation.py:16
+msgid "Payment service provider"
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Pending"
+msgstr ""
+
+#: ../browser/register.py:33
+msgid "Personal information"
+msgstr ""
+
+#: ../attendee.py:38
+msgid "Please inform the name of the organization you will represent"
+msgstr ""
+
+#: ../attendee.py:31
+msgid "Please inform the name that will appear on your badge -- Leave it blank to use your fullname in the badge"
+msgstr ""
+
+#: ../attendee.py:25
+msgid "Please inform your fullname"
+msgstr ""
+
+#: ../browser/register.py:55
+msgid "Please provide an email address"
+msgstr ""
+
+#: ../profiles/default/types/apyb.registration.registration.xml
+msgid "Registration"
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration cancelled."
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration confirmed."
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration created."
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration pending confirmation."
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration workflow"
+msgstr ""
+
+#: ../profiles/default/types/apyb.registration.registrations.xml
+msgid "Registrations"
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Registrations closed."
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Registrations opened."
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Registrations workflow"
+msgstr ""
+
+#: ../registration.py:27
+msgid "Select the category of your registration"
+msgstr ""
+
+#: ../vocabulary.py:30
+msgid "Small"
+msgstr ""
+
+#: ../vocabulary.py:48
+msgid "Student"
+msgstr ""
+
+#: ../browser/register.py:126
+msgid "Student registration"
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Submit a registration"
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Submit registration"
+msgstr ""
+
+#: ../attendee.py:50
+msgid "T-Shirt Size"
+msgstr ""
+
+#: ../registration.py:26
+msgid "Type"
+msgstr ""
+
+#: ../behavior/paymentinformation.py:17
+msgid "Which payment service provider was used?"
+msgstr ""
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Workflow to manage a registration to a conference."
+msgstr ""
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Workflow to manage an attendee status in a conference."
+msgstr ""
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Workflow to manage registrations to a conference."
+msgstr ""
+
+#: ../vocabulary.py:33
+msgid "X-Large"
+msgstr ""
+
+#: ../attendee.py:20
+#: ../registration.py:22
+msgid "uid"
+msgstr ""
+

@@ -1,0 +1,338 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-07-11 14:43+0000\n"
+"PO-Revision-Date: 2011-07-11 11:44-0300\n"
+"Last-Translator: Erico Andrei <erico@simplesconsultoria.com.br>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: pt_BR\n"
+"Language-Name: Brazilian Portuguese\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: apyb.registrations\n"
+
+#: ../profiles/default/types/apyb.registration.registration.xml
+msgid "A registration in a conference"
+msgstr "Inscrição em uma conferência"
+
+#: ../browser/register.py:119
+msgid "APyB Member Registration"
+msgstr "Inscrição para membros da APyB"
+
+#: ../vocabulary.py:47
+msgid "APyB Members"
+msgstr "Membros da APyB"
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Allow registrations"
+msgstr "Permitir inscrições"
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Allow registrations to be added to this conference."
+msgstr "Habilita as inscrições nesta conferência"
+
+#: ../profiles/default/types/apyb.registration.attendee.xml
+msgid "An attenddee at a conference"
+msgstr "Um participante na conferência"
+
+#: ../profiles/default/types/apyb.registration.attendee.xml
+msgid "Attendee"
+msgstr "Participante"
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Attendee workflow"
+msgstr "Workflow de participante"
+
+#: ../attendee.py:30
+msgid "Badge name"
+msgstr "Nome no crachá"
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Cancel a participation."
+msgstr "Cancelar uma participação."
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Cancel a registration."
+msgstr "Cancelar a inscrição"
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Cancel participation"
+msgstr "Cancelar participação"
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Cancel registration"
+msgstr "Cancelar inscrição"
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Cancelled"
+msgstr "Cancelada"
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Close registration process"
+msgstr "Encerrar inscrições"
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Close registrations"
+msgstr "Encerrar inscrições"
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Close the registration process to this conference."
+msgstr "Encerra o período de inscrições para esta conferência"
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Closed"
+msgstr "Fechado"
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Confirm a partipation."
+msgstr "Confirmar a participação."
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Confirm a registration."
+msgstr "Confirmar a inscrição."
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Confirm participation"
+msgstr "Confirmar a participação"
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Confirm registration"
+msgstr "Confirmar inscrição"
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Confirmed"
+msgstr "Confirmada"
+
+#: ../browser/register.py:37
+msgid "Contact Info"
+msgstr "Informações de contato"
+
+#: ../browser/register.py:49
+msgid "Discount"
+msgstr "Desconto"
+
+#: ../registration.py:33
+msgid "Discount code"
+msgstr "Código de desconto"
+
+#: ../browser/register.py:54
+msgid "E-mail"
+msgstr "E-mail"
+
+#: ../vocabulary.py:16
+msgid "Female"
+msgstr "Feminino"
+
+#: ../profiles/default/types/apyb.registration.registrations.xml
+msgid "Folderish content that contains registrations"
+msgstr "Pasta que abriga inscrições"
+
+#: ../attendee.py:24
+msgid "Fullname"
+msgstr "Nome completo"
+
+#: ../attendee.py:44
+msgid "Gender"
+msgstr "Sexo"
+
+#: ../vocabulary.py:50
+msgid "Government"
+msgstr "Governo"
+
+#: ../vocabulary.py:51
+msgid "Group/Corporate"
+msgstr "Grupo / Corporativa"
+
+#: ../registration.py:34
+msgid "If you have a discount code, please inform here"
+msgstr "Caso possua um código de desconto, por favor o informe aqui"
+
+#: ../vocabulary.py:49
+msgid "Individual"
+msgstr "Individual"
+
+#: ../vocabulary.py:32
+msgid "Large"
+msgstr "Grande"
+
+#: ../browser/register.py:41
+msgid "Location"
+msgstr "Localização"
+
+#: ../vocabulary.py:15
+msgid "Male"
+msgstr "Masculino"
+
+#: ../vocabulary.py:31
+msgid "Medium"
+msgstr "Média"
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "New"
+msgstr "Nova"
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Opened"
+msgstr "Abertas"
+
+#: ../browser/register.py:45
+msgid "Opt-In"
+msgstr "Opt-In"
+
+#: ../attendee.py:37
+msgid "Organization"
+msgstr "Instituição"
+
+#: ../vocabulary.py:66
+msgid "Pagseguro"
+msgstr "PagSeguro"
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Participation canceled."
+msgstr "Participação cancelada"
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Participation confirmed."
+msgstr "Participação confirmada."
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Participation pending confirmation."
+msgstr "Participação aguardando confirmação."
+
+#: ../vocabulary.py:65
+msgid "PayPal"
+msgstr "PayPal"
+
+#: ../behavior/paymentinformation.py:16
+msgid "Payment service provider"
+msgstr "Serviço de pagamento"
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Pending"
+msgstr "Aguardando confirmação"
+
+#: ../browser/register.py:33
+msgid "Personal information"
+msgstr "Dados pessoais"
+
+#: ../attendee.py:38
+msgid "Please inform the name of the organization you will represent"
+msgstr "Por favor, informe qual instituição você representará no evento."
+
+#: ../attendee.py:31
+msgid "Please inform the name that will appear on your badge -- Leave it blank to use your fullname in the badge"
+msgstr "Nos diga qual a identificação você deseja em seu crachá -- Deixe este campo em branco para utilizarmos o seu nome completo."
+
+#: ../attendee.py:25
+msgid "Please inform your fullname"
+msgstr "Por favor, informe seu nome completo."
+
+#: ../browser/register.py:55
+msgid "Please provide an email address"
+msgstr "Informe seu endereço de e-mail."
+
+#: ../profiles/default/types/apyb.registration.registration.xml
+msgid "Registration"
+msgstr "Inscrição"
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration cancelled."
+msgstr "Inscrição cancelada."
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration confirmed."
+msgstr "Inscrição confirmada."
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration created."
+msgstr "Inscrição criada."
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration pending confirmation."
+msgstr "Inscrição aguardando confirmação"
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Registration workflow"
+msgstr "Workflow de inscrições"
+
+#: ../profiles/default/types/apyb.registration.registrations.xml
+msgid "Registrations"
+msgstr "Inscrições"
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Registrations closed."
+msgstr "Inscrições fechadas"
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Registrations opened."
+msgstr "Inscrições abertas"
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Registrations workflow"
+msgstr "Workflow da pasta de inscrições"
+
+#: ../registration.py:27
+msgid "Select the category of your registration"
+msgstr "Selecione qual o tipo de sua inscrição."
+
+#: ../vocabulary.py:30
+msgid "Small"
+msgstr "Pequena"
+
+#: ../vocabulary.py:48
+msgid "Student"
+msgstr "Estudante"
+
+#: ../browser/register.py:126
+msgid "Student registration"
+msgstr "Inscrição como estudante"
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Submit a registration"
+msgstr "Enviar inscrição"
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Submit registration"
+msgstr "Enviar inscrição"
+
+#: ../attendee.py:50
+msgid "T-Shirt Size"
+msgstr "Tamanho da camiseta"
+
+#: ../registration.py:26
+msgid "Type"
+msgstr "Categoroa"
+
+#: ../behavior/paymentinformation.py:17
+msgid "Which payment service provider was used?"
+msgstr "Qual meio de pagamento foi utilizado?"
+
+#: ../profiles/default/workflows/registration_workflow/definition.xml
+msgid "Workflow to manage a registration to a conference."
+msgstr "Workflow para gerir uma inscrição na conferência"
+
+#: ../profiles/default/workflows/attendee_workflow/definition.xml
+msgid "Workflow to manage an attendee status in a conference."
+msgstr "Workflow para gerir uma participante na conferência"
+
+#: ../profiles/default/workflows/registrations_workflow/definition.xml
+msgid "Workflow to manage registrations to a conference."
+msgstr "Workflow para gerir a pasta de inscrições""
+
+#: ../vocabulary.py:33
+msgid "X-Large"
+msgstr "Extra-Grande"
+
+#: ../attendee.py:20
+#: ../registration.py:22
+msgid "uid"
+msgstr "uid"
+
