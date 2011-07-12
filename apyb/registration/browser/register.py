@@ -99,7 +99,7 @@ class IGroupForm(IRegistration,IAddress,IOptInInformation):
     """
     form.fieldset('organization',
             label=_(u"Organization info"),
-            fields=['organization',]
+            fields=['organization','email']
         )
     form.fieldset('attendees',
             label=_(u"List of Attendees"),
@@ -124,6 +124,12 @@ class IGroupForm(IRegistration,IAddress,IOptInInformation):
         description=_(u'Please inform the name of the organization you will represent'),
         required=False,
         missing_value=u'',
+    )
+    
+    email = schema.TextLine(
+       title=_(u'E-mail'),
+       description=_(u'Please provide an email address to be used to manage this registration.'),
+       required=True,
     )
     
     attendees = schema.List(title=u'Attendees',
@@ -161,7 +167,10 @@ class AddForm(form.SchemaAddForm):
         ''' Create objects '''
         reg_fields = ['discount_code',]
         reg_data = dict([(k,data[k]) for k in reg_fields])
-        #reg_data['title'] = data['fullname']
+        reg_data['email'] = data['email']
+        reg_data['city'] = data['city']
+        reg_data['state'] = data['state']
+        reg_data['country'] = data['country']
         reg_data['registration_type'] = self.registration_type
         registration = createContent('apyb.registration.registration', 
                                     checkConstraints=True, **reg_data)
@@ -222,7 +231,10 @@ class GroupAddForm(form.SchemaAddForm):
         ''' Create objects '''
         reg_fields = ['discount_code',]
         reg_data = dict([(k,data[k]) for k in reg_fields])
-        #reg_data['title'] = data['organization']
+        reg_data['email'] = data['email']
+        reg_data['city'] = data['city']
+        reg_data['state'] = data['state']
+        reg_data['country'] = data['country']
         reg_data['registration_type'] = self.registration_type
         registration = createContent('apyb.registration.registration', 
                                     checkConstraints=True, **reg_data)
