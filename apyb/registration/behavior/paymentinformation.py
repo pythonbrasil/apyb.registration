@@ -19,8 +19,6 @@ class IPaymentInformation(form.Schema):
        vocabulary="apyb.registration.paymentservices"
        )
    
-   dexterity.read_permission(paid='cmf.ReviewPortalContent')
-   dexterity.write_permission(paid='cmf.ReviewPortalContent')
    paid = schema.Bool(
        title=u'Is this paid?',
        default=False,
