@@ -32,7 +32,7 @@
             </tbody>
         </table>
     </div>
-    <div id="pagseguro" tal:condition="not:view/paid">
+    <div id="pagseguro" tal:condition="view/show_pagseguro">
         <form 
               action="https://pagseguro.uol.com.br/checkout/checkout.jhtml"
               method="post" target="_new">
@@ -68,6 +68,9 @@
             <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/carrinhoproprio/btnFinalizaBR.jpg" 
                    name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!">
         </form>
+    </div>
+
+    <div id="paypal" tal:condition="view/show_paypal">
     </div>
     
   </metal:content-core>

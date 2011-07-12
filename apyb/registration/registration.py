@@ -24,6 +24,13 @@ class IRegistration(form.Schema):
         title=_(u"uid"),
         required=False,
         )
+    
+    email = schema.TextLine(
+           title=_(u'E-mail'),
+           description=_(u'Please provide an email address'),
+           required=True,
+    )
+    
     registration_type = schema.Choice(
         title=_(u'Type'),
         description=_(u'Select the category of your registration'),
@@ -66,6 +73,22 @@ class View(grok.View):
     @property
     def paid(self):
         return getattr(self.context,'paid',False)
+    
+    @property
+    def show_pagseguro(self):
+        ''' show only if registration not paid and 
+            registration is from brazil
+        '''
+        country = self.context.country
+        paid = self.paid
+        return (country==u'br' and not paid)
+    
+    @property
+    def show_paypal(self):
+        ''' show only if registration not paid 
+        '''
+        paid = self.paid
+        return paid
     
     def _price(self):
         view = aq_parent(self.context).restrictedTraverse('@@reg-price')
