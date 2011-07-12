@@ -7,8 +7,19 @@
     
     <metal:block fill-slot="main">
     <h1 class="documentFirstHeading" tal:content="view/label | nothing" />
+        <div id="price">
+            
+        </div>
         <div id="content-core">
             <metal:block use-macro="context/@@ploneform-macros/titlelessform" />
         </div>
+        <script tal:content="string:registration_type='${view/registration_type}';;" />
+        <script>
+            jQuery(function(){              
+                  jQuery.getJSON('@@reg-price.json?type=' + registration_type + '&qty=1', function(data) {
+                    jQuery('div#price').html(data['fmtPrice']);
+                  });
+            });
+        </script>
     </metal:block>
 </html>
