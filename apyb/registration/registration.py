@@ -1,6 +1,8 @@
 from five import grok
 from plone.directives import dexterity, form
 
+from Acquisition import aq_inner, aq_parent
+
 from zope import schema
 
 from z3c.form import group, field
@@ -55,3 +57,33 @@ class View(grok.View):
     grok.context(IRegistration)
     grok.require('zope2.View')
     
+    def attendees(self):
+        ct = self.context.portal_catalog
+        path = '/'.join(self.context.getPhysicalPath())
+        results = ct.searchResults(portal_type='apyb.registration.attendee',path=path)
+        return results
+    
+    @property
+    def paid(self):
+        return getattr(self.context,'paid',False)
+    
+    def _price(self):
+        view = aq_parent(self.context).restrictedTraverse('@@reg-price')
+        attendees = self.attendees()
+        qty = len(attendees)
+        registration_type = self.context.registration_type
+        price = view.price(registration_type,qty)
+        fmtPrice = view.fmtPrice(price)
+        return (price,fmtPrice)
+    
+    @property
+    def price(self):
+        return self._price()[0]
+        
+    @property
+    def fmtPrice(self):
+        return self._price()[1]
+
+    
+
+        
