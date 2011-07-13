@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-07-11 14:43+0000\n"
+"POT-Creation-Date: 2011-07-13 18:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 msgid "A registration in a conference"
 msgstr ""
 
-#: ../browser/register.py:119
+#: ../browser/register.py:280
 msgid "APyB Member Registration"
 msgstr ""
 
@@ -38,6 +38,7 @@ msgstr ""
 msgid "An attenddee at a conference"
 msgstr ""
 
+#: ../browser/register.py:152
 #: ../profiles/default/types/apyb.registration.attendee.xml
 msgid "Attendee"
 msgstr ""
@@ -110,19 +111,20 @@ msgstr ""
 msgid "Confirmed"
 msgstr ""
 
-#: ../browser/register.py:37
+#: ../browser/register.py:45
 msgid "Contact Info"
 msgstr ""
 
-#: ../browser/register.py:49
+#: ../browser/register.py:57
 msgid "Discount"
 msgstr ""
 
-#: ../registration.py:33
+#: ../registration.py:42
 msgid "Discount code"
 msgstr ""
 
-#: ../browser/register.py:54
+#: ../browser/register.py:62
+#: ../registration.py:29
 msgid "E-mail"
 msgstr ""
 
@@ -135,10 +137,12 @@ msgid "Folderish content that contains registrations"
 msgstr ""
 
 #: ../attendee.py:24
+#: ../browser/register.py:82
 msgid "Fullname"
 msgstr ""
 
 #: ../attendee.py:44
+#: ../browser/register.py:94
 msgid "Gender"
 msgstr ""
 
@@ -146,11 +150,19 @@ msgstr ""
 msgid "Government"
 msgstr ""
 
+#: ../browser/register.py:307
+msgid "Government registration"
+msgstr ""
+
+#: ../browser/register.py:301
+msgid "Group / Corporate registration"
+msgstr ""
+
 #: ../vocabulary.py:51
 msgid "Group/Corporate"
 msgstr ""
 
-#: ../registration.py:34
+#: ../registration.py:43
 msgid "If you have a discount code, please inform here"
 msgstr ""
 
@@ -158,11 +170,19 @@ msgstr ""
 msgid "Individual"
 msgstr ""
 
+#: ../browser/register.py:69
+msgid "Inform the state / provice you live."
+msgstr ""
+
 #: ../vocabulary.py:32
 msgid "Large"
 msgstr ""
 
-#: ../browser/register.py:41
+#: ../browser/register.py:115
+msgid "List of Attendees"
+msgstr ""
+
+#: ../browser/register.py:49
 msgid "Location"
 msgstr ""
 
@@ -182,12 +202,17 @@ msgstr ""
 msgid "Opened"
 msgstr ""
 
-#: ../browser/register.py:45
+#: ../browser/register.py:53
 msgid "Opt-In"
 msgstr ""
 
 #: ../attendee.py:37
+#: ../browser/register.py:133
 msgid "Organization"
+msgstr ""
+
+#: ../browser/register.py:111
+msgid "Organization info"
 msgstr ""
 
 #: ../vocabulary.py:66
@@ -219,11 +244,12 @@ msgstr ""
 msgid "Pending"
 msgstr ""
 
-#: ../browser/register.py:33
+#: ../browser/register.py:41
 msgid "Personal information"
 msgstr ""
 
 #: ../attendee.py:38
+#: ../browser/register.py:134
 msgid "Please inform the name of the organization you will represent"
 msgstr ""
 
@@ -232,11 +258,17 @@ msgid "Please inform the name that will appear on your badge -- Leave it blank t
 msgstr ""
 
 #: ../attendee.py:25
+#: ../browser/register.py:83
 msgid "Please inform your fullname"
 msgstr ""
 
-#: ../browser/register.py:55
+#: ../browser/register.py:63
+#: ../registration.py:30
 msgid "Please provide an email address"
+msgstr ""
+
+#: ../browser/register.py:141
+msgid "Please provide an email address to be used to manage this registration."
 msgstr ""
 
 #: ../profiles/default/types/apyb.registration.registration.xml
@@ -279,7 +311,7 @@ msgstr ""
 msgid "Registrations workflow"
 msgstr ""
 
-#: ../registration.py:27
+#: ../registration.py:36
 msgid "Select the category of your registration"
 msgstr ""
 
@@ -287,11 +319,15 @@ msgstr ""
 msgid "Small"
 msgstr ""
 
+#: ../browser/register.py:68
+msgid "State /Province"
+msgstr ""
+
 #: ../vocabulary.py:48
 msgid "Student"
 msgstr ""
 
-#: ../browser/register.py:126
+#: ../browser/register.py:287
 msgid "Student registration"
 msgstr ""
 
@@ -304,10 +340,11 @@ msgid "Submit registration"
 msgstr ""
 
 #: ../attendee.py:50
+#: ../browser/register.py:100
 msgid "T-Shirt Size"
 msgstr ""
 
-#: ../registration.py:26
+#: ../registration.py:35
 msgid "Type"
 msgstr ""
 
@@ -332,7 +369,7 @@ msgid "X-Large"
 msgstr ""
 
 #: ../attendee.py:20
-#: ../registration.py:22
+#: ../registration.py:24
 msgid "uid"
 msgstr ""
 
