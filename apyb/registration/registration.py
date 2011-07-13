@@ -100,6 +100,14 @@ class View(grok.View):
         return (price,fmtPrice)
     
     @property
+    def base_price(self):
+        # Price per attendee
+        attendees = self.attendees()
+        qty = len(attendees)
+        price = self._price()[0]
+        return price / qty
+    
+    @property
     def price(self):
         return self._price()[0]
         
