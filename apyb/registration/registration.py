@@ -11,6 +11,8 @@ from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
 from zope.component import getUtility
 from zope.app.intid.interfaces import IIntIds
 
+from plone.indexer import indexer
+
 from apyb.registration.utils import generateId
 
 from apyb.registration import MessageFactory as _
@@ -46,6 +48,33 @@ class IRegistration(form.Schema):
     )
 
 
+@indexer(IRegistration)
+def num_attendees(obj):
+    children = obj.objectValues()
+    children = [c for c in children if c.portal_type=='apyb.registration.attendee']
+    return len(children)
+grok.global_adapter(num_attendees, name="num_attendees")
+
+@indexer(IRegistration)
+def price_est(obj):
+    
+    children = obj.objectValues()
+    children = [c for c in children if c.portal_type=='apyb.registration.attendee']
+    
+    view = aq_parent(obj).restrictedTraverse('@@reg-price')
+    qty = len(children)
+    
+    registration_type = obj.registration_type
+    price = view.price(registration_type,qty)
+    return price
+
+grok.global_adapter(price_est, name="price_est")
+
+@indexer(IRegistration)
+def registration_type(obj):
+    return [self.registration_type,]
+grok.global_adapter(registration_type, name="Subject")
+
 class Registration(dexterity.Container):
     grok.implements(IRegistration)
     
@@ -63,6 +92,12 @@ class Registration(dexterity.Container):
 class View(grok.View):
     grok.context(IRegistration)
     grok.require('zope2.View')
+    
+    def update(self):
+        super(View,self).update()
+        context = aq_inner(self.context)
+        self.registration_type = context.registration_type
+        
     
     def attendees(self):
         ct = self.context.portal_catalog
@@ -94,7 +129,7 @@ class View(grok.View):
         view = aq_parent(self.context).restrictedTraverse('@@reg-price')
         attendees = self.attendees()
         qty = len(attendees)
-        registration_type = self.context.registration_type
+        registration_type = self.registration_type
         price = view.price(registration_type,qty)
         fmtPrice = view.fmtPrice(price)
         return (price,fmtPrice)
