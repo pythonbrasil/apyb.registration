@@ -9,8 +9,6 @@
 
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
-
-    <h2 tal:content="context/Title"></h2>
     
     <div id="price">
         <span tal:content="view/fmtPrice" />
@@ -46,12 +44,12 @@
             <input type="hidden" name="item_descr_1" value="Inscrição PythonBrasil[7]" />
 
             <input type="hidden" 
-                  tal:attributes="value view/price"
+                  tal:attributes="value view/base_price"
                   name="item_valor_1" 
                   value="2500"/>
 
-            <input type="hidden" name="ref_transacao" value="UID"
-                   tal:attributes="value context/uid" />
+            <input type="hidden" name="ref_transacao" value="id"
+                   tal:attributes="value context/id" />
 
             <input type="hidden" name="cliente_nome" value="Nome"
                    tal:attributes="value context/Title" />
