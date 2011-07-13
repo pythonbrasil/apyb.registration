@@ -22,7 +22,8 @@ class PriceView(grok.View):
                 if line[0] > qty:
                     discount = line[1]
         price = base_price * qty * (1-discount)
-        return price
+        # Price is **always** int
+        return int(price)
     
     def fmtPrice(self,price):
         return ('R$%.2f' % (price/100.0)).replace('.',',')
