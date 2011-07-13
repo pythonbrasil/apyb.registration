@@ -1,10 +1,12 @@
 # -*- coding:utf-8 -*-
+from Acquisition import aq_inner
 from five import grok
 from zope.interface import Interface, implements
 from zope.event import notify
 from zope.lifecycleevent import ObjectCreatedEvent
 from zope import schema
 from zope import component
+from zope.component import getMultiAdapter
 from zope.app.intid.interfaces import IIntIds
 from z3c.form import button, field, group
 from z3c.form.interfaces import DISPLAY_MODE, HIDDEN_MODE, IDataConverter, NO_VALUE
@@ -16,6 +18,8 @@ from collective.z3cform.datagridfield import DictRow
 from plone.dexterity.utils import addContentToContainer
 from plone.dexterity.utils import createContent
 from plone.directives import form
+
+
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -58,6 +62,12 @@ class IIndividualForm(IRegistration,IAttendee,IAddress,INetContactInfo,IOptInInf
        title=_(u'E-mail'),
        description=_(u'Please provide an email address'),
        required=True,
+    )
+    
+    state = schema.TextLine(
+        title=_(u'State /Province'),
+        description=_(u'Inform the state / provice you live.'),
+        required=True,
     )
     
     form.omitted('uid')
@@ -132,6 +142,12 @@ class IGroupForm(IRegistration,IAddress,IOptInInformation):
        required=True,
     )
     
+    state = schema.TextLine(
+        title=_(u'State /Province'),
+        description=_(u'Inform the state / provice you live.'),
+        required=True,
+    )
+    
     attendees = schema.List(title=u'Attendees',
                         value_type=DictRow(title=_(u'Attendee'), 
                                                 schema=IAttendeeItem),
@@ -157,11 +173,10 @@ class AddForm(form.SchemaAddForm):
     
     enable_form_tabbing = False
     registration_type = u''
+    member = None
     
     def __init__(self, context, request):
         super(AddForm,self).__init__(context, request)
-        if not self.request.get('form.widgets.country',''):
-            self.request.set('form.widgets.country','br')
     
     def create(self, data):
         ''' Create objects '''
@@ -208,11 +223,6 @@ class GroupAddForm(form.SchemaAddForm):
     
     enable_form_tabbing = False
     registration_type = u''
-    
-    def __init__(self, context, request):
-        super(GroupAddForm,self).__init__(context, request)
-        if not self.request.get('form.widgets.country',''):
-            self.request.set('form.widgets.country','br')
     
     def update(self):        
         super(GroupAddForm,self).update()
@@ -296,4 +306,23 @@ class GovernmentRegistrationForm(GroupAddForm):
     
     label = _(u"Government registration")
     registration_type = u'government'
+
+@form.default_value(field=IAddress['country'])
+def default_country_registration(data):
+    country=u'br'
+    return country
     
+@form.default_value(field=IIndividualForm['email'])
+@form.default_value(field=IGroupForm['email'])
+def default_email_registration(data):
+    state = getMultiAdapter((data.context, data.request), name=u'plone_portal_state')
+    member = state.member()
+    return member.getProperty('email')
+
+@form.default_value(field=IIndividualForm['fullname'])
+@form.default_value(field=IGroupForm['organization'])
+def default_fullname_registration(data):
+    state = getMultiAdapter((data.context, data.request), name=u'plone_portal_state')
+    member = state.member()
+    return member.getProperty('fullname')
+
