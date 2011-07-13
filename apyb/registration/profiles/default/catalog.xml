@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<object name="portal_catalog">
+ <index name="price_est" meta_type="FieldIndex">
+  <indexed_attr value="price_est"/>
+ </index>
+ <index name="num_attendees" meta_type="FieldIndex">
+  <indexed_attr value="num_attendees"/>
+ </index>
+ <index name="email" meta_type="FieldIndex">
+  <indexed_attr value="email"/>
+ </index>
+ <index name="country" meta_type="FieldIndex">
+  <indexed_attr value="country"/>
+ </index>
+ <index name="state" meta_type="FieldIndex">
+  <indexed_attr value="state"/>
+ </index>
+ <index name="city" meta_type="FieldIndex">
+  <indexed_attr value="city"/>
+ </index>
+ <index name="gender" meta_type="FieldIndex">
+  <indexed_attr value="gender"/>
+ </index>
+ <index name="t_shirt_size" meta_type="FieldIndex">
+  <indexed_attr value="t_shirt_size"/>
+ </index>
+ <index name="badge_name" meta_type="FieldIndex">
+  <indexed_attr value="badge_name"/>
+ </index>
+ <column value="email"/>
+ <column value="num_attendees"/>
+ <column value="price"/>
+ <column value="country"/>
+ <column value="state"/>
+ <column value="city"/>
+ <column value="gender"/>
+ <column value="t_shirt_size"/>
+ <column value="badge_name"/>
+</object>
