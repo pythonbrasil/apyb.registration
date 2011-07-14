@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-07-14 01:53+0000\n"
+"POT-Creation-Date: 2011-07-14 03:02+0000\n"
 "PO-Revision-Date: 2011-07-11 11:44-0300\n"
 "Last-Translator: Erico Andrei <erico@simplesconsultoria.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,6 +60,7 @@ msgid "Attendee workflow"
 msgstr "Workflow de participante"
 
 #: ../browser/register.py:151
+#: ../registration_templates/view.pt:19
 #: ../registrations_templates/view.pt:109
 msgid "Attendees"
 msgstr "Participantes"
@@ -195,6 +196,10 @@ msgstr "Caso possua um código de desconto, por favor o informe aqui"
 msgid "Individual"
 msgstr "Individual"
 
+#: ../registration_templates/view.pt:13
+msgid "Info"
+msgstr "Informação"
+
 #: ../browser/register.py:69
 msgid "Inform the state / provice you live."
 msgstr "Informe o estado ou província em que reside"
@@ -263,6 +268,10 @@ msgstr "Participação aguardando confirmação."
 #: ../vocabulary.py:65
 msgid "PayPal"
 msgstr "PayPal"
+
+#: ../registration_templates/view.pt:38
+msgid "Payment options"
+msgstr "Informações de pagamento"
 
 #: ../behavior/paymentinformation.py:16
 msgid "Payment service provider"
@@ -419,12 +428,16 @@ msgid "T-Shirt Size"
 msgstr "Tamanho da camiseta"
 
 #: ../registration_templates/view.pt:14
-msgid "Total Price"
-msgstr "Preço total"
+msgid "This registration is not paid. Please, click on the image button bellow to be taken to our payment processor partner."
+msgstr "Esta inscrição ainda não foi paga. Por favor, clique na imagem abaixo para ser direcionado ao site do nosso parceiro para pagamentos."
+
+#: ../registration_templates/view.pt:40
+msgid "Total price"
+msgstr "Preço Total"
 
 #: ../registration.py:39
 msgid "Type"
-msgstr "Categoroa"
+msgstr "Categoria"
 
 #: ../behavior/paymentinformation.py:17
 msgid "Which payment service provider was used?"

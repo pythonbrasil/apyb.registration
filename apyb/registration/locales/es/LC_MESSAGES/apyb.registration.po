@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-07-14 01:53+0000\n"
+"POT-Creation-Date: 2011-07-14 03:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,6 +60,7 @@ msgid "Attendee workflow"
 msgstr ""
 
 #: ../browser/register.py:151
+#: ../registration_templates/view.pt:19
 #: ../registrations_templates/view.pt:109
 msgid "Attendees"
 msgstr ""
@@ -195,6 +196,10 @@ msgstr ""
 msgid "Individual"
 msgstr ""
 
+#: ../registration_templates/view.pt:13
+msgid "Info"
+msgstr ""
+
 #: ../browser/register.py:69
 msgid "Inform the state / provice you live."
 msgstr ""
@@ -262,6 +267,10 @@ msgstr ""
 
 #: ../vocabulary.py:65
 msgid "PayPal"
+msgstr ""
+
+#: ../registration_templates/view.pt:38
+msgid "Payment options"
 msgstr ""
 
 #: ../behavior/paymentinformation.py:16
@@ -419,7 +428,11 @@ msgid "T-Shirt Size"
 msgstr ""
 
 #: ../registration_templates/view.pt:14
-msgid "Total Price"
+msgid "This registration is not paid. Please, click on the image button bellow to be taken to our payment processor partner."
+msgstr ""
+
+#: ../registration_templates/view.pt:40
+msgid "Total price"
 msgstr ""
 
 #: ../registration.py:39
