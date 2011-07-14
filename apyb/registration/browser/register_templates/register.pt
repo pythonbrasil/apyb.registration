@@ -7,18 +7,47 @@
     
     <metal:block fill-slot="main">
     <h1 class="documentFirstHeading" tal:content="view/label | nothing" />
-        <div id="price">
-            
+        <div id="price_container">
+            <span i18n:translate="">Price</span>
+            <div id="price"></div>
         </div>
         <div id="content-core">
             <metal:block use-macro="context/@@ploneform-macros/titlelessform" />
         </div>
         <script tal:content="string:registration_type='${view/registration_type}';;" />
         <script>
+            qtyAttendess = 1;
+            function updatePrice(){
+                jQuery.getJSON('@@reg-price.json?type=' + registration_type + '&qty='+qtyAttendess, function(data) {
+                  jQuery('div#price').html(data['fmtPrice']);
+                });                
+            }
             jQuery(function(){              
-                  jQuery.getJSON('@@reg-price.json?type=' + registration_type + '&qty=1', function(data) {
-                    jQuery('div#price').html(data['fmtPrice']);
-                  });
+                  updatePrice();
+                  //We patch datagrid in order to count 
+                  dataGridField2Functions.createNewRow = function(node) { 
+                      /* Creates a new row 
+                         @param node A row in a table where we'll be adding the new row
+                      */
+                      var tbody = this.getParentByClass(node, "datagridwidget-body");   
+                      // hidden template row 
+                      var emptyRow = $(tbody).find('.datagridwidget-empty-row');
+                      var markup = $(emptyRow).clone();
+                      var newTr = $(markup).attr("class","datagridwidget-row");
+                      qtyAttendess = qtyAttendess + 1;
+                      updatePrice();
+                      return newTr[0]
+                  }    
+
+                  dataGridField2Functions.removeFieldRow = function(node) {
+                      /* Remove the row in which the given node is found */
+                      var tbody = this.getParentByClass(node, "datagridwidget-body"); 
+                      var row = this.getParentRow(node);
+                      $(row).detach();
+                      this.updateOrderIndex(tbody,false);
+                      qtyAttendess = qtyAttendess - 1;	    
+                      updatePrice();
+                  }
             });
         </script>
     </metal:block>

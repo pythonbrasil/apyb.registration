@@ -148,7 +148,8 @@ class IGroupForm(IRegistration,IAddress,IOptInInformation):
         required=True,
     )
     
-    attendees = schema.List(title=u'Attendees',
+    attendees = schema.List(title=_(u'Attendees'),
+                        description=_(u'Please inform who will attendee this conference.'),
                         value_type=DictRow(title=_(u'Attendee'), 
                                                 schema=IAttendeeItem),
                         required=True)
@@ -201,7 +202,7 @@ class AddForm(form.SchemaAddForm):
         registration, attendee = object
         context = self.context
         regObject = addContentToContainer(context,registration)
-        attObject = addContentToContainer(regObject,attendee)
+        attObject = addContentToContainer(regObject,attendee,checkConstraints=False)
         regObject.title = attObject.title
         event = ObjectCreatedEvent(regObject)
         notify(event)
@@ -214,8 +215,8 @@ class GroupAddForm(form.SchemaAddForm):
     grok.context(IRegistrations)
     grok.require('apyb.registration.AddRegistration')
     
-    label = (u"Register")
-    description = (u"Register to this conference")
+    label = _(u"Register")
+    description = _(u"Register to this conference")
     
     template = ViewPageTemplateFile('register_templates/register.pt')
     
@@ -253,6 +254,7 @@ class GroupAddForm(form.SchemaAddForm):
             del data[k]
         base_attendee = data.copy()
         del base_attendee['attendees']
+        del base_attendee['email']
         attendees = []
         for line in data['attendees']:
             line.update(base_attendee)
@@ -268,7 +270,7 @@ class GroupAddForm(form.SchemaAddForm):
         regObject = addContentToContainer(context,registration)
         regObject.title = attendees[0].organization
         for attendee in attendees:
-            attObject = addContentToContainer(regObject,attendee)
+            attObject = addContentToContainer(regObject,attendee,checkConstraints=False)
         event = ObjectCreatedEvent(regObject)
         notify(event)
         self.immediate_view = "%s/%s" % (context.absolute_url(), regObject.id)
