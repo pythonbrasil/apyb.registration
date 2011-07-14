@@ -10,7 +10,7 @@ class IPaymentInformation(form.Schema):
    """
       Marker/Form interface for Payment Information
    """
-   dexterity.read_permission(service='cmf.ReviewPortalContent')
+   dexterity.read_permission(amount='zope2.View')
    dexterity.write_permission(service='cmf.ReviewPortalContent')
    service = schema.Choice(
        title=_(u'Payment service provider'),
@@ -19,16 +19,17 @@ class IPaymentInformation(form.Schema):
        vocabulary="apyb.registration.paymentservices"
        )
    
+   dexterity.read_permission(paid='zope2.View')   
    paid = schema.Bool(
-       title=u'Is this paid?',
+       title=_(u'Is this paid?'),
        default=False,
        required=False,
        )
 
-   dexterity.read_permission(amount='cmf.ReviewPortalContent')
+   dexterity.read_permission(amount='zope2.View')
    dexterity.write_permission(amount='cmf.ReviewPortalContent')
    amount = schema.Int(
-       title=u'Amount paid?',
+       title=_(u'Amount paid?'),
        default=0,
        required=False,
    )

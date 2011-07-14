@@ -11,13 +11,13 @@ class IOptInInformation(form.Schema):
       Marker/Form interface for OptIn information
    """
    conference = schema.Bool(
-       title=u'Accept to be contacted by conference organizers',
+       title=_(u'Accept to be contacted by conference organizers'),
        default=True,
        required=False,
        )
 
    partners = schema.Bool(
-       title=u'Accept to be contacted by conference partners',
+       title=_(u'Accept to be contacted by conference partners'),
        default=True,
        required=False,
        )
