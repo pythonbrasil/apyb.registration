@@ -9,12 +9,16 @@
 
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
-    
-    <div id="price">
-        <span i18n:translate="">Total Price</span>: <span tal:content="view/fmtPrice" />
-    </div>
+    <dl class="portalMessage error" tal:condition="view/show_payments">
+        <dt i18n:translate="">Info</dt>
+        <dd i18n:translate="">
+           This registration is not paid. Please, click on the image button bellow 
+           to be taken to our payment processor partner.
+        </dd>
+    </dl>
+    <h2 i18n:translate="">Attendees</h2>
     <div id="attendees">
-        <table>
+        <table  class="listing">
             <thead>
                 <tr>
                     <th i18:translate="">Name</th>
@@ -31,6 +35,10 @@
     </div>
     
     <div tal:condition="view/show_payments">
+        <h2 i18n:translate="">Payment options</h2>
+        <div id="payment-details">
+            <span i18n:translate="">Total price</span>:<span tal:content="view/fmtPrice">UsD123.00</span>
+        </div>
         <div id="pagseguro" tal:condition="view/show_pagseguro">
             <form 
                   action="https://pagseguro.uol.com.br/checkout/checkout.jhtml"

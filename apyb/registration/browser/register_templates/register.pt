@@ -7,7 +7,7 @@
     
     <metal:block fill-slot="main">
     <h1 class="documentFirstHeading" tal:content="view/label | nothing" />
-        <div id="price_container">
+        <div class="price_container">
             <span i18n:translate="">Price</span>
             <div id="price"></div>
         </div>
