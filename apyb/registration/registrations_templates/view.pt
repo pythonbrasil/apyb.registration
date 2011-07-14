@@ -6,17 +6,136 @@
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="apyb.registration">
 <body>
-
-<tal:comment tal:condition="nothing">
-    This is a sample view template. It will not be used for rendering the
-    content unless activated by creation of a view class with a matching name.
-    
-    Note that we're using Plone 4 macros. Replace them with Plone 3 macros
-    if needed.
-</tal:comment>
-
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
+    
+    <div tal:condition="view/registrations_enabled">
+        <h2 i18n:translate="">Register!</h2>
+        <div tal:condition="view/is_anonymous">
+            <span>In order to register to this conference you need to create an account on this site (so you can manage your registration details later on).</span><br/>
+            <span>
+                <a href="" 
+                   tal:attributes="href string:${view/login_url};
+                                   id string:login_form;"
+                   i18n:translate="">
+                If you already have an account, click here to login.
+                </a>
+            </span><br />
+            <span>
+                <a href="" 
+                tal:attributes="href string:${view/register_url};
+                                id string:register_form;"
+                   i18n:translate="">
+                Click here to create an account.
+                </a>
+            </span>
+            <script>
+            jQuery(function(){
+                var common_content_filter = '#content>*:not(div.configlet),dl.portalMessage.error,dl.portalMessage.info';
+                // login form
+                jQuery('#login_form').prepOverlay(
+                    {
+                        subtype: 'ajax',
+                        filter: common_content_filter,
+                        formselector: 'form#login_form',
+                        noform: function () {
+                            if (location.href.search(/pwreset_finish$/) >= 0) {
+                                return 'redirect';
+                            } else {
+                                return 'reload';
+                            }
+                        },
+                        redirect: function () {
+                            var href = location.href;
+                            if (href.search(/pwreset_finish$/) >= 0) {
+                                return href.slice(0, href.length-14) + 'logged_in';
+                            } else {
+                                return href;
+                            }
+                        }
+                    }
+                );
+                jQuery('#register_form').prepOverlay(
+                    {
+                        subtype: 'ajax',
+                        filter: common_content_filter,
+                        formselector: 'form.kssattr-formname-register'
+                    }
+                );
+            });
+            </script>
+       </div>
+        <ul>
+            <li tal:repeat="opt view/registration_options">
+                <a href=""
+                   tal:attributes="href opt/href;
+                                   title opt/text">
+                    <span tal:content="opt/text">Register a APyB Member</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <div tal:condition="view/listing_enabled">
+        <h2 i18n:translate="">Registrations Management</h2>
+        <h3 i18n:translate="">Registrations</h3>
+        <table class="listing">
+            <thead>
+                <tr>
+                    <th i18:translate="">Code</th>
+                    <th i18:translate="">Date</th>
+                    <th i18:translate="">Title</th>
+                    <th i18:translate="">Category</th>
+                    <th i18:translate=""># Attendees</th>
+                    <th i18:translate="">Price (est.)</th>
+                    <th i18:translate="">Price</th>
+                    <th i18:translate="">State</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tal:repeat="reg view/registrations">
+                    <td tal:content="reg/id">23dsvfr2</td>
+                    <td tal:content="reg/date">2011-07-13</td>
+                    <td tal:content="reg/title">Foo</td>
+                    <td tal:content="reg/type">APyB</td>
+                    <td tal:content="reg/num_attendees">1</td>
+                    <td tal:content="reg/price_est">R$120,00</td>
+                    <td tal:content="reg/amount">--</td>
+                    <td tal:content="reg/state">Pending</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <h3 i18n:translate="">Attendees</h3>
+        <table class="listing">
+            <thead>
+                <tr>
+                    <th i18:translate="">Code</th>
+                    <th i18:translate="">Date</th>
+                    <th i18:translate="">Fullname</th>
+                    <th i18:translate="">Registration</th>
+                    <th i18:translate="">Email</th>
+                    <th i18:translate="">Badge Name</th>
+                    <th i18:translate="">Gender</th>
+                    <th i18:translate="">T-Shirt</th>
+                    <th i18:translate="">State</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tal:repeat="att view/attendees">
+                    <td tal:content="att/id">fulano</td>
+                    <td tal:content="att/date">2011-07-13</td>
+                    <td tal:content="att/fullname">Jones</td>
+                    <td tal:content="att/reg">23dsvfr2</td>
+                    <td tal:content="att/email">1</td>
+                    <td tal:content="att/badge_name">Foo</td>
+                    <td tal:content="att/gender">Male</td>
+                    <td tal:content="att/t_shirt_size">XL</td>
+                    <td tal:content="att/state">Pending</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     
   </metal:content-core>
 </metal:main>
