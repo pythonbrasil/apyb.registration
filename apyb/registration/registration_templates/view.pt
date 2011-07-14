@@ -11,9 +11,8 @@
   <metal:content-core define-macro="content-core">
     
     <div id="price">
-        <span tal:content="view/fmtPrice" />
+        <span i18n:translate="">Total Price</span>: <span tal:content="view/fmtPrice" />
     </div>
-    
     <div id="attendees">
         <table>
             <thead>
@@ -25,50 +24,52 @@
             <tbody>
                 <tr tal:repeat="attendee view/attendees">
                     <td tal:content="attendee/Title">Name</td>
-                    <td tal:content="attendee/portal_type">E-mail</td>
+                    <td tal:content="attendee/email">E-mail</td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <div id="pagseguro" tal:condition="view/show_pagseguro">
-        <form 
-              action="https://pagseguro.uol.com.br/checkout/checkout.jhtml"
-              method="post" target="_new">
+    
+    <div tal:condition="view/show_payments">
+        <div id="pagseguro" tal:condition="view/show_pagseguro">
+            <form 
+                  action="https://pagseguro.uol.com.br/checkout/checkout.jhtml"
+                  method="post" target="_new">
 
-            <input type="hidden" name="email_cobranca" value="pagseguro@diaspar.com.br" />
-            <input type="hidden" name="encoding" value="UTF-8" />
-            <input type="hidden" name="tipo" value="CP" />
-            <input type="hidden" name="moeda" value="BRL" />
-            <input type="hidden" name="item_id_1" value="1" />
-            <input type="hidden" name="item_quant_1" tal:attributes="value python:len(view.attendees());" value="1" />
-            <input type="hidden" name="item_descr_1" value="Inscrição PythonBrasil[7]" />
+                <input type="hidden" name="email_cobranca" value="pagseguro@diaspar.com.br" />
+                <input type="hidden" name="encoding" value="UTF-8" />
+                <input type="hidden" name="tipo" value="CP" />
+                <input type="hidden" name="moeda" value="BRL" />
+                <input type="hidden" name="item_id_1" value="1" />
+                <input type="hidden" name="item_quant_1" tal:attributes="value python:len(view.attendees());" value="1" />
+                <input type="hidden" name="item_descr_1" value="Inscrição PythonBrasil[7]" />
 
-            <input type="hidden" 
-                  tal:attributes="value view/base_price"
-                  name="item_valor_1" 
-                  value="2500"/>
+                <input type="hidden" 
+                      tal:attributes="value view/base_price"
+                      name="item_valor_1" 
+                      value="2500"/>
 
-            <input type="hidden" name="ref_transacao" value="id"
-                   tal:attributes="value context/id" />
+                <input type="hidden" name="ref_transacao" value="id"
+                       tal:attributes="value context/id" />
 
-            <input type="hidden" name="cliente_nome" value="Nome"
-                   tal:attributes="value context/Title" />
+                <input type="hidden" name="cliente_nome" value="Nome"
+                       tal:attributes="value context/Title" />
 
-            <input type="hidden" name="cliente_email" value="E-mail"
-                   tal:attributes="value context/email" />
+                <input type="hidden" name="cliente_email" value="E-mail"
+                       tal:attributes="value context/email" />
 
-            <input type="hidden" name="cliente_cidade" value="Cidade"
-                   tal:attributes="value context/city" />
+                <input type="hidden" name="cliente_cidade" value="Cidade"
+                       tal:attributes="value context/city" />
 
-            <input type="hidden" name="cliente_uf" value="UF"
-                   tal:attributes="value context/state" />
+                <input type="hidden" name="cliente_uf" value="UF"
+                       tal:attributes="value context/state" />
 
-            <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/carrinhoproprio/btnFinalizaBR.jpg" 
-                   name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!">
-        </form>
-    </div>
+                <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/carrinhoproprio/btnFinalizaBR.jpg" 
+                       name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!">
+            </form>
+        </div>
 
-    <div id="paypal" tal:condition="view/show_paypal">
+        <div id="paypal" tal:condition="view/show_paypal"></div>
     </div>
     
   </metal:content-core>

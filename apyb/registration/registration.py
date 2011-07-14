@@ -3,6 +3,8 @@ from plone.directives import dexterity, form
 
 from Acquisition import aq_inner, aq_parent
 
+from zope.component import getMultiAdapter
+
 from zope import schema
 
 from z3c.form import group, field
@@ -72,7 +74,7 @@ grok.global_adapter(price_est, name="price_est")
 
 @indexer(IRegistration)
 def registration_type(obj):
-    return [self.registration_type,]
+    return [obj.registration_type,]
 grok.global_adapter(registration_type, name="Subject")
 
 class Registration(dexterity.Container):
@@ -97,13 +99,26 @@ class View(grok.View):
         super(View,self).update()
         context = aq_inner(self.context)
         self.registration_type = context.registration_type
-        
+        self._path = '/'.join(context.getPhysicalPath())
+        self.state = getMultiAdapter((context, self.request), name=u'plone_context_state')
+        self.tools = getMultiAdapter((context, self.request), name=u'plone_tools')
+        self.portal = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+        self._ct = self.tools.catalog()
+        self.member = self.portal.member()
+        roles_context = self.member.getRolesInContext(context)
+        if not [r for r in roles_context if r in ['Manager','Editor','Reviewer',]]:
+            self.request['disable_border'] = True
     
     def attendees(self):
-        ct = self.context.portal_catalog
-        path = '/'.join(self.context.getPhysicalPath())
+        ct = self._ct
+        path = self._path
         results = ct.searchResults(portal_type='apyb.registration.attendee',path=path)
         return results
+
+    @property
+    def show_payments(self):
+        state = self.state.workflow_state()
+        return not (self.paid  or state == 'confirmed')
     
     @property
     def paid(self):
