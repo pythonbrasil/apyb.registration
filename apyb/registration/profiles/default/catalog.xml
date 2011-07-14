@@ -3,6 +3,9 @@
  <index name="price_est" meta_type="FieldIndex">
   <indexed_attr value="price_est"/>
  </index>
+ <index name="paid" meta_type="FieldIndex">
+  <indexed_attr value="paid"/>
+ </index>
  <index name="num_attendees" meta_type="FieldIndex">
   <indexed_attr value="num_attendees"/>
  </index>
@@ -27,6 +30,10 @@
  <index name="badge_name" meta_type="FieldIndex">
   <indexed_attr value="badge_name"/>
  </index>
+ <column value="price_est"/>
+ <column value="paid"/>
+ <column value="amount"/>
+ <column value="email"/>
  <column value="email"/>
  <column value="num_attendees"/>
  <column value="price"/>
