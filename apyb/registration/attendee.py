@@ -3,6 +3,8 @@ from plone.directives import dexterity, form
 
 from zope import schema
 
+from zope.component import getMultiAdapter
+
 from zope.component import getUtility
 from zope.app.intid.interfaces import IIntIds
 
@@ -75,3 +77,15 @@ class View(grok.View):
     grok.context(IAttendee)
     grok.require('zope2.View')
     
+    def update(self):
+        super(View,self).update()
+        context = aq_inner(self.context)
+        self._path = '/'.join(context.getPhysicalPath())
+        self.state = getMultiAdapter((context, self.request), name=u'plone_context_state')
+        self.tools = getMultiAdapter((context, self.request), name=u'plone_tools')
+        self.portal = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+        self._ct = self.tools.catalog()
+        self.member = self.portal.member()
+        roles_context = self.member.getRolesInContext(context)
+        if not [r for r in roles_context if r in ['Manager','Editor','Reviewer',]]:
+            self.request['disable_border'] = True
