@@ -34,7 +34,6 @@
  <column value="paid"/>
  <column value="amount"/>
  <column value="email"/>
- <column value="email"/>
  <column value="num_attendees"/>
  <column value="price"/>
  <column value="country"/>

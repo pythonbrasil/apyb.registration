@@ -8,6 +8,7 @@
     i18n_domain="apyb.registration">
 
   <includeDependencies package="." />
+
   <permission
       id="apyb.registration.AddRegistration"
       title="apyb.registration: Add Registration"

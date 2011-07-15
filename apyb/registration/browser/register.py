@@ -19,8 +19,6 @@ from plone.dexterity.utils import addContentToContainer
 from plone.dexterity.utils import createContent
 from plone.directives import form
 
-
-
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from apyb.registration.behavior.optininformation import IOptInInformation
