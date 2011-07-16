@@ -4,7 +4,8 @@ from five import grok
 from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
 
-from zope.component import getMultiAdapter
+from zope.schema.interfaces import IVocabularyFactory
+from zope.component import getMultiAdapter, queryUtility
 
 from plone.directives import dexterity, form
 
@@ -43,6 +44,16 @@ class View(grok.View):
         self.mt = self.tools.membership()
         if not self.show_border:
             self.request['disable_border'] = True
+    
+    @property
+    def vocabs(self):
+        vocabs = {}
+        vocabs['gender'] = queryUtility(IVocabularyFactory, 'apyb.registration.gender')
+        vocabs['tshirt'] = queryUtility(IVocabularyFactory, 'apyb.registration.tshirt')
+        vocabs['types'] = queryUtility(IVocabularyFactory, 'apyb.registration.types')
+        vocabs['payment'] = queryUtility(IVocabularyFactory, 'apyb.registration.paymentservices')
+        vocabs['country'] = queryUtility(IVocabularyFactory, 'contact.countries')
+        return vocabs
     
     @property
     def login_url(self):
@@ -84,6 +95,7 @@ class View(grok.View):
     
     def _regs_as_dict(self,registrations):
         ''' Given a list of brains, we return proper dictionaries '''
+        voc = self.vocabs
         regs = []
         for brain in registrations:
             reg = {}
@@ -92,7 +104,7 @@ class View(grok.View):
             reg['email'] = brain.email
             reg['date'] = brain.created
             reg['title'] = brain.Title
-            reg['type'] = brain.Subject[0]
+            reg['type'] = voc['type'].getTerm(brain.Subject[0])
             reg['num_attendees'] = brain.num_attendees
             reg['price_est'] = brain.price_est
             reg['amount'] = brain.amount
@@ -102,6 +114,7 @@ class View(grok.View):
     
     def _att_as_dict(self,attendees):
         ''' Given a list of brains, we return proper dictionaries '''
+        voc = self.vocabs
         atts = []
         for brain in attendees:
             att = {}
@@ -112,8 +125,8 @@ class View(grok.View):
             att['fullname'] = brain.Title
             att['email'] = brain.email
             att['badge_name'] = brain.badge_name or att['fullname']
-            att['gender'] = brain.gender
-            att['t_shirt_size'] = brain.t_shirt_size
+            att['gender'] = voc['gender'].getTerm(brain.gender)
+            att['t_shirt_size'] = voc['tshirt'].getTerm(brain.t_shirt_size)
             att['state'] = brain.review_state
             atts.append(att)
         return atts
