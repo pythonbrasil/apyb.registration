@@ -47,13 +47,15 @@ class View(grok.View):
     
     @property
     def vocabs(self):
-        vocabs = {}
-        vocabs['gender'] = queryUtility(IVocabularyFactory, 'apyb.registration.gender')
-        vocabs['tshirt'] = queryUtility(IVocabularyFactory, 'apyb.registration.tshirt')
-        vocabs['types'] = queryUtility(IVocabularyFactory, 'apyb.registration.types')
-        vocabs['payment'] = queryUtility(IVocabularyFactory, 'apyb.registration.paymentservices')
-        vocabs['country'] = queryUtility(IVocabularyFactory, 'contact.countries')
-        return vocabs
+        if not hasattr(self, "_vocabs"):
+            vocabs = {}
+            vocabs['gender'] = queryUtility(IVocabularyFactory, 'apyb.registration.gender')
+            vocabs['tshirt'] = queryUtility(IVocabularyFactory, 'apyb.registration.tshirt')
+            vocabs['types'] = queryUtility(IVocabularyFactory, 'apyb.registration.types')
+            vocabs['payment'] = queryUtility(IVocabularyFactory, 'apyb.registration.paymentservices')
+            vocabs['country'] = queryUtility(IVocabularyFactory, 'contact.countries')
+            self._vocabs = dict((key,value(self)) for key, value in vocabs.items())
+        return self._vocabs
     
     @property
     def login_url(self):
@@ -104,7 +106,7 @@ class View(grok.View):
             reg['email'] = brain.email
             reg['date'] = brain.created
             reg['title'] = brain.Title
-            reg['type'] = voc['type'].getTerm(brain.Subject[0])
+            reg['type'] = voc['types'].getTerm(brain.Subject[0]).value
             reg['num_attendees'] = brain.num_attendees
             reg['price_est'] = brain.price_est
             reg['amount'] = brain.amount
@@ -125,8 +127,8 @@ class View(grok.View):
             att['fullname'] = brain.Title
             att['email'] = brain.email
             att['badge_name'] = brain.badge_name or att['fullname']
-            att['gender'] = voc['gender'].getTerm(brain.gender)
-            att['t_shirt_size'] = voc['tshirt'].getTerm(brain.t_shirt_size)
+            att['gender'] = voc['gender'].getTerm(brain.gender).value
+            att['t_shirt_size'] = voc['tshirt'].getTerm(brain.t_shirt_size).value
             att['state'] = brain.review_state
             atts.append(att)
         return atts
