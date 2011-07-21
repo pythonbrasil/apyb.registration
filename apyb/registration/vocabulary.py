@@ -1,33 +1,33 @@
 # -*- coding: utf-8 -*-
-from five import grok
-
-from apyb.registration import MessageFactory as _
 
 from sc.base.grokutils import registerSimpleVocabulary
+from apyb.registration import MessageFactory as _
 
-global_utility = grok.global_utility
+# registerSimpleVocabulary calls require the module global dictionary
+# as the last parameter in order for grok to register its variables 
+# in this module (normally it would be done silently 
+# and implicitly by a call to grok.global_utils
 
-voc, name = registerSimpleVocabulary(
+registerSimpleVocabulary(
     "Gender", u"apyb.registration", 
     [('m',_(u'Male')),
      ('f',_(u'Female')),
-    ]
+    ],
+    globals()
 )
-global_utility(voc, name=name)
 
-voc, name = registerSimpleVocabulary(
+registerSimpleVocabulary(
     "TShirt", u"apyb.registration", 
     [
      ('S',_(u'Small')),
      ('M',_(u'Medium')),
      ('L',_(u'Large')),
      ('X',_(u'X-Large')),
-    ]
+    ],
+    globals()
 )
-global_utility(voc, name=name)
 
-
-voc, name = registerSimpleVocabulary(
+registerSimpleVocabulary(
     "Types", u"apyb.registration",
     [
      ('apyb',_(u'APyB Members')),
@@ -35,15 +35,15 @@ voc, name = registerSimpleVocabulary(
      ('individual',_(u'Individual')),
      ('government',_(u'Government')),
      ('group',_(u'Group/Corporate')),
-    ]
+    ],
+    globals()
 )
-global_utility(voc, name=name)
 
-voc, name = registerSimpleVocabulary(
+registerSimpleVocabulary(
     "PaymentServices", u"apyb.registration",
     [
      ('paypal',_(u'PayPal')),
      ('pagseguro',_(u'Pagseguro')),
-    ]
+    ],
+    globals()
 )
-global_utility(voc, name=name)
