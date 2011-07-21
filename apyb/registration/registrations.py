@@ -106,7 +106,7 @@ class View(grok.View):
             reg['email'] = brain.email
             reg['date'] = brain.created
             reg['title'] = brain.Title
-            reg['type'] = voc['types'].getTerm(brain.Subject[0]).value
+            reg['type'] = voc['types'].getTerm(brain.Subject[0]).title
             reg['num_attendees'] = brain.num_attendees
             reg['price_est'] = brain.price_est
             reg['amount'] = brain.amount
@@ -127,8 +127,8 @@ class View(grok.View):
             att['fullname'] = brain.Title
             att['email'] = brain.email
             att['badge_name'] = brain.badge_name or att['fullname']
-            att['gender'] = voc['gender'].getTerm(brain.gender).value
-            att['t_shirt_size'] = voc['tshirt'].getTerm(brain.t_shirt_size).value
+            att['gender'] = voc['gender'].getTerm(brain.gender).title
+            att['t_shirt_size'] = voc['tshirt'].getTerm(brain.t_shirt_size).title
             att['state'] = brain.review_state
             atts.append(att)
         return atts
