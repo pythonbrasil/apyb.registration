@@ -1,41 +1,11 @@
 # -*- coding: utf-8 -*-
 from five import grok
-from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleVocabulary
-from zope.schema.vocabulary import SimpleTerm
 
 from apyb.registration import MessageFactory as _
 
-global_utility = grok.global_utility
+from sc.base.grokutils import registerSimpleVocabulary
 
-#FIXME: Refactor this function into a separate product:
-def registerSimpleVocabulary(vocabulary_name, package_path, items):
-    """
-        Register a sequence of duples as a SimpleVocabulary, 
-        with the given vocabulary_name at package_path
-    """
-    #metaclass needed due to grok's black magic with its
-    # function calls that change class behaviors. 
-    # otherwise a call to "type" would do rather than
-    # needing this metaclass and the inlining of Vocabulary bellow
-    
-    def metaAutoSimpleVocabulary(name, bases, dct):
-        dct["__doc__"] = "Vocabulary factory for %s options" % vocabulary_name
-        return type(vocabulary_name + "Vocabulary", (object,), dct)
-        
-    class Vocabulary:
-        __metaclass__ = metaAutoSimpleVocabulary
-        grok.implements(IVocabularyFactory)
-        
-        def __call__(self, context):
-            vocab_items = [SimpleTerm(k,k,v) for k,v in items]
-            return SimpleVocabulary(vocab_items)
-    # More grok black magick - the grok.global_utility "must be called from module level"
-    # GROK developers: this ain't programing. One of the first predicates of a "function"
-    # is that it does not change any state where it is called.
-    # FIXME: Create some white anti-grok-black-magic to get the following working:
-    #grok.global_utility(Vocabulary, name=package_path + "." + unicode(vocabulary_name, "utf-8").lower())
-    return (Vocabulary, package_path + "." + unicode(vocabulary_name, "utf-8").lower())
+global_utility = grok.global_utility
 
 voc, name = registerSimpleVocabulary(
     "Gender", u"apyb.registration", 
