@@ -307,7 +307,8 @@ class GovernmentRegistrationForm(GroupAddForm):
     label = _(u"Government registration")
     registration_type = u'government'
 
-@form.default_value(field=IAddress['country'])
+@form.default_value(field=IAddress['country'],form=AddForm)
+@form.default_value(field=IAddress['country'],form=GroupAddForm)
 def default_country_registration(data):
     country=u'br'
     return country
