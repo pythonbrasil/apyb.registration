@@ -16,3 +16,8 @@ GROUP_DISCOUNTS = {
         (10,0.42),
         ]
 }
+
+REVIEW_STATE = {
+    'confirmed':'Confirmado',
+    'pending':'Pendente',
+}
