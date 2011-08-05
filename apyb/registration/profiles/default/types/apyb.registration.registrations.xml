@@ -52,4 +52,12 @@
     url_expr="string:${object_url}/edit" visible="True">
     <permission value="Modify portal content" />
   </action>
+  <action title="Registrations" action_id="registrations" category="object" condition_expr=""
+    url_expr="string:${object_url}/@@registrations_view" visible="True">
+    <permission value="Review portal content" />
+  </action>
+  <action title="Attendees" action_id="attendees" category="object" condition_expr=""
+    url_expr="string:${object_url}/@@attendees_view" visible="True">
+    <permission value="Review portal content" />
+  </action>
 </object>
