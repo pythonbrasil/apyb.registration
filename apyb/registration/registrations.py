@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 from five import grok
 
+from DateTime import DateTime
 from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
 
@@ -14,6 +15,8 @@ from zope import schema
 from z3c.form import group, field
 from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
 
+from apyb.registration.utils import fmtPrice
+from apyb.registration.config import REVIEW_STATE
 from apyb.registration import MessageFactory as _
 
 
@@ -104,13 +107,13 @@ class View(grok.View):
             reg['id'] = brain.getId
             reg['url'] = brain.getURL()
             reg['email'] = brain.email
-            reg['date'] = brain.created
+            reg['date'] = DateTime(brain.created).strftime('%Y-%m-%d %H:%M')
             reg['title'] = brain.Title
             reg['type'] = voc['types'].getTerm(brain.Subject[0]).title
             reg['num_attendees'] = brain.num_attendees
-            reg['price_est'] = brain.price_est
-            reg['amount'] = brain.amount
-            reg['state'] = brain.review_state
+            reg['price_est'] = fmtPrice(brain.price_est)
+            reg['amount'] = fmtPrice(brain.amount)
+            reg['state'] = REVIEW_STATE.get(brain.review_state,brain.review_state)
             regs.append(reg)
         return regs
     
@@ -122,14 +125,15 @@ class View(grok.View):
             att = {}
             att['id'] = brain.getId
             att['reg'] = brain.getPath().split('/')[-2]
+            att['reg_url'] = '/'.join(brain.getURL().split('/')[:-1])
             att['url'] = brain.getURL()
-            att['date'] = brain.created
+            att['date'] = DateTime(brain.created).strftime('%Y-%m-%d %H:%M')
             att['fullname'] = brain.Title
             att['email'] = brain.email
             att['badge_name'] = brain.badge_name or att['fullname']
             att['gender'] = voc['gender'].getTerm(brain.gender).title
             att['t_shirt_size'] = voc['tshirt'].getTerm(brain.t_shirt_size).title
-            att['state'] = brain.review_state
+            att['state'] = REVIEW_STATE.get(brain.review_state,brain.review_state)
             atts.append(att)
         return atts
     
@@ -148,4 +152,14 @@ class View(grok.View):
         return self._att_as_dict(results)
     
 
+class AttendeesView(View):
+    grok.context(IRegistrations)
+    grok.name('attendees_view')
+    grok.require('cmf.ReviewPortalContent')
+    
+class RegistrationsView(View):
+    grok.context(IRegistrations)
+    grok.name('registrations_view')
+    grok.require('cmf.ReviewPortalContent')
+    
     
