@@ -59,15 +59,17 @@ grok.global_adapter(num_attendees, name="num_attendees")
 
 @indexer(IRegistration)
 def price_est(obj):
-    
-    children = obj.objectValues()
-    children = [c for c in children if c.portal_type=='apyb.registration.attendee']
-    
-    view = aq_parent(obj).restrictedTraverse('@@reg-price')
-    qty = len(children)
-    
-    registration_type = obj.registration_type
-    price = view.price(registration_type,qty)
+    if not getattr(obj,'paid',False):
+        children = obj.objectValues()
+        children = [c for c in children if c.portal_type=='apyb.registration.attendee']
+        
+        view = aq_parent(obj).restrictedTraverse('@@reg-price')
+        qty = len(children)
+        
+        registration_type = obj.registration_type
+        price = view.price(registration_type,qty)
+    else:
+        price = obj.amount
     return price
 
 grok.global_adapter(price_est, name="price_est")
