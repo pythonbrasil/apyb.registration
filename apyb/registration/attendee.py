@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+from Acquisition import aq_inner
 from five import grok
 from plone.directives import dexterity, form
 
