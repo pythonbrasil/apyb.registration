@@ -79,62 +79,14 @@
     <div tal:condition="view/listing_enabled">
         <h2 i18n:translate="">Registrations Management</h2>
         <h3 i18n:translate="">Registrations</h3>
-        <table class="listing">
-            <thead>
-                <tr>
-                    <th i18:translate="">Code</th>
-                    <th i18:translate="">Date</th>
-                    <th i18:translate="">Title</th>
-                    <th i18:translate="">Category</th>
-                    <th i18:translate=""># Attendees</th>
-                    <th i18:translate="">Price (est.)</th>
-                    <th i18:translate="">Price</th>
-                    <th i18:translate="">State</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr tal:repeat="reg view/registrations">
-                    <td tal:content="reg/id">23dsvfr2</td>
-                    <td tal:content="reg/date">2011-07-13</td>
-                    <td tal:content="reg/title">Foo</td>
-                    <td tal:content="reg/type">APyB</td>
-                    <td tal:content="reg/num_attendees">1</td>
-                    <td tal:content="reg/price_est">R$120,00</td>
-                    <td tal:content="reg/amount">--</td>
-                    <td tal:content="reg/state">Pending</td>
-                </tr>
-            </tbody>
-        </table>
+        <a href="" 
+           tal:attributes="href string:${context/absolute_url}/@@registrations_view"
+           i18:translate="">View registrations</a>
         <br />
         <h3 i18n:translate="">Attendees</h3>
-        <table class="listing">
-            <thead>
-                <tr>
-                    <th i18:translate="">Code</th>
-                    <th i18:translate="">Date</th>
-                    <th i18:translate="">Fullname</th>
-                    <th i18:translate="">Registration</th>
-                    <th i18:translate="">Email</th>
-                    <th i18:translate="">Badge Name</th>
-                    <th i18:translate="">Gender</th>
-                    <th i18:translate="">T-Shirt</th>
-                    <th i18:translate="">State</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr tal:repeat="att view/attendees">
-                    <td tal:content="att/id">fulano</td>
-                    <td tal:content="att/date">2011-07-13</td>
-                    <td tal:content="att/fullname">Jones</td>
-                    <td tal:content="att/reg">23dsvfr2</td>
-                    <td tal:content="att/email">1</td>
-                    <td tal:content="att/badge_name">Foo</td>
-                    <td tal:content="att/gender">Male</td>
-                    <td tal:content="att/t_shirt_size">XL</td>
-                    <td tal:content="att/state">Pending</td>
-                </tr>
-            </tbody>
-        </table>
+        <a href="" 
+           tal:attributes="href string:${context/absolute_url}/@@attendees_view"
+           i18:translate="">View attendees</a>
     </div>
     
   </metal:content-core>

@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.registration">
+<body>
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+    
+    <div tal:condition="view/listing_enabled">
+        <h2 i18n:translate="">Registrations Management</h2>
+        
+        <h3 i18n:translate="">Attendees</h3>
+        <table class="listing">
+            <thead>
+                <tr>
+                    <th i18:translate="">Code</th>
+                    <th i18:translate="">Date</th>
+                    <th i18:translate="">Fullname</th>
+                    <th i18:translate="">Registration</th>
+                    <th i18:translate="">Email</th>
+                    <th i18:translate="">Badge Name</th>
+                    <th i18:translate="">Gender</th>
+                    <th i18:translate="">T-Shirt</th>
+                    <th i18:translate="">State</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tal:repeat="att view/attendees">
+                    <td><a href="" tal:attributes="href att/url" tal:content="att/id">23dsvfr2</a></td>
+                    <td tal:content="att/date">2011-07-13</td>
+                    <td tal:content="att/fullname">Jones</td>
+                    <td><a href="" tal:attributes="href att/reg_url" tal:content="att/reg">23dsvfr2</a></td>
+                    <td tal:content="att/email">1</td>
+                    <td tal:content="att/badge_name">Foo</td>
+                    <td tal:content="att/gender">Male</td>
+                    <td tal:content="att/t_shirt_size">XL</td>
+                    <td tal:content="att/state">Pending</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

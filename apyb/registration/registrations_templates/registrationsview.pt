@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.registration">
+<body>
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+    
+    <div tal:condition="view/listing_enabled">
+        <h2 i18n:translate="">Registrations Management</h2>
+        <h3 i18n:translate="">Registrations</h3>
+        <table class="listing">
+            <thead>
+                <tr>
+                    <th i18:translate="">Code</th>
+                    <th i18:translate="">Date</th>
+                    <th i18:translate="">Title</th>
+                    <th i18:translate="">Category</th>
+                    <th i18:translate=""># Attendees</th>
+                    <th i18:translate="">Price (est.)</th>
+                    <th i18:translate="">Price</th>
+                    <th i18:translate="">State</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tal:repeat="reg view/registrations">
+                    <td><a href="" tal:attributes="href reg/url" tal:content="reg/id">23dsvfr2</a></td>
+                    <td tal:content="reg/date">2011-07-13</td>
+                    <td tal:content="reg/title">Foo</td>
+                    <td tal:content="reg/type">APyB</td>
+                    <td tal:content="reg/num_attendees">1</td>
+                    <td tal:content="reg/price_est">R$120,00</td>
+                    <td tal:content="reg/amount">--</td>
+                    <td tal:content="reg/state">Pending</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+
