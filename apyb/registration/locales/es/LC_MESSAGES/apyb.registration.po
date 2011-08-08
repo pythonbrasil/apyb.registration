@@ -1,182 +1,184 @@
+# Héctor Velarde <hector.velarde@gmail.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-08-08 19:59+0000\n"
+"Project-Id-Version: apyb.registration\n"
+"POT-Creation-Date: 2011-08-08 21:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Héctor Velarde <hector.velarde@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"Language-Code: es\n"
+"Language-Name: Español\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: DOMAIN\n"
+"Domain: apyb.registration\n"
+"X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 
 #: ../profiles/default/types/apyb.registration.registration.xml
 msgid "A registration in a conference"
-msgstr ""
+msgstr "Un registro en una conferencia"
 
 #: ../browser/register.py:280
 msgid "APyB Member Registration"
-msgstr ""
+msgstr "Registro de miembros de APyB"
 
 #: ../vocabulary.py:33
 msgid "APyB Members"
-msgstr ""
+msgstr "Miembros de APyB"
 
 #: ../behavior/optininformation.py:14
 msgid "Accept to be contacted by conference organizers"
-msgstr ""
+msgstr "Acepta ser contactado por los organizadores de la conferencia"
 
 #: ../behavior/optininformation.py:20
 msgid "Accept to be contacted by conference partners"
-msgstr ""
+msgstr "Acepta ser contactado por los patrocinadores de la conferencia"
 
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Allow registrations"
-msgstr ""
+msgstr "Permitir registros"
 
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Allow registrations to be added to this conference."
-msgstr ""
+msgstr "Permitir agregar registros a esta conferencia."
 
 #: ../behavior/paymentinformation.py:32
 msgid "Amount paid?"
-msgstr ""
+msgstr "¿Cantidad pagada?"
 
 #: ../profiles/default/types/apyb.registration.attendee.xml
 msgid "An attenddee at a conference"
-msgstr ""
+msgstr "Un asistente a una conferencia"
 
 #: ../browser/register.py:151
 #: ../profiles/default/types/apyb.registration.attendee.xml
 msgid "Attendee"
-msgstr ""
+msgstr "Asistente"
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 msgid "Attendee workflow"
-msgstr ""
+msgstr "Flujo de asistente"
 
 #: ../browser/register.py:149
 #: ../registration_templates/view.pt:19
 #: ../registrations_templates/attendeesview.pt:15
 msgid "Attendees"
-msgstr ""
+msgstr "Asistentes"
 
 #: ../attendee.py:34
 msgid "Badge name"
-msgstr ""
+msgstr "Nombre en la identificación"
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 msgid "Cancel a participation."
-msgstr ""
+msgstr "Cancelar una participación."
 
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Cancel a registration."
-msgstr ""
+msgstr "Cancelar un registro"
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 msgid "Cancel participation"
-msgstr ""
+msgstr "Cancelar participación"
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Cancel registration"
-msgstr ""
+msgstr "Cancelar registro"
 
 #: ../portlets/my_registrations.py:69
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Cancelled"
-msgstr ""
+msgstr "Cancelado"
 
 #: ../registrations_templates/view.pt:25
 msgid "Click here to create an account."
-msgstr ""
+msgstr "Haga clic aquí para crear una cuenta."
 
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Close registration process"
-msgstr ""
+msgstr "Cerrar prrceso de registro"
 
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Close registrations"
-msgstr ""
+msgstr "Cerrar registros"
 
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Close the registration process to this conference."
-msgstr ""
+msgstr "Cerrar el proceso de registro para esta conferencia."
 
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Closed"
-msgstr ""
+msgstr "Cerrado"
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 msgid "Confirm a partipation."
-msgstr ""
+msgstr "Confirme una participación."
 
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Confirm a registration."
-msgstr ""
+msgstr "Confirmar un registro."
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 msgid "Confirm participation"
-msgstr ""
+msgstr "Confirmar participación"
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Confirm registration"
-msgstr ""
+msgstr "Confirmar registro"
 
 #: ../portlets/my_registrations.py:68
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Confirmed"
-msgstr ""
+msgstr "Confirmado"
 
 #: ../browser/register.py:43
 msgid "Contact Info"
-msgstr ""
+msgstr "Información de contacto"
 
 #: ../browser/register.py:55
 msgid "Discount"
-msgstr ""
+msgstr "Descuento"
 
 #: ../registration.py:46
 msgid "Discount code"
-msgstr ""
+msgstr "Código de descuento"
 
 #: ../browser/register.py:60
 #: ../registration.py:33
 msgid "E-mail"
-msgstr ""
+msgstr "Correo electrónico"
 
 #: ../vocabulary.py:14
 msgid "Female"
-msgstr ""
+msgstr "Femenino"
 
 #: ../profiles/default/types/apyb.registration.registrations.xml
 msgid "Folderish content that contains registrations"
-msgstr ""
+msgstr "Tipo folderish que contiene registros"
 
 #: ../attendee.py:28
 #: ../browser/register.py:80
 msgid "Fullname"
-msgstr ""
+msgstr "Nombre completo"
 
 #: ../attendee.py:48
 #: ../browser/register.py:92
 msgid "Gender"
-msgstr ""
+msgstr "Sexo"
 
 #: ../vocabulary.py:36
 msgid "Government"
-msgstr ""
+msgstr "Gobierno"
 
 #: ../browser/register.py:307
 msgid "Government registration"
-msgstr ""
+msgstr "Registro gubernamental"
 
 #: ../browser/register.py:301
 msgid "Group / Corporate registration"
@@ -184,303 +186,303 @@ msgstr ""
 
 #: ../vocabulary.py:37
 msgid "Group/Corporate"
-msgstr ""
+msgstr "Grupo/Corporativo"
 
 #: ../registrations_templates/view.pt:17
 msgid "If you already have an account, click here to login."
-msgstr ""
+msgstr "Si ya tiene una cuenta, haga clic aquí para entrar."
 
 #: ../registration.py:47
 msgid "If you have a discount code, please inform here"
-msgstr ""
+msgstr "Si tiene un código de descuento, por favor infórmelo aquí"
 
 #: ../registrations_templates/view.pt:15
 msgid "In order to register to this conference you need to create an account on this site (so you can manage your registration details later on)."
-msgstr ""
+msgstr "Con el fin de registrarse a esta conferencia usted necesita crear una cuenta en este sitio (con el fin de modificar después sus detalles de registro.)"
 
 #: ../vocabulary.py:35
 msgid "Individual"
-msgstr ""
+msgstr "Individual"
 
 #: ../registration_templates/view.pt:13
 msgid "Info"
-msgstr ""
+msgstr "Información"
 
 #: ../browser/register.py:67
 msgid "Inform the state / provice you live."
-msgstr ""
+msgstr "La provincia / estado en la que vive."
 
 #: ../behavior/paymentinformation.py:24
 msgid "Is this paid?"
-msgstr ""
+msgstr "¿Esto es pagado?"
 
 #: ../vocabulary.py:24
 msgid "Large"
-msgstr ""
+msgstr "Grande"
 
 #: ../browser/register.py:113
 msgid "List of Attendees"
-msgstr ""
+msgstr "Lista de asistentes"
 
 #: ../browser/register.py:47
 msgid "Location"
-msgstr ""
+msgstr "Ubicación"
 
 #: ../vocabulary.py:13
 msgid "Male"
-msgstr ""
+msgstr "Masculino"
 
 #: ../vocabulary.py:23
 msgid "Medium"
-msgstr ""
+msgstr "Mediana"
 
 #: ../portlets/my_registrations.py:27
 #: ../profiles/default/portlets.xml
 msgid "My Registrations"
-msgstr ""
+msgstr "Mis registros"
 
 #: ../portlets/my_registrations.py:66
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "New"
-msgstr ""
+msgstr "Nuevo"
 
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Opened"
-msgstr ""
+msgstr "Abierto"
 
 #: ../browser/register.py:51
 msgid "Opt-In"
-msgstr ""
+msgstr "Opt-In"
 
 #: ../attendee.py:41
 #: ../browser/register.py:131
 msgid "Organization"
-msgstr ""
+msgstr "Organización"
 
 #: ../browser/register.py:109
 msgid "Organization info"
-msgstr ""
+msgstr "Información de la organización"
 
 #: ../vocabulary.py:46
 msgid "Pagseguro"
-msgstr ""
+msgstr "Pagseguro"
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 msgid "Participation canceled."
-msgstr ""
+msgstr "Participación cancelada."
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 msgid "Participation confirmed."
-msgstr ""
+msgstr "Participación confirmada."
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 msgid "Participation pending confirmation."
-msgstr ""
+msgstr "Participación pendiente de confirmación."
 
 #: ../vocabulary.py:45
 msgid "PayPal"
-msgstr ""
+msgstr "PayPal"
 
 #: ../registration_templates/view.pt:38
 msgid "Payment options"
-msgstr ""
+msgstr "Opciones de pago"
 
 #: ../behavior/paymentinformation.py:16
 msgid "Payment service provider"
-msgstr ""
+msgstr "Proveedor de sevicio de pago"
 
 #: ../portlets/my_registrations.py:67
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Pending"
-msgstr ""
+msgstr "Pendiente"
 
 #: ../browser/register.py:39
 msgid "Personal information"
-msgstr ""
+msgstr "Información personal"
 
 #: ../attendee.py:42
 #: ../browser/register.py:132
 msgid "Please inform the name of the organization you will represent"
-msgstr ""
+msgstr "Por favor indique el nombre de la organización que representa"
 
 #: ../attendee.py:35
 msgid "Please inform the name that will appear on your badge -- Leave it blank to use your fullname in the badge"
-msgstr ""
+msgstr "Por favor indique el nombre que aparecerá en su identificación. Déjelo en blanco si desea utilizar su nombre completo"
 
 #: ../browser/register.py:150
 msgid "Please inform who will attendee this conference."
-msgstr ""
+msgstr "Por favor indique quién asistirá a esta conferencia."
 
 #: ../attendee.py:29
 #: ../browser/register.py:81
 msgid "Please inform your fullname"
-msgstr ""
+msgstr "Por favor indiqu su nombre completo"
 
 #: ../browser/register.py:61
 #: ../registration.py:34
 msgid "Please provide an email address"
-msgstr ""
+msgstr "Por favor indique una dirección de correo electrónico"
 
 #: ../browser/register.py:139
 msgid "Please provide an email address to be used to manage this registration."
-msgstr ""
+msgstr "Por favor indique la dirección de correo electrónico que se usará para administrar este registro."
 
 #: ../profiles/default/portlets.xml
 msgid "Portlet listing my registrations"
-msgstr ""
+msgstr "Listado de mis registros"
 
 #: ../browser/register_templates/register.pt:11
 msgid "Price"
-msgstr ""
+msgstr "Precio"
 
 #: ../browser/register.py:216
 msgid "Register"
-msgstr ""
+msgstr "Registro"
 
 #: ../registrations.py:84
 msgid "Register as a student"
-msgstr ""
+msgstr "Registro como estudiante"
 
 #: ../registrations.py:83
 msgid "Register as an APyB Member"
-msgstr ""
+msgstr "Registro como miembro de APyB"
 
 #: ../registrations.py:85
 msgid "Register as an Individual"
-msgstr ""
+msgstr "Registro individual"
 
 #: ../registrations.py:87
 msgid "Register member(s) of Brazilian Government"
-msgstr ""
+msgstr "Registro como miembro del gobierno brasileño"
 
 #: ../registrations.py:86
 msgid "Register members of a group or organization (Group registration)"
-msgstr ""
+msgstr "Registro como miembro de un grupo u organización (registro de grupo)"
 
 #: ../browser/register.py:217
 msgid "Register to this conference"
-msgstr ""
+msgstr "Registrarse para esta conferencia"
 
 #: ../registrations_templates/view.pt:13
 msgid "Register!"
-msgstr ""
+msgstr "¡Registrarse!"
 
 #: ../profiles/default/types/apyb.registration.registration.xml
 msgid "Registration"
-msgstr ""
+msgstr "Registro"
 
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Registration cancelled."
-msgstr ""
+msgstr "Registro cancelado."
 
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Registration confirmed."
-msgstr ""
+msgstr "Registro confirmado."
 
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Registration created."
-msgstr ""
+msgstr "Registro creado."
 
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Registration pending confirmation."
-msgstr ""
+msgstr "Registro pendiente de confirmación."
 
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Registration workflow"
-msgstr ""
+msgstr "Flujo de registro"
 
 #: ../profiles/default/types/apyb.registration.registrations.xml
 #: ../registrations_templates/registrationsview.pt:14
 #: ../registrations_templates/view.pt:81
 msgid "Registrations"
-msgstr ""
+msgstr "Registros"
 
 #: ../registrations_templates/attendeesview.pt:13
 #: ../registrations_templates/registrationsview.pt:13
 #: ../registrations_templates/view.pt:80
 msgid "Registrations Management"
-msgstr ""
+msgstr "Administración de registros"
 
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Registrations closed."
-msgstr ""
+msgstr "Registros cerrados."
 
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Registrations opened."
-msgstr ""
+msgstr "Registros abiertos."
 
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Registrations workflow"
-msgstr ""
+msgstr "Flujo de registros"
 
 #: ../registration.py:40
 msgid "Select the category of your registration"
-msgstr ""
+msgstr "Seleccione la categoría de su registro"
 
 #: ../vocabulary.py:22
 msgid "Small"
-msgstr ""
+msgstr "Pequeña"
 
 #: ../browser/register.py:66
 msgid "State /Province"
-msgstr ""
+msgstr "Estado / Provincia"
 
 #: ../vocabulary.py:34
 msgid "Student"
-msgstr ""
+msgstr "Estudiante"
 
 #: ../browser/register.py:287
 msgid "Student registration"
-msgstr ""
+msgstr "Registro de estudiante"
 
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Submit a registration"
-msgstr ""
+msgstr "Envíe un registro"
 
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Submit registration"
-msgstr ""
+msgstr "Envíe registro"
 
 #: ../attendee.py:54
 #: ../browser/register.py:98
 msgid "T-Shirt Size"
-msgstr ""
+msgstr "Talla de la camiseta"
 
 #: ../registration_templates/view.pt:14
 msgid "This registration is not paid. Please, click on the image button bellow to be taken to our payment processor partner."
-msgstr ""
+msgstr "Este registro no está pagado. Por favor, haga clic sobre el botón inferior para enviarlo al sitio de nuestro patrocinador de proceso de pagos."
 
 #: ../registration_templates/view.pt:40
 msgid "Total price"
-msgstr ""
+msgstr "Precio total"
 
 #: ../registration.py:39
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: ../behavior/paymentinformation.py:17
 msgid "Which payment service provider was used?"
-msgstr ""
+msgstr "¿Qué proveedor de servicio de pagos fue empleado?"
 
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Workflow to manage a registration to a conference."
-msgstr ""
+msgstr "Flujo de trabajo para administrar el registro a una conferencia."
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 msgid "Workflow to manage an attendee status in a conference."
-msgstr ""
+msgstr "Flujo de trabajo para administrar el estado de un asistente a una conferencia."
 
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Workflow to manage registrations to a conference."
-msgstr ""
+msgstr "Flujo de trabajo para administrar los registros a una conferencia."
 
 #: ../vocabulary.py:25
 msgid "X-Large"
-msgstr ""
+msgstr "Extragrande"
 
 #: ../attendee.py:24
 #: ../registration.py:28
 msgid "uid"
-msgstr ""
+msgstr "uid"
 
