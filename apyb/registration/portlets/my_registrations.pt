@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag="">
+<dl class="portlet portletEvents"
+    i18n:domain="apyb.registrations">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span
+           i18n:translate="">
+            My Registrations
+        </span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:regs tal:repeat="obj view/registrations">
+    <dd class="portletItem"
+        tal:define="oddrow repeat/obj/odd;
+                    plone_view context/@@plone;"
+        tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+        <a href="#"
+           class="tile"
+           tal:attributes="href obj/getURL;
+                           title obj/Description">
+            <span tal:replace="obj/pretty_title_or_id">
+             Registration
+            </span>
+        </a>    
+            <span class="portletItemDetails">
+                <span tal:condition="obj/review_state"> &nbsp;
+                    <tal:desc content="python:view.review_state(obj.review_state)">Approved</tal:desc>
+                </span>
+            </span>
+    </dd>
+    </tal:regs>
+</dl>
+</html>

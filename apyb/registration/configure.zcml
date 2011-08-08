@@ -27,6 +27,7 @@
   <grok:grok package="." />
    
   <include package=".behavior" />
+  <include package=".portlets" />
   <i18n:registerTranslations directory="locales" />
 
   <genericsetup:registerProfile
