@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-08-04 22:15+0000\n"
+"POT-Creation-Date: 2011-08-08 19:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,11 +61,11 @@ msgstr ""
 
 #: ../browser/register.py:149
 #: ../registration_templates/view.pt:19
-#: ../registrations_templates/view.pt:109
+#: ../registrations_templates/attendeesview.pt:15
 msgid "Attendees"
 msgstr ""
 
-#: ../attendee.py:32
+#: ../attendee.py:34
 msgid "Badge name"
 msgstr ""
 
@@ -86,6 +86,7 @@ msgstr ""
 msgid "Cancel registration"
 msgstr ""
 
+#: ../portlets/my_registrations.py:69
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Cancelled"
@@ -128,6 +129,7 @@ msgstr ""
 msgid "Confirm registration"
 msgstr ""
 
+#: ../portlets/my_registrations.py:68
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Confirmed"
@@ -158,12 +160,12 @@ msgstr ""
 msgid "Folderish content that contains registrations"
 msgstr ""
 
-#: ../attendee.py:26
+#: ../attendee.py:28
 #: ../browser/register.py:80
 msgid "Fullname"
 msgstr ""
 
-#: ../attendee.py:46
+#: ../attendee.py:48
 #: ../browser/register.py:92
 msgid "Gender"
 msgstr ""
@@ -228,6 +230,12 @@ msgstr ""
 msgid "Medium"
 msgstr ""
 
+#: ../portlets/my_registrations.py:27
+#: ../profiles/default/portlets.xml
+msgid "My Registrations"
+msgstr ""
+
+#: ../portlets/my_registrations.py:66
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "New"
 msgstr ""
@@ -240,7 +248,7 @@ msgstr ""
 msgid "Opt-In"
 msgstr ""
 
-#: ../attendee.py:39
+#: ../attendee.py:41
 #: ../browser/register.py:131
 msgid "Organization"
 msgstr ""
@@ -277,6 +285,7 @@ msgstr ""
 msgid "Payment service provider"
 msgstr ""
 
+#: ../portlets/my_registrations.py:67
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Pending"
@@ -286,12 +295,12 @@ msgstr ""
 msgid "Personal information"
 msgstr ""
 
-#: ../attendee.py:40
+#: ../attendee.py:42
 #: ../browser/register.py:132
 msgid "Please inform the name of the organization you will represent"
 msgstr ""
 
-#: ../attendee.py:33
+#: ../attendee.py:35
 msgid "Please inform the name that will appear on your badge -- Leave it blank to use your fullname in the badge"
 msgstr ""
 
@@ -299,7 +308,7 @@ msgstr ""
 msgid "Please inform who will attendee this conference."
 msgstr ""
 
-#: ../attendee.py:27
+#: ../attendee.py:29
 #: ../browser/register.py:81
 msgid "Please inform your fullname"
 msgstr ""
@@ -313,6 +322,10 @@ msgstr ""
 msgid "Please provide an email address to be used to manage this registration."
 msgstr ""
 
+#: ../profiles/default/portlets.xml
+msgid "Portlet listing my registrations"
+msgstr ""
+
 #: ../browser/register_templates/register.pt:11
 msgid "Price"
 msgstr ""
@@ -321,23 +334,23 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: ../registrations.py:81
+#: ../registrations.py:84
 msgid "Register as a student"
 msgstr ""
 
-#: ../registrations.py:80
+#: ../registrations.py:83
 msgid "Register as an APyB Member"
 msgstr ""
 
-#: ../registrations.py:82
+#: ../registrations.py:85
 msgid "Register as an Individual"
 msgstr ""
 
-#: ../registrations.py:84
+#: ../registrations.py:87
 msgid "Register member(s) of Brazilian Government"
 msgstr ""
 
-#: ../registrations.py:83
+#: ../registrations.py:86
 msgid "Register members of a group or organization (Group registration)"
 msgstr ""
 
@@ -374,10 +387,13 @@ msgid "Registration workflow"
 msgstr ""
 
 #: ../profiles/default/types/apyb.registration.registrations.xml
+#: ../registrations_templates/registrationsview.pt:14
 #: ../registrations_templates/view.pt:81
 msgid "Registrations"
 msgstr ""
 
+#: ../registrations_templates/attendeesview.pt:13
+#: ../registrations_templates/registrationsview.pt:13
 #: ../registrations_templates/view.pt:80
 msgid "Registrations Management"
 msgstr ""
@@ -422,7 +438,7 @@ msgstr ""
 msgid "Submit registration"
 msgstr ""
 
-#: ../attendee.py:52
+#: ../attendee.py:54
 #: ../browser/register.py:98
 msgid "T-Shirt Size"
 msgstr ""
@@ -459,7 +475,7 @@ msgstr ""
 msgid "X-Large"
 msgstr ""
 
-#: ../attendee.py:22
+#: ../attendee.py:24
 #: ../registration.py:28
 msgid "uid"
 msgstr ""
