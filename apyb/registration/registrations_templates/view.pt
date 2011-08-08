@@ -12,7 +12,7 @@
     <div tal:condition="view/registrations_enabled">
         <h2 i18n:translate="">Register!</h2>
         <div tal:condition="view/is_anonymous">
-            <span>In order to register to this conference you need to create an account on this site (so you can manage your registration details later on).</span><br/>
+            <span i18n:translate="">In order to register to this conference you need to create an account on this site (so you can manage your registration details later on).</span><br/><br/>
             <span>
                 <a href="" 
                    tal:attributes="href string:${view/login_url};
@@ -28,7 +28,7 @@
                    i18n:translate="">
                 Click here to create an account.
                 </a>
-            </span>
+            </span><br/><br/>
             <script>
             jQuery(function(){
                 var common_content_filter = '#content>*:not(div.configlet),dl.portalMessage.error,dl.portalMessage.info';

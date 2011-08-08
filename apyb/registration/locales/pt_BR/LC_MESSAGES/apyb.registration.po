@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-08-08 19:39+0000\n"
+"POT-Creation-Date: 2011-08-08 19:59+0000\n"
 "PO-Revision-Date: 2011-07-11 11:44-0300\n"
 "Last-Translator: Erico Andrei <erico@simplesconsultoria.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -193,6 +193,10 @@ msgstr "Caso já tenha uma conta neste site, clique aqui para se logar."
 #: ../registration.py:47
 msgid "If you have a discount code, please inform here"
 msgstr "Caso possua um código de desconto, por favor o informe aqui"
+
+#: ../registrations_templates/view.pt:15
+msgid "In order to register to this conference you need to create an account on this site (so you can manage your registration details later on)."
+msgstr "Para se registrar na PythonBrasil[7] você precisa criar uma conta neste site (para que seja possível gerenciar os detalhes de sua inscrição posteriormente)."
 
 #: ../vocabulary.py:35
 msgid "Individual"

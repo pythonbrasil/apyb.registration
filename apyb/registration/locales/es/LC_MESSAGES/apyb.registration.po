@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-08-08 19:39+0000\n"
+"POT-Creation-Date: 2011-08-08 19:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -192,6 +192,10 @@ msgstr ""
 
 #: ../registration.py:47
 msgid "If you have a discount code, please inform here"
+msgstr ""
+
+#: ../registrations_templates/view.pt:15
+msgid "In order to register to this conference you need to create an account on this site (so you can manage your registration details later on)."
 msgstr ""
 
 #: ../vocabulary.py:35
