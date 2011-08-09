@@ -67,7 +67,8 @@ def price_est(obj):
         qty = len(children)
         
         registration_type = obj.registration_type
-        price = view.price(registration_type,qty)
+        discount_code = obj.discount_code
+        price = view.price(registration_type,qty,discount_code)
     else:
         price = obj.amount
     return price
@@ -145,9 +146,11 @@ class View(grok.View):
     def _price(self):
         view = aq_parent(self.context).restrictedTraverse('@@reg-price')
         attendees = self.attendees()
+        
         qty = len(attendees)
         registration_type = self.registration_type
-        price = view.price(registration_type,qty)
+        discount_code = self.context.discount_code
+        price = view.price(registration_type,qty, discount_code)
         fmtPrice = view.fmtPrice(price)
         return (price,fmtPrice)
     

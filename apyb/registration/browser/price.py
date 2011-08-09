@@ -4,6 +4,8 @@ from five import grok
 
 from Acquisition import aq_inner
 
+from Products.CMFCore.utils import getToolByName
+
 from apyb.registration.registrations import IRegistrations
 
 from apyb.registration.config import PRICES,GROUP_DISCOUNTS
@@ -13,7 +15,27 @@ class PriceView(grok.View):
     grok.require('zope2.View')
     grok.name('reg-price')
     
-    def price(self,registration_type,qty):
+    def _sheet(self):
+        context = aq_inner(self.context)
+        ptool = getToolByName(context,'portal_properties')
+        sheet = getattr(ptool,'site_properties')
+        return sheet
+    
+    @property
+    def discountCodes(self):
+        ''' Retorna a lista de codigos ainda disponiveis
+        '''
+        def splitLines(lines):
+            tmp = []
+            for line in lines:
+                tmp.append(line.split('|'))
+            return tmp
+        sheet = self._sheet()
+        codes = splitLines(sheet.getProperty('discount_codes', []))
+        # Ex: 42W23|0.2
+        return dict([(k.upper(),v) for k,v in codes])
+    
+    def price(self,registration_type,qty,discount_code=''):
         base_price = PRICES[registration_type]
         grp_discount = GROUP_DISCOUNTS.get(registration_type,[])
         discount = 0.0
@@ -21,6 +43,8 @@ class PriceView(grok.View):
             for line in grp_discount:
                 if line[0] > qty:
                     discount = line[1]
+        if discount_code and registration_type not in ['government','student']:
+            discount = discount + float(self.discountCodes.get(discount_code,0.0))
         price = base_price * qty * (1-discount)
         # Price is **always** int
         return int(price)
