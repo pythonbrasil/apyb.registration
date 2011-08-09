@@ -140,7 +140,7 @@ class View(grok.View):
         ''' show only if registration not paid 
         '''
         paid = self.paid
-        return paid
+        return not paid
     
     def _price(self):
         view = aq_parent(self.context).restrictedTraverse('@@reg-price')

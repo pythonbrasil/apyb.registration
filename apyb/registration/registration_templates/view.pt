@@ -76,8 +76,20 @@
                        name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!">
             </form>
         </div>
-
-        <div id="paypal" tal:condition="view/show_paypal"></div>
+        <br />
+        <div id="paypal" tal:condition="view/show_paypal"> 
+            <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="financeiro@diaspar.com.br">
+                <input type="hidden" name="currency_ code" value="BRL" />
+                <input type="hidden" name="amount" value="1"  tal:attributes="value python:'%.2f' % ((view.base_price)/100.0)">
+                <input type="hidden" name="quantity" value="1"  tal:attributes="value python:len(view.attendees());" />
+                <input type="hidden" name="item_name" value="Inscrição PythonBrasil[7]" />
+                <input type="hidden" name="item_number" value="1"  value="ewre" tal:attributes="value context/id" />
+                <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - A maneira mais fácil e segura de efetuar pagamentos online!">
+                <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+            </form>
+        </div>
     </div>
     
   </metal:content-core>
