@@ -52,15 +52,37 @@ class UsersView(grok.View):
 class UpdateOwner(UsersView):
     grok.name('update-owner')
     
+    def sanitize_email(self,email):
+        return '%s@%s' % ((email.split('@')[0]).split('+')[0],email.split('@')[1])
+    
+    def createMember(self,item):
+        mt = self.mt
+        registration = getToolByName(self.context, 'portal_registration')
+        email = self.sanitize_email(item.email)
+        try:
+            registration.addMember(email, 
+                                   'pythonbrasil_2011',
+                                   ('Member',),
+                                   properties={'username': email,
+                                               'email': item.email,
+                                               'location':item.country,
+                                               'must_change_password':True,
+                                               'fullname':item.Title()})
+        except:
+            # something went wrong
+            pass
+        return mt.getMemberById(email)
+    
     def render(self):
         data = []
         mt = getToolByName(self.context,'portal_membership')
+        self.mt = mt
         for item in self.listRegistrations():
-            email = item.email
+            email = self.sanitize_email(item.email)
             member = mt.getMemberById(email)
             if (not member):
                 data.append('Member not found: %s' % email)
-                continue
+                member = self.createMember(item)
             if  email==item.getOwner().getUserName():
                 data.append('Already fixed: %s' % email)
                 continue
