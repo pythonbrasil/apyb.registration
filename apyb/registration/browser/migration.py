@@ -9,6 +9,69 @@ from random import choice
 
 VALIDCHAR = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 
+TEMPLATE = """%s,
+Você está recebendo esta mensagem para informá-lo que foi criada uma
+conta de acesso ao site da PythonBrasil[7] para você.
+Para acessar o site, use os dados a seguir:
+    
+    Endereço: http://www.pythonbrasil.org.br/login_form
+    E-mail: %s
+    Senha: %s
+    
+Você deverá alterar esta senha em seu primeiro acesso.
+
+Utilize estes dados para se inscrever na PythonBrasil[7], verificar o estado 
+de uma inscrição já enviada e submeter propostas de palestras!
+
+Esperamos que você esteja presente nesta edição da PythonBrasil, o encontro 
+da comunidade Python brasileira.
+
+Associação Python Brasil - APyB
+"""
+
+class ResetPasswdView(grok.View):
+    grok.context(IRegistrations)
+    grok.require('cmf.ManagePortal')
+    grok.name('reset-passwords')
+    
+    def generatePass(self):
+        senha = [choice(VALIDCHAR) for i in range(0,8)]
+        return ''.join(senha)
+    
+    def sendEmail(self,member,passwd):
+        ''' Send an email telling the user he has a new passwd'''
+        subject = 'PythonBrasil[7]: Dados de acesso ao site'
+        body = TEMPLATE % (member.getProperty('fullname',''),
+                          member.getUserName(),
+                          passwd,
+                          )
+        self.mail.send(body,
+                       member.getUserName(),
+                       self.mail_from,
+                       subject=subject, 
+                       charset='utf-8')
+        
+        
+    def render(self):
+        data = []
+        self.plone_utils = getToolByName(self.context, 'plone_utils')
+        self.urltool = getToolByName(self.context, 'portal_url')
+        portal = self.urltool.getPortalObject()
+        self.mail = getToolByName(self.context,'MailHost')
+        self.mail_from = portal.getProperty('email_from_address')
+        mt = getToolByName(self.context,'portal_membership')
+        # we expect a list of emails separated by |
+        users = self.request.get('users','').split('|')
+        for item in users:
+            member = mt.getMemberById(item)
+            if not member:
+                continue
+            passwd = self.generatePass()
+            member.setSecurityProfile(password=passwd)
+            member.setMemberProperties(dict(must_change_password=True))
+            self.sendEmail(member,passwd)
+        return '\n'.join(users)
+
 class UsersView(grok.View):
     grok.context(IRegistrations)
     grok.require('cmf.ManagePortal')
