@@ -68,7 +68,7 @@ class ResetPasswdView(grok.View):
                 continue
             passwd = self.generatePass()
             member.setSecurityProfile(password=passwd)
-            member.setMemberProperties(dict(must_change_password=True))
+            member.setMemberProperties(dict(login_time='2000/01/01',must_change_password=1,))
             self.sendEmail(member,passwd)
         return '\n'.join(users)
 
