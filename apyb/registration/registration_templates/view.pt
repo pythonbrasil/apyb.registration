@@ -81,7 +81,7 @@
             <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                 <input type="hidden" name="cmd" value="_xclick">
                 <input type="hidden" name="business" value="financeiro@diaspar.com.br">
-                <input type="hidden" name="currency_ code" value="BRL" />
+                <input type="hidden" name="currency_code" value="BRL" />
                 <input type="hidden" name="amount" value="1"  tal:attributes="value python:'%.2f' % ((view.base_price)/100.0)">
                 <input type="hidden" name="quantity" value="1"  tal:attributes="value python:len(view.attendees());" />
                 <input type="hidden" name="item_name" value="Inscrição PythonBrasil[7]" />
