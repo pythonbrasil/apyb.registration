@@ -212,7 +212,7 @@ class ManagePagSeguroView(grok.View):
             if (not oId in oIds) or (not status=='Aprovada'):
                 continue
             reg = context[oId]
-            if reg.paid:
+            if getattr(reg,'paid',False):
                 continue
             reg.amount = self.fix_value(item.get('Valor_Bruto','00,000'))
             reg.paid = True
@@ -269,7 +269,7 @@ class ManagePayPalView(grok.View):
             if (not oId in oIds):
                 continue
             reg = context[oId]
-            if reg.paid:
+            if getattr(reg,'paid',False):
                 continue
             reg.amount = self.fix_value(item.get('Bruto','0,00'))
             reg.paid = True
