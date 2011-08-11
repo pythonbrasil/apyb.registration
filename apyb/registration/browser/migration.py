@@ -34,6 +34,8 @@ class ResetPasswdView(grok.View):
     grok.require('cmf.ManagePortal')
     grok.name('reset-passwords')
     
+    users = []
+    
     def generatePass(self):
         senha = [choice(VALIDCHAR) for i in range(0,8)]
         return ''.join(senha)
@@ -51,7 +53,7 @@ class ResetPasswdView(grok.View):
                        subject=subject, 
                        charset='utf-8')
         
-        
+    
     def render(self):
         data = []
         self.plone_utils = getToolByName(self.context, 'plone_utils')
@@ -60,8 +62,11 @@ class ResetPasswdView(grok.View):
         self.mail = getToolByName(self.context,'MailHost')
         self.mail_from = portal.getProperty('email_from_address')
         mt = getToolByName(self.context,'portal_membership')
-        # we expect a list of emails separated by |
-        users = self.request.get('users','').split('|')
+        if not self.users:
+            # we expect a list of emails separated by |
+            users = self.request.get('users','').split('|')
+        else:
+            users = self.users
         for item in users:
             member = mt.getMemberById(item)
             if not member:
