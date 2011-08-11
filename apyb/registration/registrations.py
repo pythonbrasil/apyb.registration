@@ -157,9 +157,123 @@ class AttendeesView(View):
     grok.name('attendees_view')
     grok.require('cmf.ReviewPortalContent')
     
+
 class RegistrationsView(View):
     grok.context(IRegistrations)
     grok.name('registrations_view')
     grok.require('cmf.ReviewPortalContent')
     
+
+class ManagePagSeguroView(grok.View):
+    grok.context(IRegistrations)
+    grok.name('registrations_pagseguro')
+    grok.require('cmf.ReviewPortalContent')
     
+    def update(self):
+        context = aq_inner(self.context)
+        self.payment = 'pagseguro'
+        self._path = '/'.join(context.getPhysicalPath())
+        self.state = getMultiAdapter((context, self.request), name=u'plone_context_state')
+        self.tools = getMultiAdapter((context, self.request), name=u'plone_tools')
+        self.portal = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+        self._ct = self.tools.catalog()
+        self._wt = self.tools.workflow()
+        self.mt = self.tools.membership()
+        self.updated = []
+        pfile = self.request.get('pfile','')
+        if pfile:
+            items = self.process_file(pfile)
+            self.update_registrations(items)
+    
+    def fix_value(self,value):
+        ''' Convert string from PagSeguro to an int representing cents '''
+        return int(value.replace(',','')[:-2])
+    
+    def process_file(self,pfile=None):
+        ''' Try to process a txt file exported by PagSeguro '''
+        if not pfile:
+            return []
+        data = pfile.read()
+        lines = data.split('\n')
+        lines = [l.split('\t') for l in lines]
+        header = lines[0]
+        items = [dict(zip(header,l)) for l in lines[1:] if len(l)>1]
+        return items
+    
+    def update_registrations(self,items):
+        ''' Given a list of dictionaries, we transition registrations 
+            as needed
+        '''
+        context = self.context
+        oIds = context.objectIds()
+        for item in items:
+            oId = item.get('Ref_Transacao','')
+            status = item.get('Status','')
+            if (not oId in oIds) or (not status=='Aprovada'):
+                continue
+            reg = context[oId]
+            if reg.paid:
+                continue
+            reg.amount = self.fix_value(item.get('Valor_Bruto','00,000'))
+            reg.paid = True
+            reg.service = self.payment
+            self._wt.doActionFor(reg,'confirm')
+            self.updated.append(reg.id)
+        
+        
+class ManagePayPalView(grok.View):
+    grok.context(IRegistrations)
+    grok.name('registrations_paypal')
+    grok.require('cmf.ReviewPortalContent')
+    
+    def update(self):
+        context = aq_inner(self.context)
+        self.payment = 'paypal'
+        self._path = '/'.join(context.getPhysicalPath())
+        self.state = getMultiAdapter((context, self.request), name=u'plone_context_state')
+        self.tools = getMultiAdapter((context, self.request), name=u'plone_tools')
+        self.portal = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+        self._ct = self.tools.catalog()
+        self._wt = self.tools.workflow()
+        self.mt = self.tools.membership()
+        self.updated = []
+        pfile = self.request.get('pfile','')
+        if pfile:
+            items = self.process_file(pfile)
+            self.update_registrations(items)
+    
+    def fix_value(self,value):
+        ''' Convert string from PayPal to an int representing cents '''
+        return int(value.replace(',',''))
+    
+    def process_file(self,pfile=None):
+        ''' Try to process a txt file exported by PagSeguro '''
+        if not pfile:
+            return []
+        data = pfile.read()
+        lines = data.replace('"','')
+        lines = lines.split('\n')
+        lines = [l.split('\t') for l in lines]
+        header = ['Data', 'Hora', 'TZ', 'Nome', 'Tipo', 'Status', 'Moeda', 'Bruto', 'Taxa', 'Líquido', 'From', 'To', 'Id_Transacao', 'Status_equivalente', 'Status_endereco', 'Título_item', 'ID_item', 'Valor_envio_manuseio', 'Valor_seguro', 'Imposto_vendas', 'Opcao_1_nome', 'Opcao_1_valor', 'Opcao_2_nome', 'Opcao_2_valor', 'Site_leilao', 'ID_comprador', 'URL_do_item', 'Data_termino', 'ID_escritura', 'ID_fatura', 'ID_txn_ref', 'Num_fatura', 'Num_personalizado', 'ID_recibo', 'End_lin1', 'End_lin2', 'Cidade', 'UF', 'CEP', 'Pais', 'Tel', ]
+        items = [dict(zip(header,l)) for l in lines[1:] if len(l)>1]
+        return items
+    
+    def update_registrations(self,items):
+        ''' Given a list of dictionaries, we transition registrations 
+            as needed
+        '''
+        context = self.context
+        oIds = context.objectIds()
+        for item in items:
+            oId = item.get('ID_item','')
+            if (not oId in oIds):
+                continue
+            reg = context[oId]
+            if reg.paid:
+                continue
+            reg.amount = self.fix_value(item.get('Bruto','0,00'))
+            reg.paid = True
+            reg.service = self.payment
+            self._wt.doActionFor(reg,'confirm')
+            self.updated.append(reg.id)
+        
