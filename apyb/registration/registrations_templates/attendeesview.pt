@@ -11,7 +11,16 @@
     
     <div tal:condition="view/listing_enabled">
         <h2 i18n:translate="">Registrations Management</h2>
-        
+        <h3 i18n:translate="">Attendees Stats</h3>
+        <div class="stats_list" tal:define="attendees_by_state view/attendees_by_state">
+            <div class="stats_box" tal:repeat="state attendees_by_state">
+                <span class="stats_title" tal:content="state">State</span><br />
+                <span class="stats_number">
+                      <span tal:content="python:len(attendees_by_state[state])">12</span>
+                      <br />
+            </div>
+        </div>
+        <div class="clear"> </div>
         <h3 i18n:translate="">Attendees</h3>
         <table class="listing">
             <thead>

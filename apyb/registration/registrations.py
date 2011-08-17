@@ -144,12 +144,38 @@ class View(grok.View):
                                    path=self._path)
         return self._regs_as_dict(results)
     
+    def registrations_by_type(self):
+        ''' List registrations by type '''
+        registrations = self.registrations()
+        reg_by_type = {}
+        for reg in registrations:
+            reg_type = reg['type']
+            reg_state = reg['state']
+            if not reg_type in reg_by_type:
+                reg_by_type[reg_type]={}
+            if not reg_state in reg_by_type[reg_type]:
+                reg_by_type[reg_type][reg_state] = []
+            reg_by_type[reg_type][reg_state].append(reg)
+        return reg_by_type
+        
+    
     def attendees(self):
         ''' List attenddees'''
         ct = self._ct
         results = ct.searchResults(portal_type='apyb.registration.attendee',
                                    path=self._path)
         return self._att_as_dict(results)
+    
+    def attendees_by_state(self):
+        ''' List attendees by state '''
+        attendees = self.attendees()
+        att_by_state = {}
+        for att in attendees:
+            att_state = att['state']
+            if not att_state in att_by_state:
+                att_by_state[att_state]=[]
+            att_by_state[att_state].append(att)
+        return att_by_state    
     
 
 class AttendeesView(View):

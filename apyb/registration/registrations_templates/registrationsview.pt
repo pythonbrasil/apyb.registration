@@ -11,6 +11,23 @@
     
     <div tal:condition="view/listing_enabled">
         <h2 i18n:translate="">Registrations Management</h2>
+        
+        <h3 i18n:translate="">Confirmed Registrations Stats</h3>
+        <div class="stats_list" tal:define="registrations_by_type view/registrations_by_type">
+            <div class="stats_box" tal:repeat="type registrations_by_type">
+                <span class="stats_title" tal:content="type">Tracks</span><br />
+                <span class="stats_number">
+                      <span tal:content="python:len(registrations_by_type[type].get('Confirmado',[]))">12</span>
+                      <br />
+            </div>
+            <div class="stats_box">
+                <span class="stats_title" i18n:translate="">Total</span><br />
+                <span class="stats_number">
+                      <span tal:content="python:sum([len(registrations_by_type[type].get('Confirmado',[])) for type in registrations_by_type])">12</span>
+                      <br />
+            </div>
+        </div>
+        <div class="clear"> </div>
         <h3 i18n:translate="">Registrations</h3>
         <table class="listing">
             <thead>
