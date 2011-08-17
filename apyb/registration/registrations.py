@@ -141,6 +141,8 @@ class View(grok.View):
         ''' List registrations'''
         ct = self._ct
         results = ct.searchResults(portal_type='apyb.registration.registration',
+                                   sort_on='created',
+                                   sort_order='reverse',
                                    path=self._path)
         return self._regs_as_dict(results)
     
@@ -163,6 +165,8 @@ class View(grok.View):
         ''' List attenddees'''
         ct = self._ct
         results = ct.searchResults(portal_type='apyb.registration.attendee',
+                                   sort_on='created',
+                                   sort_order='reverse',
                                    path=self._path)
         return self._att_as_dict(results)
     
@@ -183,12 +187,21 @@ class AttendeesView(View):
     grok.name('attendees_view')
     grok.require('cmf.ReviewPortalContent')
     
+    def update(self):
+        super(AttendeesView,self).update()
+        self.request['disable_plone.leftcolumn']=1
+        self.request['disable_plone.rightcolumn']=1
+    
 
 class RegistrationsView(View):
     grok.context(IRegistrations)
     grok.name('registrations_view')
     grok.require('cmf.ReviewPortalContent')
     
+    def update(self):
+        super(RegistrationsView,self).update()
+        self.request['disable_plone.leftcolumn']=1
+        self.request['disable_plone.rightcolumn']=1
 
 class ManagePagSeguroView(grok.View):
     grok.context(IRegistrations)
