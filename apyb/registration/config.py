@@ -6,6 +6,7 @@ PRICES = {
           'individual':22500,
           'government':40000,
           'group':30000,
+          'speaker':10000,
          }
 
 GROUP_DISCOUNTS = {
