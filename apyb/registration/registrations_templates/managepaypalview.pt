@@ -20,7 +20,8 @@
     <div>
         <form action="#" enctype="multipart/form-data"  method="post" accept-charset="utf-8"
             tal:attributes="action string:${context/absolute_url}/@@registrations_paypal">
-            <label for="pfile" i18n:translate="">File:</label>
+            <label for="pfile" i18n:translate="">File:</label><br />
+            <span>Tab-separeted, only payments</span><br />
             <input type="file" name="pfile" size="40">
             <p><input type="submit" value="Update &rarr;"></p>
         </form>
