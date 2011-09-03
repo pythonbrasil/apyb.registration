@@ -24,6 +24,14 @@ class IAttendee(form.Schema):
         title=_(u"uid"),
         required=False,
         )
+    
+    registration_type = schema.Choice(
+        title=_(u'Type'),
+        description=_(u'Select the category of your registration'),
+        required=False,
+        vocabulary="apyb.registration.types"
+    )
+    
     fullname = schema.TextLine(
         title=_(u'Fullname'),
         description=_(u'Please inform your fullname'),
