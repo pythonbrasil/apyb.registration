@@ -10,6 +10,8 @@ from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.app.intid.interfaces import IIntIds
 
+from plone.indexer import indexer
+
 from z3c.form import group, field
 from plone.app.z3cform.wysiwyg import WysiwygFieldWidget
 
@@ -81,6 +83,11 @@ class Attendee(dexterity.Item):
     def uid(self):
         intids = getUtility(IIntIds)
         return intids.getId(self)
+
+@indexer(IRegistration)
+def registration_type(obj):
+    return [obj.registration_type,]
+grok.global_adapter(registration_type, name="Subject")
 
 
 class View(grok.View):
