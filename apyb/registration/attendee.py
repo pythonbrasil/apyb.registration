@@ -84,7 +84,7 @@ class Attendee(dexterity.Item):
         intids = getUtility(IIntIds)
         return intids.getId(self)
 
-@indexer(IRegistration)
+@indexer(IAttendee)
 def registration_type(obj):
     return [obj.registration_type,]
 grok.global_adapter(registration_type, name="Subject")
