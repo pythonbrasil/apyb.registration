@@ -180,12 +180,14 @@ class AddForm(form.SchemaAddForm):
     def create(self, data):
         ''' Create objects '''
         reg_fields = ['discount_code',]
+        data['registration_type'] = self.registration_type
+        
         reg_data = dict([(k,data[k]) for k in reg_fields])
         reg_data['email'] = data['email']
         reg_data['city'] = data['city']
         reg_data['state'] = data['state']
         reg_data['country'] = data['country']
-        reg_data['registration_type'] = self.registration_type
+        reg_data['registration_type'] = data['registration_type']
         registration = createContent('apyb.registration.registration', 
                                     checkConstraints=True, **reg_data)
         
@@ -239,12 +241,14 @@ class GroupAddForm(form.SchemaAddForm):
     def create(self, data):
         ''' Create objects '''
         reg_fields = ['discount_code',]
+        data['registration_type'] = self.registration_type
+        
         reg_data = dict([(k,data[k]) for k in reg_fields])
         reg_data['email'] = data['email']
         reg_data['city'] = data['city']
         reg_data['state'] = data['state']
         reg_data['country'] = data['country']
-        reg_data['registration_type'] = self.registration_type
+        reg_data['registration_type'] = data['registration_type']
         registration = createContent('apyb.registration.registration', 
                                     checkConstraints=True, **reg_data)
         
