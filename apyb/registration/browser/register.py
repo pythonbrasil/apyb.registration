@@ -295,7 +295,7 @@ class StudentRegistrationForm(AddForm):
 class IndividualRegistrationForm(AddForm):
     grok.name('registration-individual')
     
-    label = _(u"Student registration")
+    label = _(u"Individual registration")
     registration_type = u'individual'
 
 class SpeakerRegistrationForm(AddForm):
@@ -311,6 +311,15 @@ class GroupRegistrationForm(GroupAddForm):
     label = _(u"Group / Corporate registration")
     registration_type = u'group'
     
+
+class StudentRegistrationForm(GroupAddForm):
+    grok.name('registration-students')
+    
+    label = _(u"Group registration for students")
+    registration_type = u'student'
+    
+
+
 class GovernmentRegistrationForm(GroupAddForm):
     grok.name('registration-gov')
     
