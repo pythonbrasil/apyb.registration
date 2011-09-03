@@ -129,6 +129,7 @@ class View(grok.View):
             att['url'] = brain.getURL()
             att['date'] = DateTime(brain.created).strftime('%Y-%m-%d %H:%M')
             att['fullname'] = brain.Title
+            att['type'] = voc['types'].getTerm(brain.Subject[0]).title
             att['email'] = brain.email
             att['badge_name'] = brain.badge_name or att['fullname']
             att['gender'] = voc['gender'].getTerm(brain.gender).title
@@ -169,6 +170,17 @@ class View(grok.View):
                                    sort_order='reverse',
                                    path=self._path)
         return self._att_as_dict(results)
+    
+    def attendees_by_type(self):
+        ''' List attendees by type '''
+        attendees = self.attendees()
+        att_by_type = {}
+        for att in attendees:
+            att_type = att['type']
+            if not att_type in att_by_type:
+                att_by_type[att_type]=[]
+            att_by_type[att_type].append(att)
+        return att_by_type
     
     def attendees_by_state(self):
         ''' List attendees by state '''
