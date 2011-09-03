@@ -25,15 +25,15 @@
         <table class="listing">
             <thead>
                 <tr>
-                    <th i18:translate="">Code</th>
-                    <th i18:translate="">Date</th>
-                    <th i18:translate="">Fullname</th>
-                    <th i18:translate="">Registration</th>
-                    <th i18:translate="">Email</th>
-                    <th i18:translate="">Badge Name</th>
-                    <th i18:translate="">Gender</th>
-                    <th i18:translate="">T-Shirt</th>
-                    <th i18:translate="">State</th>
+                    <th i18n:translate="">Code</th>
+                    <th i18n:translate="">Date</th>
+                    <th i18n:translate="">Fullname</th>
+                    <th i18n:translate="">Registration</th>
+                    <th i18n:translate="">Email</th>
+                    <th i18n:translate="">Badge Name</th>
+                    <th i18n:translate="">Gender</th>
+                    <th i18n:translate="">T-Shirt</th>
+                    <th i18n:translate="">State</th>
                 </tr>
             </thead>
             <tbody>

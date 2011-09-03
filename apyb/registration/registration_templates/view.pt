@@ -21,8 +21,8 @@
         <table  class="listing">
             <thead>
                 <tr>
-                    <th i18:translate="">Name</th>
-                    <th i18:translate="">E-mail</th>
+                    <th i18n:translate="">Name</th>
+                    <th i18n:translate="">E-mail</th>
                 </tr>
             </thead>
             <tbody>

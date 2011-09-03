@@ -14,12 +14,12 @@
         <h3 i18n:translate="">PayPal</h3>
         <a href="" 
            tal:attributes="href string:${context/absolute_url}/@@registrations_paypal"
-           i18:translate="">Import PayPal file</a>
+           i18n:translate="">Import PayPal file</a>
         <br />
         <h3 i18n:translate="">PagSeguro</h3>
         <a href="" 
            tal:attributes="href string:${context/absolute_url}/@@registrations_pagseguro"
-           i18:translate="">Import PagSeguro file</a>
+           i18n:translate="">Import PagSeguro file</a>
         <br />        
         
         <h2 i18n:translate="">Registrations Stats</h2>
@@ -59,14 +59,14 @@
         <table class="listing">
             <thead>
                 <tr>
-                    <th i18:translate="">Code</th>
-                    <th i18:translate="">Date</th>
-                    <th i18:translate="">Title</th>
-                    <th i18:translate="">Category</th>
-                    <th i18:translate=""># Attendees</th>
-                    <th i18:translate="">Price (est.)</th>
-                    <th i18:translate="">Price</th>
-                    <th i18:translate="">State</th>
+                    <th i18n:translate="">Code</th>
+                    <th i18n:translate="">Date</th>
+                    <th i18n:translate="">Title</th>
+                    <th i18n:translate="">Category</th>
+                    <th i18n:translate=""># Attendees</th>
+                    <th i18n:translate="">Price (est.)</th>
+                    <th i18n:translate="">Price</th>
+                    <th i18n:translate="">State</th>
                 </tr>
             </thead>
             <tbody>
