@@ -3,7 +3,8 @@ from plone.directives import dexterity, form
 
 from Acquisition import aq_inner, aq_parent
 
-from zope.component import getMultiAdapter
+from zope.schema.interfaces import IVocabularyFactory
+from zope.component import getMultiAdapter, queryUtility
 
 from zope import schema
 
@@ -107,7 +108,10 @@ class View(grok.View):
         self.tools = getMultiAdapter((context, self.request), name=u'plone_tools')
         self.portal = getMultiAdapter((context, self.request), name=u'plone_portal_state')
         self._ct = self.tools.catalog()
+        self._mt = self.tools.membership()
         self.member = self.portal.member()
+        self.price_view = aq_parent(self.context).restrictedTraverse('@@reg-price')
+        self.voc = queryUtility(IVocabularyFactory, 'apyb.registration.types')(context)
         roles_context = self.member.getRolesInContext(context)
         if not [r for r in roles_context if r in ['Manager','Editor','Reviewer',]]:
             self.request['disable_border'] = True
@@ -117,7 +121,33 @@ class View(grok.View):
         path = self._path
         results = ct.searchResults(portal_type='apyb.registration.attendee',path=path)
         return results
-
+    
+    @property
+    def creator(self):
+        creator = self.context.Creator()
+        data = []
+        if isinstance(creator,str):
+            creator = [creator,]
+        for member_id in creator:
+            member = self._mt.getMemberById(member_id)
+            if member:
+                member = '%s <%s>' % (member.getProperty('fullname') or member_id,
+                               member.getProperty('email') or member_id)
+            else:
+                member = member_id
+            data.append(member)
+        return ', '.join(data)
+    
+    @property
+    def created(self):
+        created = self.context.creation_date
+        return created.strftime('%d/%m/%Y %H:%M')
+    
+    @property
+    def fmt_registration_type(self):
+        registration_type = self.registration_type
+        return self.voc.getTerm(registration_type).title
+    
     @property
     def show_payments(self):
         state = self.state.workflow_state()
@@ -144,7 +174,7 @@ class View(grok.View):
         return not paid
     
     def _price(self):
-        view = aq_parent(self.context).restrictedTraverse('@@reg-price')
+        view = self.price_view
         attendees = self.attendees()
         
         qty = len(attendees)
@@ -162,9 +192,14 @@ class View(grok.View):
         price = self._price()[0]
         return price / qty
     
+    
     @property
     def price(self):
         return self._price()[0]
+    
+    @property
+    def fmtBasePrice(self):
+        return self.price_view.fmtPrice(self.base_price)
         
     @property
     def fmtPrice(self):

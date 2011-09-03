@@ -16,18 +16,34 @@
            to be taken to our payment processor partner.
         </dd>
     </dl>
+    <h2 i18n:translate="">Registration Info</h2>
+    <div id="registration_details">
+        <h3 i18n:translate="">Details</h3>        
+        <span i18n:translate="">Registration Type</span>:&nbsp;<strong><span tal:content="view/fmt_registration_type">Individual</span></strong><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span i18n:translate="">By user</span>:&nbsp;<strong><span tal:content="view/creator">Dorneles Tremea</span></strong><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span i18n:translate="">When</span>:&nbsp;<strong><span tal:content="view/created">12/09/2011 12:32</span></strong><br/>        
+        <span i18n:translate="">Contact e-mail</span>:&nbsp;<strong><span tal:content="context/email">deo@x3ng.com.br</span></strong><br/>
+        <span i18n:translate="">Location</span>:&nbsp;<strong><span tal:content="context/city">Garibaldi</span>,<span tal:content="context/state">Rio Grande do Sul</span>, <span tal:content="python:context.country.upper()">BR</span> </strong><br/>
+
+
+        <h3 i18n:translate="">Pricing</h3>
+        <span i18n:translate="">Base price</span>:&nbsp;<strong><span tal:content="view/fmtBasePrice">UsD50.00</span></strong><br/>
+        <span i18n:translate="">Total price</span>:&nbsp;<strong><span tal:content="view/fmtPrice">UsD123.00</span></strong><br/>
+    </div>
     <h2 i18n:translate="">Attendees</h2>
     <div id="attendees">
         <table  class="listing">
             <thead>
                 <tr>
                     <th i18n:translate="">Name</th>
+                    <th i18n:translate="">Organization</th>
                     <th i18n:translate="">E-mail</th>
                 </tr>
             </thead>
             <tbody>
                 <tr tal:repeat="attendee view/attendees">
                     <td tal:content="attendee/Title">Name</td>
+                    <td tal:content="attendee/organization">Organization</td>
                     <td tal:content="attendee/email">E-mail</td>
                 </tr>
             </tbody>
@@ -37,7 +53,7 @@
     <div tal:condition="view/show_payments">
         <h2 i18n:translate="">Payment options</h2>
         <div id="payment-details">
-            <span i18n:translate="">Total price</span>:<span tal:content="view/fmtPrice">UsD123.00</span>
+            <span i18n:translate="">Total price</span>:&nbsp;<strong><span tal:content="view/fmtPrice">UsD123.00</span></strong>
         </div>
         <div id="pagseguro" tal:condition="view/show_pagseguro">
             <form 
