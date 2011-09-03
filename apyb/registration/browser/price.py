@@ -40,10 +40,11 @@ class PriceView(grok.View):
         grp_discount = GROUP_DISCOUNTS.get(registration_type,[])
         discount = 0.0
         if grp_discount and qty >2:
-            for line in grp_discount:
-                if line[0] > qty:
+            for line in grp_discount[::-1]:
+                if qty >= line[0]:
                     discount = line[1]
-        if discount_code and registration_type not in ['government','student']:
+                    break
+        if discount_code and registration_type not in ['government',]:
             discount = discount + float(self.discountCodes.get(discount_code,0.0))
         price = base_price * qty * (1-discount)
         # Price is **always** int
