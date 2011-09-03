@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-08-08 19:59+0000\n"
+"POT-Creation-Date: 2011-09-03 04:23+0000\n"
 "PO-Revision-Date: 2011-07-11 11:44-0300\n"
 "Last-Translator: Erico Andrei <erico@simplesconsultoria.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,11 +14,15 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: apyb.registrations\n"
 
+#: ../registrations_templates/registrationsview.pt:66
+msgid "# Attendees"
+msgstr "# Participantes"
+
 #: ../profiles/default/types/apyb.registration.registration.xml
 msgid "A registration in a conference"
 msgstr "Inscrição em uma conferência"
 
-#: ../browser/register.py:280
+#: ../browser/register.py:284
 msgid "APyB Member Registration"
 msgstr "Inscrição para membros da APyB"
 
@@ -55,19 +59,39 @@ msgstr "Um participante na conferência"
 msgid "Attendee"
 msgstr "Participante"
 
+#: ../attendee_templates/view.pt:12
+msgid "Attendee Info"
+msgstr "Informações do Participante"
+
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 msgid "Attendee workflow"
 msgstr "Workflow de participante"
 
 #: ../browser/register.py:149
-#: ../registration_templates/view.pt:19
-#: ../registrations_templates/attendeesview.pt:15
+#: ../registration_templates/view.pt:33
+#: ../registrations_templates/attendeesview.pt:24
 msgid "Attendees"
 msgstr "Participantes"
 
-#: ../attendee.py:34
+#: ../registrations_templates/attendeesview.pt:14
+msgid "Attendees Stats"
+msgstr "Estatísticas dos Participantes"
+
+#: ../registrations_templates/attendeesview.pt:33
+msgid "Badge Name"
+msgstr "Nome no crachá"
+
+#: ../attendee.py:46
 msgid "Badge name"
 msgstr "Nome no crachá"
+
+#: ../registration_templates/view.pt:30
+msgid "Base price"
+msgstr "Preço unitário"
+
+#: ../registration_templates/view.pt:23
+msgid "By user"
+msgstr "Pelo usuário"
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 msgid "Cancel a participation."
@@ -92,6 +116,10 @@ msgstr "Cancelar inscrição"
 msgid "Cancelled"
 msgstr "Cancelada"
 
+#: ../registrations_templates/registrationsview.pt:65
+msgid "Category"
+msgstr "Categoria"
+
 #: ../registrations_templates/view.pt:25
 msgid "Click here to create an account."
 msgstr "Clique aqui para criar uma conta neste site."
@@ -111,6 +139,11 @@ msgstr "Encerra o período de inscrições para esta conferência"
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Closed"
 msgstr "Fechado"
+
+#: ../registrations_templates/attendeesview.pt:28
+#: ../registrations_templates/registrationsview.pt:62
+msgid "Code"
+msgstr "Código"
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 msgid "Confirm a partipation."
@@ -135,38 +168,68 @@ msgstr "Confirmar inscrição"
 msgid "Confirmed"
 msgstr "Confirmada"
 
+#: ../registrations_templates/registrationsview.pt:26
+msgid "Confirmed Registrations Stats"
+msgstr "Estatísticas de inscrições confirmadas"
+
 #: ../browser/register.py:43
 msgid "Contact Info"
 msgstr "Informações de contato"
+
+#: ../registration_templates/view.pt:25
+msgid "Contact e-mail"
+msgstr "E-mail de contato"
+
+#: ../registrations_templates/attendeesview.pt:29
+#: ../registrations_templates/registrationsview.pt:63
+msgid "Date"
+msgstr "Data"
+
+#: ../attendee_templates/view.pt:14
+#: ../registration_templates/view.pt:21
+msgid "Details"
+msgstr "Detalhes"
 
 #: ../browser/register.py:55
 msgid "Discount"
 msgstr "Desconto"
 
-#: ../registration.py:46
+#: ../registration.py:47
 msgid "Discount code"
 msgstr "Código de desconto"
 
+#: ../attendee_templates/view.pt:17
 #: ../browser/register.py:60
-#: ../registration.py:33
+#: ../registration.py:34
 msgid "E-mail"
+msgstr "E-mail"
+
+#: ../registrations_templates/attendeesview.pt:32
+msgid "Email"
 msgstr "E-mail"
 
 #: ../vocabulary.py:14
 msgid "Female"
 msgstr "Feminino"
 
+#: ../registrations_templates/managepagseguroview.pt:23
+#: ../registrations_templates/managepaypalview.pt:23
+msgid "File:"
+msgstr "Arquivo:"
+
 #: ../profiles/default/types/apyb.registration.registrations.xml
 msgid "Folderish content that contains registrations"
 msgstr "Pasta que abriga inscrições"
 
-#: ../attendee.py:28
+#: ../attendee.py:40
+#: ../attendee_templates/view.pt:16
 #: ../browser/register.py:80
 msgid "Fullname"
 msgstr "Nome completo"
 
-#: ../attendee.py:48
+#: ../attendee.py:60
 #: ../browser/register.py:92
+#: ../registrations_templates/attendeesview.pt:34
 msgid "Gender"
 msgstr "Sexo"
 
@@ -174,13 +237,17 @@ msgstr "Sexo"
 msgid "Government"
 msgstr "Governo"
 
-#: ../browser/register.py:307
+#: ../browser/register.py:326
 msgid "Government registration"
 msgstr "Inscrição para órgãos do governo"
 
-#: ../browser/register.py:301
+#: ../browser/register.py:311
 msgid "Group / Corporate registration"
 msgstr "Inscrição de Grupo / Inscrição Corporativa"
+
+#: ../browser/register.py:318
+msgid "Group registration for students"
+msgstr "Caravana de estudantes"
 
 #: ../vocabulary.py:37
 msgid "Group/Corporate"
@@ -190,9 +257,17 @@ msgstr "Grupo / Corporativa"
 msgid "If you already have an account, click here to login."
 msgstr "Caso já tenha uma conta neste site, clique aqui para se logar."
 
-#: ../registration.py:47
+#: ../registration.py:48
 msgid "If you have a discount code, please inform here"
 msgstr "Caso possua um código de desconto, por favor o informe aqui"
+
+#: ../registrations_templates/registrationsview.pt:20
+msgid "Import PagSeguro file"
+msgstr "Importar arquivo do PagSeguro"
+
+#: ../registrations_templates/registrationsview.pt:15
+msgid "Import PayPal file"
+msgstr "Importar arquivo do PayPal"
 
 #: ../registrations_templates/view.pt:15
 msgid "In order to register to this conference you need to create an account on this site (so you can manage your registration details later on)."
@@ -201,6 +276,10 @@ msgstr "Para se registrar na PythonBrasil[7] você precisa criar uma conta neste
 #: ../vocabulary.py:35
 msgid "Individual"
 msgstr "Individual"
+
+#: ../browser/register.py:298
+msgid "Individual registration"
+msgstr "Inscrição"
 
 #: ../registration_templates/view.pt:13
 msgid "Info"
@@ -222,7 +301,9 @@ msgstr "Grande"
 msgid "List of Attendees"
 msgstr "Lista de participantes"
 
+#: ../attendee_templates/view.pt:18
 #: ../browser/register.py:47
+#: ../registration_templates/view.pt:26
 msgid "Location"
 msgstr "Localização"
 
@@ -239,6 +320,10 @@ msgstr "Média"
 msgid "My Registrations"
 msgstr "Minhas inscrições"
 
+#: ../registration_templates/view.pt:38
+msgid "Name"
+msgstr "Nome"
+
 #: ../portlets/my_registrations.py:66
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "New"
@@ -252,8 +337,9 @@ msgstr "Abertas"
 msgid "Opt-In"
 msgstr "Opt-In"
 
-#: ../attendee.py:41
+#: ../attendee.py:53
 #: ../browser/register.py:131
+#: ../registration_templates/view.pt:39
 msgid "Organization"
 msgstr "Instituição"
 
@@ -261,9 +347,17 @@ msgstr "Instituição"
 msgid "Organization info"
 msgstr "Informações da instituição"
 
-#: ../vocabulary.py:46
+#: ../registrations_templates/registrationsview.pt:19
+msgid "PagSeguro"
+msgstr "PagSeguro"
+
+#: ../vocabulary.py:47
 msgid "Pagseguro"
 msgstr "PagSeguro"
+
+#: ../registrations_templates/managepagseguroview.pt:11
+msgid "Pagseguro Update"
+msgstr "Atualização de PagSeguro"
 
 #: ../profiles/default/workflows/attendee_workflow/definition.xml
 msgid "Participation canceled."
@@ -277,11 +371,16 @@ msgstr "Participação confirmada."
 msgid "Participation pending confirmation."
 msgstr "Participação aguardando confirmação."
 
-#: ../vocabulary.py:45
+#: ../registrations_templates/registrationsview.pt:14
+#: ../vocabulary.py:46
 msgid "PayPal"
 msgstr "PayPal"
 
-#: ../registration_templates/view.pt:38
+#: ../registrations_templates/managepaypalview.pt:11
+msgid "PayPal Update"
+msgstr "Atualização do PayPal"
+
+#: ../registration_templates/view.pt:54
 msgid "Payment options"
 msgstr "Informações de pagamento"
 
@@ -295,16 +394,20 @@ msgstr "Serviço de pagamento"
 msgid "Pending"
 msgstr "Aguardando confirmação"
 
+#: ../registrations_templates/registrationsview.pt:42
+msgid "Pending Registrations Stats"
+msgstr "Estatísticas de inscrições pendentes"
+
 #: ../browser/register.py:39
 msgid "Personal information"
 msgstr "Dados pessoais"
 
-#: ../attendee.py:42
+#: ../attendee.py:54
 #: ../browser/register.py:132
 msgid "Please inform the name of the organization you will represent"
 msgstr "Por favor, informe qual instituição você representará no evento."
 
-#: ../attendee.py:35
+#: ../attendee.py:47
 msgid "Please inform the name that will appear on your badge -- Leave it blank to use your fullname in the badge"
 msgstr "Nos diga qual a identificação você deseja em seu crachá -- Deixe este campo em branco para utilizarmos o seu nome completo."
 
@@ -312,13 +415,13 @@ msgstr "Nos diga qual a identificação você deseja em seu crachá -- Deixe est
 msgid "Please inform who will attendee this conference."
 msgstr "Por favor informe os dados dos participantes."
 
-#: ../attendee.py:29
+#: ../attendee.py:41
 #: ../browser/register.py:81
 msgid "Please inform your fullname"
 msgstr "Por favor, informe seu nome completo."
 
 #: ../browser/register.py:61
-#: ../registration.py:34
+#: ../registration.py:35
 msgid "Please provide an email address"
 msgstr "Informe seu endereço de e-mail."
 
@@ -331,10 +434,19 @@ msgid "Portlet listing my registrations"
 msgstr "Portlet listando inscrições do usuário logado"
 
 #: ../browser/register_templates/register.pt:11
+#: ../registrations_templates/registrationsview.pt:68
 msgid "Price"
 msgstr "Preço"
 
-#: ../browser/register.py:216
+#: ../registrations_templates/registrationsview.pt:67
+msgid "Price (est.)"
+msgstr "Preço (est.)"
+
+#: ../registration_templates/view.pt:29
+msgid "Pricing"
+msgstr "Pagamento"
+
+#: ../browser/register.py:218
 msgid "Register"
 msgstr "Inscrição"
 
@@ -358,7 +470,7 @@ msgstr "Inscreva membro(s) do governo Brasileiro"
 msgid "Register members of a group or organization (Group registration)"
 msgstr "Inscreva membros de um grupo ou empresa"
 
-#: ../browser/register.py:217
+#: ../browser/register.py:219
 msgid "Register to this conference"
 msgstr "Incrição para a conferência"
 
@@ -367,8 +479,18 @@ msgid "Register!"
 msgstr "Inscreva-se"
 
 #: ../profiles/default/types/apyb.registration.registration.xml
+#: ../registrations_templates/attendeesview.pt:31
 msgid "Registration"
 msgstr "Inscrição"
+
+#: ../registration_templates/view.pt:19
+msgid "Registration Info"
+msgstr "Informaçòes da inscrição"
+
+#: ../attendee_templates/view.pt:15
+#: ../registration_templates/view.pt:22
+msgid "Registration Type"
+msgstr "Tipo de inscrição"
 
 #: ../profiles/default/workflows/registration_workflow/definition.xml
 msgid "Registration cancelled."
@@ -391,7 +513,7 @@ msgid "Registration workflow"
 msgstr "Workflow de inscrições"
 
 #: ../profiles/default/types/apyb.registration.registrations.xml
-#: ../registrations_templates/registrationsview.pt:14
+#: ../registrations_templates/registrationsview.pt:58
 #: ../registrations_templates/view.pt:81
 msgid "Registrations"
 msgstr "Inscrições"
@@ -402,6 +524,10 @@ msgstr "Inscrições"
 msgid "Registrations Management"
 msgstr "Gestão de inscrições"
 
+#: ../registrations_templates/registrationsview.pt:25
+msgid "Registrations Stats"
+msgstr "Estatísticas de Inscrições"
+
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Registrations closed."
 msgstr "Inscrições fechadas"
@@ -410,17 +536,36 @@ msgstr "Inscrições fechadas"
 msgid "Registrations opened."
 msgstr "Inscrições abertas"
 
+#: ../registrations_templates/managepagseguroview.pt:13
+#: ../registrations_templates/managepaypalview.pt:13
+msgid "Registrations updated"
+msgstr "Inscrições atualizadas"
+
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
 msgid "Registrations workflow"
 msgstr "Workflow da pasta de inscrições"
 
-#: ../registration.py:40
+#: ../attendee.py:34
+#: ../registration.py:41
 msgid "Select the category of your registration"
 msgstr "Selecione qual o tipo de sua inscrição."
 
 #: ../vocabulary.py:22
 msgid "Small"
 msgstr "Pequena"
+
+#: ../vocabulary.py:38
+msgid "Speaker"
+msgstr "Palestrante"
+
+#: ../browser/register.py:304
+msgid "Speaker registration"
+msgstr "Inscrição de palestrante"
+
+#: ../registrations_templates/attendeesview.pt:36
+#: ../registrations_templates/registrationsview.pt:69
+msgid "State"
+msgstr "Estado"
 
 #: ../browser/register.py:66
 msgid "State /Province"
@@ -430,7 +575,7 @@ msgstr "Estado / Província"
 msgid "Student"
 msgstr "Estudante"
 
-#: ../browser/register.py:287
+#: ../browser/register.py:291
 msgid "Student registration"
 msgstr "Inscrição como estudante"
 
@@ -442,7 +587,11 @@ msgstr "Enviar inscrição"
 msgid "Submit registration"
 msgstr "Enviar inscrição"
 
-#: ../attendee.py:54
+#: ../registrations_templates/attendeesview.pt:35
+msgid "T-Shirt"
+msgstr "Camiseta"
+
+#: ../attendee.py:66
 #: ../browser/register.py:98
 msgid "T-Shirt Size"
 msgstr "Tamanho da camiseta"
@@ -451,13 +600,34 @@ msgstr "Tamanho da camiseta"
 msgid "This registration is not paid. Please, click on the image button bellow to be taken to our payment processor partner."
 msgstr "Esta inscrição ainda não foi paga. Por favor, clique na imagem abaixo para ser direcionado ao site do nosso parceiro para pagamentos."
 
-#: ../registration_templates/view.pt:40
+#: ../registrations_templates/registrationsview.pt:64
+msgid "Title"
+msgstr "Título"
+
+#: ../registrations_templates/registrationsview.pt:35
+msgid "Total"
+msgstr "Total"
+
+#: ../registration_templates/view.pt:31
 msgid "Total price"
 msgstr "Preço Total"
 
-#: ../registration.py:39
+#: ../attendee.py:33
+#: ../registration.py:40
 msgid "Type"
 msgstr "Categoria"
+
+#: ../registrations_templates/view.pt:87
+msgid "View attendees"
+msgstr "Lista de participantes"
+
+#: ../registrations_templates/view.pt:82
+msgid "View registrations"
+msgstr "Lista de inscrições"
+
+#: ../registration_templates/view.pt:24
+msgid "When"
+msgstr "Quando"
 
 #: ../behavior/paymentinformation.py:17
 msgid "Which payment service provider was used?"
@@ -479,8 +649,8 @@ msgstr "Workflow para gerir a pasta de inscrições"
 msgid "X-Large"
 msgstr "Extra-Grande"
 
-#: ../attendee.py:24
-#: ../registration.py:28
+#: ../attendee.py:28
+#: ../registration.py:29
 msgid "uid"
 msgstr "uid"
 
