@@ -18,9 +18,8 @@
         <br />
         <h3 i18n:translate="">PagSeguro</h3>
         <a href="" 
-           tal:attributes="href string:${context/absolute_url}/@@attendees_pagseguro"
+           tal:attributes="href string:${context/absolute_url}/@@registrations_pagseguro"
            i18:translate="">Import PagSeguro file</a>
-        
         <br />        
         
         <h2 i18n:translate="">Registrations Stats</h2>
@@ -39,6 +38,7 @@
                       <br />
             </div>
         </div>
+        <div class="clear"> </div>
         <h3 i18n:translate="">Pending Registrations Stats</h3>
         <div class="stats_list" tal:define="registrations_by_type view/registrations_by_type">
             <div class="stats_box" tal:repeat="type registrations_by_type">
