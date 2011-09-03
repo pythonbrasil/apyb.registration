@@ -129,7 +129,7 @@ class View(grok.View):
             att['url'] = brain.getURL()
             att['date'] = DateTime(brain.created).strftime('%Y-%m-%d %H:%M')
             att['fullname'] = brain.Title
-            att['type'] = voc['types'].getTerm(brain.Subject[0]).title
+            att['type'] = brain.Subject and voc['types'].getTerm(brain.Subject[0]).title or ''
             att['email'] = brain.email
             att['badge_name'] = brain.badge_name or att['fullname']
             att['gender'] = voc['gender'].getTerm(brain.gender).title
