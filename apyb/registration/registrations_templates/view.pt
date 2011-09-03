@@ -81,12 +81,12 @@
         <h3 i18n:translate="">Registrations</h3>
         <a href="" 
            tal:attributes="href string:${context/absolute_url}/@@registrations_view"
-           i18:translate="">View registrations</a>
+           i18n:translate="">View registrations</a>
         <br />
         <h3 i18n:translate="">Attendees</h3>
         <a href="" 
            tal:attributes="href string:${context/absolute_url}/@@attendees_view"
-           i18:translate="">View attendees</a>
+           i18n:translate="">View attendees</a>
     </div>
     
   </metal:content-core>
