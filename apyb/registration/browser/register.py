@@ -312,13 +312,11 @@ class GroupRegistrationForm(GroupAddForm):
     registration_type = u'group'
     
 
-class StudentRegistrationForm(GroupAddForm):
+class StudentsRegistrationForm(GroupAddForm):
     grok.name('registration-students')
     
     label = _(u"Group registration for students")
     registration_type = u'student'
-    
-
 
 class GovernmentRegistrationForm(GroupAddForm):
     grok.name('registration-gov')
