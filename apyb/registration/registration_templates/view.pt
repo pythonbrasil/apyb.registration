@@ -55,6 +55,20 @@
         <div id="payment-details">
             <span i18n:translate="">Total price</span>:&nbsp;<strong><span tal:content="view/fmtPrice">UsD123.00</span></strong>
         </div>
+        <div id="empenho" tal:condition="view/show_empenho">
+            <br/><br/>
+            Por favor providencie a emiss&atilde;o do empenho para:
+            <br/><br/>
+            <strong>Diaspar Servi&ccedil;os de Informa&ccedil;&otilde;es LTDA</strong><br/>
+            <strong>10.782.042/0001-85</strong><br/>
+            <address>
+                Rua dos Pinheiros, 836 -  Cj 6<br/>
+                Pinheiros - S&atilde;o Paulo - SP<br/>
+                05422-001<br/>
+                financeiro@diaspar.com.br<br/>
+            </address>
+            <br />
+        </div>        
         <div id="pagseguro" tal:condition="view/show_pagseguro">
             <form 
                   action="https://pagseguro.uol.com.br/checkout/checkout.jhtml"

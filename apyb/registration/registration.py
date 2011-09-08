@@ -155,7 +155,15 @@ class View(grok.View):
     
     @property
     def paid(self):
-        return getattr(self.context,'paid',False)
+        is_paid = getattr(self.context,'paid',False)
+        if self.registration_type in ['organizer','sponsor']:
+            is_paid = True
+        return is_paid
+    
+    @property
+    def show_empenho(self):
+        ''' show only if registration type == government'''
+        return self.registration_type == 'government'
     
     @property
     def show_pagseguro(self):
@@ -164,14 +172,14 @@ class View(grok.View):
         '''
         country = self.context.country
         paid = self.paid
-        return (country==u'br' and not paid)
+        return (country==u'br' and not (paid or self.show_empenho))
     
     @property
     def show_paypal(self):
         ''' show only if registration not paid 
         '''
         paid = self.paid
-        return not paid
+        return not (paid or self.show_empenho)
     
     def _price(self):
         view = self.price_view
