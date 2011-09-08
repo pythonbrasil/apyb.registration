@@ -286,7 +286,13 @@ class APyBRegistrationForm(AddForm):
     
     def update(self):        
         super(APyBRegistrationForm,self).update()
-        tools = getMultiAdapter((data.context, data.request), name=u'plone_tools')
+        tools = getMultiAdapter((self.context, self.request), name=u'plone_tools')
+        mt = tools.membership()
+        member = mt.getAuthenticatedMember()
+        groups = member.getGroups()
+        if not u'Associados' in groups:
+            url = self.context.absolute_url()
+            return self.request.response.redirect(url)
     
 
 class StudentRegistrationForm(AddForm):
