@@ -83,10 +83,19 @@
            tal:attributes="href string:${context/absolute_url}/@@registrations_view"
            i18n:translate="">View registrations</a>
         <br />
+        <a href="" 
+           tal:attributes="href string:${context/absolute_url}/@@registration-sponsor"
+           i18n:translate="">Add Sponsor Registration and Attenddees</a>
+        <br />
+        <a href="" 
+           tal:attributes="href string:${context/absolute_url}/@@registration-organizer"
+           i18n:translate="">Add Organization Registration and Attendees</a>
+        <br />
         <h3 i18n:translate="">Attendees</h3>
         <a href="" 
            tal:attributes="href string:${context/absolute_url}/@@attendees_view"
            i18n:translate="">View attendees</a>
+        
     </div>
     
   </metal:content-core>

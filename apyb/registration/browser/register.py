@@ -177,6 +177,11 @@ class AddForm(form.SchemaAddForm):
     def __init__(self, context, request):
         super(AddForm,self).__init__(context, request)
     
+    def update(self):        
+        super(AddForm,self).update()
+        self.request['disable_plone.leftcolumn']=1
+        self.request['disable_plone.rightcolumn']=1
+    
     def create(self, data):
         ''' Create objects '''
         reg_fields = ['discount_code',]
@@ -227,6 +232,8 @@ class GroupAddForm(form.SchemaAddForm):
     
     def update(self):        
         super(GroupAddForm,self).update()
+        self.request['disable_plone.leftcolumn']=1
+        self.request['disable_plone.rightcolumn']=1
         groups = self.groups
         attendees_group = groups[1]
         attendees_group.widgets['attendees'].allow_insert = True
@@ -336,11 +343,20 @@ class GovernmentRegistrationForm(GroupAddForm):
 
 
 class SponsorsRegistrationForm(GroupAddForm):
-    grok.name('registration-sponsors')
+    grok.name('registration-sponsor')
     grok.require('cmf.ManagePortal')
     
     label = _(u"Group registration for sponsors")
     registration_type = u'sponsor'
+
+
+class OrganizerRegistrationForm(GroupAddForm):
+    grok.name('registration-organizer')
+    grok.require('cmf.ManagePortal')
+    
+    label = _(u"Organizers registration")
+    registration_type = u'organizer'
+
 
 @form.default_value(field=IAddress['country'],form=AddForm)
 @form.default_value(field=IAddress['country'],form=GroupAddForm)

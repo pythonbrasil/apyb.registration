@@ -37,6 +37,7 @@ registerSimpleVocabulary(
      ('group',_(u'Group/Corporate')),
      ('speaker',_(u'Speaker')),
      ('sponsor',_(u'Sponsor')),
+     ('organizer',_(u'Organization')),
     ],
     globals()
 )
