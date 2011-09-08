@@ -26,28 +26,57 @@
             <thead>
                 <tr>
                     <th i18n:translate="">Code</th>
-                    <th i18n:translate="">Date</th>
+                    <th i18n:translate="">Type</th>
                     <th i18n:translate="">Fullname</th>
-                    <th i18n:translate="">Registration</th>
                     <th i18n:translate="">Email</th>
                     <th i18n:translate="">Badge Name</th>
                     <th i18n:translate="">Gender</th>
                     <th i18n:translate="">T-Shirt</th>
-                    <th i18n:translate="">State</th>
                 </tr>
             </thead>
             <tbody>
-                <tr tal:repeat="att view/attendees">
-                    <td><a href="" tal:attributes="href att/url" tal:content="att/id">23dsvfr2</a></td>
-                    <td tal:content="att/date">2011-07-13</td>
+                <tal:attendees tal:repeat="att view/attendees">
+                <tr tal:condition="python:att.get('state')=='Confirmado'">
+                    <td>
+                        <a href="" tal:attributes="href att/url" tal:content="att/id">23dsvfr2</a><br/>
+                        <a href="" tal:attributes="href att/reg_url" 
+                            tal:content="python:att.get('reg')[:8]">23dsvfr2</a><br/>
+                    </td>
+                    <td tal:content="att/type">2011-07-13</td>
                     <td tal:content="att/fullname">Jones</td>
-                    <td><a href="" tal:attributes="href att/reg_url" tal:content="att/reg">23dsvfr2</a></td>
                     <td tal:content="att/email">1</td>
                     <td tal:content="att/badge_name">Foo</td>
                     <td tal:content="att/gender">Male</td>
                     <td tal:content="att/t_shirt_size">XL</td>
-                    <td tal:content="att/state">Pending</td>
                 </tr>
+                </tal:attendees>
+            </tbody>
+        </table>
+        
+        <table class="listing">
+            <thead>
+                <tr>
+                    <th i18n:translate="">Code</th>
+                    <th i18n:translate="">Date</th>
+                    <th i18n:translate="">Fullname</th>
+                    <th i18n:translate="">Email</th>
+                    <th i18n:translate="">Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tal:attendees tal:repeat="att view/attendees">
+                <tr tal:condition="python:att.get('state')=='Pendente'">
+                    <td>
+                        <a href="" tal:attributes="href att/url" tal:content="att/id">23dsvfr2</a><br/>
+                        <a href="" tal:attributes="href att/reg_url" 
+                            tal:content="python:att.get('reg')[:8]">23dsvfr2</a><br/>
+                    </td>
+                    <td tal:content="att/date">2011-07-13</td>
+                    <td tal:content="att/fullname">Jones</td>
+                    <td tal:content="att/email">1</td>
+                    <td tal:content="att/gender">Male</td>
+                </tr>
+                </tal:attendees>
             </tbody>
         </table>
     </div>

@@ -284,6 +284,10 @@ class APyBRegistrationForm(AddForm):
     label = _(u"APyB Member Registration")
     registration_type = u'apyb'
     
+    def update(self):        
+        super(APyBRegistrationForm,self).update()
+        tools = getMultiAdapter((data.context, data.request), name=u'plone_tools')
+    
 
 class StudentRegistrationForm(AddForm):
     grok.name('registration-student')
