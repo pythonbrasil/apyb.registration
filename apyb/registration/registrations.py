@@ -328,3 +328,8 @@ class ManagePayPalView(grok.View):
             self._wt.doActionFor(reg,'confirm')
             self.updated.append(reg.id)
         
+
+class APyBView(grok.View):
+    grok.context(IRegistrations)
+    grok.name('apyb-member')
+    grok.require('zope2.View')
