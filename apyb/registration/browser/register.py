@@ -334,6 +334,14 @@ class GovernmentRegistrationForm(GroupAddForm):
     label = _(u"Government registration")
     registration_type = u'government'
 
+
+class SponsorsRegistrationForm(GroupAddForm):
+    grok.name('registration-sponsors')
+    grok.require('cmf.ManagePortal')
+    
+    label = _(u"Group registration for sponsors")
+    registration_type = u'sponsor'
+
 @form.default_value(field=IAddress['country'],form=AddForm)
 @form.default_value(field=IAddress['country'],form=GroupAddForm)
 def default_country_registration(data):
