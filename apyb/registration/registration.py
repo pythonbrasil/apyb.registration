@@ -196,7 +196,7 @@ class View(grok.View):
     def base_price(self):
         # Price per attendee
         attendees = self.attendees()
-        qty = len(attendees)
+        qty = len(attendees) or 1
         price = self._price()[0]
         return price / qty
     
