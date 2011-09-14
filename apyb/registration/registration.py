@@ -93,6 +93,9 @@ class Registration(dexterity.Container):
     def uid(self):
         intids = getUtility(IIntIds)
         return intids.getId(self)
+    
+    def UID(self):
+        return self.uid
 
 
 class View(grok.View):
