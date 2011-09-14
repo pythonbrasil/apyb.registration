@@ -30,7 +30,7 @@ setup(name='apyb.registration',
           # -*- Extra requirements: -*-
           'sc.base.grokutils', 
           'collective.autopermission',
-          'collective.behavior.contactinfo==0.8',
+          'collective.behavior.contactinfo>0.8',
           'collective.z3cform.datagridfield==0.7'
       ],
       entry_points="""
