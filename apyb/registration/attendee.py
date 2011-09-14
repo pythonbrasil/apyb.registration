@@ -85,6 +85,9 @@ class Attendee(dexterity.Item):
     def uid(self):
         intids = getUtility(IIntIds)
         return intids.getId(self)
+    
+    def UID(self):
+        return self.uid
 
 @indexer(IAttendee)
 def registration_type(obj):
