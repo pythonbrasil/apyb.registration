@@ -35,6 +35,7 @@
         <table  class="listing">
             <thead>
                 <tr>
+                    <th></th>
                     <th i18n:translate="">Name</th>
                     <th i18n:translate="">Organization</th>
                     <th i18n:translate="">E-mail</th>
@@ -42,7 +43,8 @@
             </thead>
             <tbody>
                 <tr tal:repeat="attendee view/attendees">
-                    <td tal:content="attendee/Title">Name</td>
+                    <td tal:content="repeat/attendee/number">12</td>
+                    <td><a href="" tal:attributes="href attendee/getURL" tal:content="attendee/Title">Name</a></td>
                     <td tal:content="attendee/organization">Organization</td>
                     <td tal:content="attendee/email">E-mail</td>
                 </tr>
