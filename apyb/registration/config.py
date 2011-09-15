@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
 
+PROGRAM_PATH = '2011/programacao/grade-do-evento'
+
 PRICES = {
           'apyb':16200,
           'student':18000,
