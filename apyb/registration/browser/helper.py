@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 from five import grok
+from DateTime import DateTime
 
 from Acquisition import aq_inner
 
@@ -121,6 +122,13 @@ class View(grok.View):
         kw = {'review_state': 'confirmed'}
         trainings = program_helper.trainings(**kw)
         return trainings
+    #
+    def fmt_date(self, value):
+        if not value:
+            return None
+        if not isinstance(value, DateTime):
+            value = DateTime(value)
+        return value.strftime('%d/%m/%Y %H:%M')
     #
     def speaker_name(self, speaker_uids):
         ''' Given a list os uids, we return a string with speakers names '''
