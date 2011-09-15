@@ -19,6 +19,7 @@
   <property name="klass">apyb.registration.training.TrainingRegistration</property>
 
   <property name="behaviors">
+       <element value="apyb.registration.behavior.paymentinformation.IPaymentInformation" />
   </property>
 
   <!-- View information -->
