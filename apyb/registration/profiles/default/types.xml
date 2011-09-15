@@ -11,4 +11,5 @@
   <object name="apyb.registration.registrations" meta_type="Dexterity FTI" />
   <object name="apyb.registration.attendee" meta_type="Dexterity FTI" />
   <object name="apyb.registration.registration" meta_type="Dexterity FTI" />
+  <object name="apyb.registration.training" meta_type="Dexterity FTI" />
 </object>

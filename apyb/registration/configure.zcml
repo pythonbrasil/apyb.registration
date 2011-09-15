@@ -23,6 +23,11 @@
       id="apyb.registration.AddAttendee"
       title="apyb.registration: Add Attendee"
       />
+
+  <permission
+      id="apyb.registration.AddTrainingRegistration"
+      title="apyb.registration: Add Training Registration"
+      />
   
   <grok:grok package="." />
    

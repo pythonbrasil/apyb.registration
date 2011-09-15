@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from sc.base.grokutils import registerSimpleVocabulary
+
+from zope.schema.vocabulary import SimpleVocabulary
+from zope.schema.vocabulary import SimpleTerm
+
+from Products.CMFCore.utils import getToolByName
+
 from apyb.registration import MessageFactory as _
 
 # registerSimpleVocabulary calls require the module global dictionary
@@ -50,3 +56,21 @@ registerSimpleVocabulary(
     ],
     globals()
 )
+
+def attendeesVocabulary(context):
+    """Vocabulary factory for attendees
+    """
+    ct = getToolByName(context,'portal_catalog')
+    dictSearch = {'portal_type':'apyb.registration.attendee',
+                  'sort_on':'sortable_title',
+                  'review_state':'confirmed'}
+    attendees = ct.searchResults(**dictSearch)
+    attendees = [SimpleTerm(b.UID,b.UID,b.Title) for b in attendees]
+    return SimpleVocabulary(attendees)
+
+registerSimpleVocabulary(
+    "Attendees", u"apyb.registration",
+    attendeesVocabulary,
+    globals()
+)
+
