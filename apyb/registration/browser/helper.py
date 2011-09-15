@@ -27,8 +27,10 @@ class View(grok.View):
                                       name=u'plone_tools')
         self.portal = getMultiAdapter((context, self.request),
                                       name=u'plone_portal_state')
-        portal = portal.portal()
+        portal = self.portal.portal()
         self.program = portal.restrictedTraverse(PROGRAM_PATH)
+        self.program_helper = getMultiAdapter((self.program, self.request),
+                                               name=u'helper')
         self._ct = self.tools.catalog()
     #
     def render(self):
@@ -115,9 +117,15 @@ class View(grok.View):
     #
     @memoize
     def trainings(self):
-        program = self.program
-        helper = getMultiAdapter((program, self.request),
-                                  name=u'helper').
-        kw = {'review_state':'confirmed'}
-        trainings = helper.trainings(**kw)
+        program_helper = self.program_helper
+        kw = {'review_state': 'confirmed'}
+        trainings = program_helper.trainings(**kw)
         return trainings
+    #
+    def speaker_name(self, speaker_uids):
+        ''' Given a list os uids, we return a string with speakers names '''
+        program_helper = self.program_helper
+        speakers_dict = program_helper.speakers_dict
+        results = [speaker for uid, speaker in speakers_dict.items()
+                                           if uid in speaker_uids]
+        return ', '.join([b['name'] for b in results])
