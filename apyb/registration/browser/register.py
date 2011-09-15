@@ -297,9 +297,9 @@ class APyBRegistrationForm(AddForm):
         mt = tools.membership()
         member = mt.getAuthenticatedMember()
         groups = member.getGroups()
-        if not u'Associados' in groups:
-            url = self.context.absolute_url()
-            return self.request.response.redirect(url)
+        #if not u'Associados' in groups:
+        #    url = self.context.absolute_url()
+        #    return self.request.response.redirect(url)
     
 
 class StudentRegistrationForm(AddForm):
