@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from Acquistion import aq_parent
 
 from sc.base.grokutils import registerSimpleVocabulary
 
@@ -76,6 +77,28 @@ registerSimpleVocabulary(
 )
 
 
+def attendeesRegistrationVocabulary(context):
+    """Vocabulary factory for attendees
+    """
+    ct = getToolByName(context, 'portal_catalog')
+    if context.portal_type == 'apyb.registration.training':
+        context = aq_parent(context)
+    path = '/'.join(context.getPhysicalPath())
+    dictSearch = {'portal_type': 'apyb.registration.attendee',
+                  'sort_on': 'sortable_title',
+                  'path': path,
+                  'review_state': 'confirmed'}
+    attendees = ct.searchResults(**dictSearch)
+    attendees = [SimpleTerm(b.UID, b.UID, b.Title) for b in attendees]
+    return SimpleVocabulary(attendees)
+
+registerSimpleVocabulary(
+    "Attendees_registration", u"apyb.registration",
+    attendeesRegistrationVocabulary,
+    globals(),
+)
+
+
 def trainingsVocabulary(context):
     """Vocabulary factory for trainings
     """
@@ -86,6 +109,7 @@ def trainingsVocabulary(context):
     trainings = ct.searchResults(**dictSearch)
     trainings = [SimpleTerm(b.UID, b.UID, b.Title) for b in trainings]
     return SimpleVocabulary(trainings)
+
 
 registerSimpleVocabulary(
     "Trainings", u"apyb.registration",
