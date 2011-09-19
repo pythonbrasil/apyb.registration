@@ -14,6 +14,7 @@
   <property name="allowed_content_types">
       <element value="Document"/>
       <element value="apyb.registration.attendee"/>
+      <element value="apyb.registration.training"/>
   </property>
   <property name="allow_discussion">False</property>
 
