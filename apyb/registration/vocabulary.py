@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Acquistion import aq_parent
+from Acquisition import aq_parent
 
 from sc.base.grokutils import registerSimpleVocabulary
 
