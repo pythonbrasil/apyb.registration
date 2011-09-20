@@ -17,65 +17,8 @@
             <span i18n:translate="">E-mail</span>:&nbsp;<strong><span tal:content="context/email">deo@x3ng.com.br</span></strong><br/>
             <span i18n:translate="">Location</span>:&nbsp;<strong><span tal:content="context/city">Garibaldi</span>,<span tal:content="context/state">Rio Grande do Sul</span>, <span tal:content="python:context.country.upper()">BR</span> </strong><br/>
         </div>
-        <div tal:define="crt view/can_register_trainings">
-            <form action="" tal:condition="view/available_trainings"
-                  tal:omit-tag="not:crt"
-                  method="POST"
-                  tal:attributes="action string:${context/absolute_url}/register_trainings">
-                <h3 i18n:translate="">Available trainings</h3>
-                <p tal:condition="not:crt" 
-                   i18n:translate="">In order to register to the training sessions you need <strong>first</strong> to confirm your registration.</p>
-                <p i18n:translate="">Each training session has a cost of R$30,00.</p>
-                <table class="grid" id="trainings_registering">
-                    <thead>
-                        <tr>
-                            <th i18n:translate="">Register</th>
-                            <th i18n:translate="">Start</th>
-                            <th i18n:translate="">End</th>
-                            <th i18n:translate="">Training</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr tal:repeat="training view/available_trainings">
-                            <td>
-                                <input type="checkbox" 
-                                    tal:omit-tag="not:crt"
-                                    name='trainings_uid' 
-                                    tal:attributes="value training/UID;" />
-                            </td>
-                            <td>
-                                <span tal:content="python:view.helper.fmt_date(training.start)">28/09/2011 - 14:00</span>
-                            </td>
-                            <td>
-                                <span tal:content="python:view.helper.fmt_date(training.end)">28/09/2011 - 18:00</span>
-                            </td>
-                            <td>
-                                <span class="talk_title">
-                                    <a href="" class="talk_details_link" tal:attributes="href training/getURL" tal:content="training/Title">Plone is cool</a>
-                                </span><br />
-                                <span class="discreet" tal:content="python:view.helper.speaker_name(training.speakers)">Joe Doe</span>
-                            </td>
-                        </tr>
-                    </tbody>
-                    </table>
-                    <div tal:condition="crt">
-                        <input type="hidden" name="submitted" value="1" />
-                        <input type="submit" name="confirm_button" value="Register" id="confirm_button" />
-                    </div>
-                    <br/>
-            </form>
-            <script type="text/javascript">
-            jQuery(function(){
-              jQuery('a.talk_details_link').prepOverlay({
-                  subtype: 'ajax',
-                  filter: '#content>*',
-                  });
-            });
-            </script>
-        </div>
       </metal:content-core>
     </metal:main>
-
     </body>
     </html>
 

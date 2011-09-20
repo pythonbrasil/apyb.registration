@@ -139,16 +139,6 @@ class View(grok.View):
             self.request['disable_border'] = True
     #
     @property
-    def can_register_trainings(self):
-        review_state = self.state.workflow_state()
-        return review_state == 'confirmed'
-    # 
-    def available_trainings(self):
-        ''' List of available trainings '''
-        helper = self.helper
-        return helper.trainings()
-    #
-    @property
     def fmt_registration_type(self):
         registration_type = self.registration_type
         if registration_type:
