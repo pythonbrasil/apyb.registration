@@ -11,6 +11,8 @@ from zope import schema
 from zope.component import getUtility
 from zope.app.intid.interfaces import IIntIds
 
+from plone.memoize.view import memoize
+
 from plone.indexer import indexer
 
 from apyb.registration.utils import generateId
@@ -127,6 +129,8 @@ class View(grok.View):
                                    'apyb.registration.types')
         self.voc = voc_factory(context)
         self.roles_context = self.member.getRolesInContext(context)
+        url = context.absolute_url()
+        self.training_form = '%s/@@registration-training' % url
         if not [r for r in self.roles_context
                         if r in ['Manager', 'Editor', 'Reviewer', ]]:
             self.request['disable_border'] = True
@@ -137,6 +141,38 @@ class View(grok.View):
         results = ct.searchResults(portal_type='apyb.registration.attendee',
                                    path=path)
         return results
+    #
+    def training_info(self, training_uids):
+        helper = self.helper
+        program_helper = helper.program_helper
+        trainings_dict = program_helper.trainings_dict
+        data = []
+        for uid in training_uids:
+            training = trainings_dict.get(uid,{})
+            if training:
+                data.append(training)
+        return data
+
+    def trainings(self):
+        ct = self._ct
+        path = self._path
+        results = ct.searchResults(portal_type='apyb.registration.training',
+                                   path=path)
+        trainings = [b.getObject() for b in results]
+        data = []
+        for training in trainings:
+            attendee = self.attendee(training.attendee)
+            training_data = self.training_info(training.trainings)
+            data.append({'fullname': attendee.fullname,
+                         'trainings': training_data})
+        return data
+    #
+    def attendee(self, attendee_uid):
+        ct = self._ct
+        results = ct.searchResults(UID=attendee_uid)
+        if results:
+            brain = results[0]
+            return brain.getObject()
     #
     @property
     def creator(self):
