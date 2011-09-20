@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="apyb.registration"
+      metal:use-macro="context/main_template/macros/master">
+    
+    <metal:block fill-slot="main">
+    <h1 class="documentFirstHeading" tal:content="view/label | nothing" />
+        <div class="price_container">
+            <span i18n:translate="">Price</span>
+            <div id="price"></div>
+        </div>
+        <div id="content-core">
+            <metal:block use-macro="context/@@ploneform-macros/titlelessform" />
+        </div>
+        <script tal:content="string:registration_type='training';" />
+        <script>
+            function updatePrice(){
+                var qtyTrainnings = jQuery("input.checkbox-widget:checked").length;
+                jQuery.getJSON('../@@reg-price.json?type=' + registration_type + '&qty='+qtyTrainnings, function(data) {
+                  jQuery('div#price').html(data['fmtPrice']);
+                });                
+            }
+            jQuery(function(){
+              jQuery('input.checkbox-widget').click(updatePrice);
+              updatePrice();
+            });
+        </script>
+    </metal:block>
+</html>
