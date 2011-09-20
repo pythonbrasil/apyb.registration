@@ -291,7 +291,7 @@ class APyBRegistrationForm(AddForm):
     label = _(u"APyB Member Registration")
     registration_type = u'apyb'
     
-    def update(self):        
+    def update(self):
         super(APyBRegistrationForm,self).update()
         tools = getMultiAdapter((self.context, self.request), name=u'plone_tools')
         mt = tools.membership()
