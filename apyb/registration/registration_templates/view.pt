@@ -56,38 +56,6 @@
             </tbody>
         </table>
     </div>
-    <div tal:condition="not:view/show_payments">
-        <h2 i18n:translate="">Trainings</h2>
-        <span>
-            <a href="" 
-            tal:attributes="href string:${view/training_form};
-                            id string:register_form;"
-               i18n:translate="">
-            Click here to register to trainings.
-            </a>
-        </span>
-        <table  class="listing" tal:condition="view/trainings">
-            <thead>
-                <tr>
-                    <th i18n:translate="">Name</th>
-                    <th i18n:translate="">Trainings</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr tal:repeat="training view/trainings">
-                    <td tal:content="training/fullname">12</td>
-                    <td tal:define="items training/trainings"> 
-                        <ul>
-                            <li tal:repeat="item items"> 
-                                <span tal:content="item/title">
-                                </span>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
     <div tal:condition="view/show_payments">
         <h2 i18n:translate="">Payment options</h2>
         <div id="payment-details">
