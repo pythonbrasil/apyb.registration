@@ -13,7 +13,6 @@
   <property name="filter_content_types">True</property>  
   <property name="allowed_content_types">
       <element value="apyb.registration.attendee"/>
-      <element value="apyb.registration.training"/>
   </property>
   <property name="allow_discussion">False</property>
 
