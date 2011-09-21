@@ -30,7 +30,7 @@
  <index name="badge_name" meta_type="FieldIndex">
   <indexed_attr value="badge_name"/>
  </index>
- <index name="trainings" meta_type="FieldIndex">
+ <index name="trainings" meta_type="KeywordIndex">
   <indexed_attr value="trainings"/>
  </index>
  <column value="price_est"/>
