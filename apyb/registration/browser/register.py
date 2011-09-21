@@ -267,14 +267,26 @@ class GroupAddForm(form.SchemaAddForm):
         attendees = []
         if not data['attendees']:
             form = self.request.form
+            base_fname = 'form.widgets.attendees.%s.widgets.%s'
+            ftype = 'AA'
+            fname = base_fname % (ftype, 'fullname')
+            if not fname in form:
+                ftype = 'TT'
+                fname = base_fname % (ftype, 'fullname')
+                if not fname in form:
+                    ftype = '00'
+                    fname = base_fname % (ftype, 'fullname')
+                    if not fname in form:
+                        # Will raise an error in add..
+                        return None
             line = {'fullname':
-                     form['form.widgets.attendees.AA.widgets.fullname'],
+                     form[base_fname % (ftype, 'fullname')],
                     'gender':
-                     form['form.widgets.attendees.AA.widgets.gender'][0],
+                     form[base_fname % (ftype, 'gender')][0],
                     't_shirt_size':
-                     form['form.widgets.attendees.AA.widgets.t_shirt_size'][0],
+                     form[base_fname % (ftype, 't_shirt_size')][0],
                     'email':
-                     form['form.widgets.attendees.AA.widgets.email']}
+                     form[base_fname % (ftype, 'email')]}
             data['attendees'].append(line)
 
         for line in data['attendees']:
