@@ -69,7 +69,7 @@ class IAttendee(form.Schema):
         vocabulary="apyb.registration.tshirt",
     )
     #
-    form.omitted('uid')
+    form.omitted('trainings')
     trainings = schema.List(
         title=_(u'Trainings'),
         description=_(u'Select trainings'),
