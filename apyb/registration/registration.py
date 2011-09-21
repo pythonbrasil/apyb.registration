@@ -141,32 +141,7 @@ class View(grok.View):
         results = ct.searchResults(portal_type='apyb.registration.attendee',
                                    path=path)
         return results
-    #
-    def training_info(self, training_uids):
-        helper = self.helper
-        program_helper = helper.program_helper
-        trainings_dict = program_helper.trainings_dict
-        data = []
-        for uid in training_uids:
-            training = trainings_dict.get(uid,{})
-            if training:
-                data.append(training)
-        return data
 
-    def trainings(self):
-        ct = self._ct
-        path = self._path
-        results = ct.searchResults(portal_type='apyb.registration.training',
-                                   path=path)
-        trainings = [b.getObject() for b in results]
-        data = []
-        for training in trainings:
-            attendee = self.attendee(training.attendee)
-            training_data = self.training_info(training.trainings)
-            data.append({'fullname': attendee.fullname,
-                         'trainings': training_data})
-        return data
-    #
     def attendee(self, attendee_uid):
         ct = self._ct
         results = ct.searchResults(UID=attendee_uid)
