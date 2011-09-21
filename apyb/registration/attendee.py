@@ -139,8 +139,60 @@ class View(grok.View):
             self.request['disable_border'] = True
     #
     @property
+    def trainings(self):
+        helper = self.helper
+        program_helper = helper.program_helper
+        trainings_dict = program_helper.trainings_dict
+        return trainings_dict
+    #
+    def registered_trainings(self):
+        registered = self.context.trainings
+        trainings = self.trainings
+        data = []
+        for uid, training in trainings.items():
+            if not (uid in registered):
+                continue
+            data.append(training)
+        return data
+    #
+    def available_trainings(self):
+        trainings = self.trainings
+        data = []
+        for uid, training in trainings.items():
+            state = training.get('review_state','')
+            seats = training.get('seats',0)
+            if not (state == 'confirmed' and seats):
+                continue
+            data.append(training)
+        return data
+    #
+    @property
+    def allow_training_registering(self):
+        if not 'Owner' in self.roles_context:
+            return False
+        state = self.state
+        review_state = state.workflow_state()
+        return review_state == 'confirmed'
+    #
+    @property
     def fmt_registration_type(self):
         registration_type = self.registration_type
         if registration_type:
             term = self.voc.getTerm(registration_type)
             return term.title
+
+class RegisterView(View):
+    grok.context(IAttendee)
+    grok.require('cmf.ModifyPortalContent')
+    grok.name('register_trainings')
+
+    template = None
+
+    def render(self):
+        trainings_uid = self.request.form.get('trainings_uid',[])
+        if isinstance(trainings_uid,str):
+            trainings_uid = [trainings_uid,]
+        trainings_uid = [int(uid) for uid in trainings_uid]
+        self.context.trainings = trainings_uid
+        self.context.reindexObject(idxs=['trainings',])
+        return self.request.response.redirect(self.context.absolute_url())
