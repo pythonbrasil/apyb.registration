@@ -30,6 +30,9 @@
  <index name="badge_name" meta_type="FieldIndex">
   <indexed_attr value="badge_name"/>
  </index>
+ <index name="trainings" meta_type="FieldIndex">
+  <indexed_attr value="trainings"/>
+ </index>
  <column value="price_est"/>
  <column value="paid"/>
  <column value="amount"/>
@@ -42,4 +45,5 @@
  <column value="gender"/>
  <column value="t_shirt_size"/>
  <column value="badge_name"/>
+ <column value="trainings"/>
 </object>

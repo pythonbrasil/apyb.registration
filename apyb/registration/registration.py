@@ -215,6 +215,13 @@ class View(grok.View):
         return is_paid
     #
     @property
+    def price_paid(self):
+        view = self.price_view
+        amount = self.context.amount
+        fmtPrice = view.fmtPrice(amount)
+        return fmtPrice
+    #
+    @property
     def show_empenho(self):
         ''' show only if registration type == government'''
         return self.registration_type == 'government'

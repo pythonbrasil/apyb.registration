@@ -27,8 +27,13 @@
 
 
         <h3 i18n:translate="">Pricing</h3>
-        <span i18n:translate="">Base price</span>:&nbsp;<strong><span tal:content="view/fmtBasePrice">UsD50.00</span></strong><br/>
-        <span i18n:translate="">Total price</span>:&nbsp;<strong><span tal:content="view/fmtPrice">UsD123.00</span></strong><br/>
+        <div tal:condition="not:view/paid">
+            <span i18n:translate="">Base price</span>:&nbsp;<strong><span tal:content="view/fmtBasePrice">UsD50.00</span></strong><br/>
+            <span i18n:translate="">Total price</span>:&nbsp;<strong><span tal:content="view/fmtPrice">UsD123.00</span></strong><br/>
+        </div>
+        <div tal:condition="view/paid">
+            <span i18n:translate="">Price paid</span>:&nbsp;<strong><span tal:content="view/price_paid">UsD123.00</span></strong><br/>
+        </div>
     </div>
     <h2 i18n:translate="">Attendees</h2>
     <div id="attendees">
