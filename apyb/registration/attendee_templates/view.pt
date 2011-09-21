@@ -18,6 +18,8 @@
             <span i18n:translate="">Location</span>:&nbsp;<strong><span tal:content="context/city">Garibaldi</span>,<span tal:content="context/state">Rio Grande do Sul</span>, <span tal:content="python:context.country.upper()">BR</span> </strong><br/>
         </div>
         <div id="training_list" tal:condition="context/trainings">
+            <br/>
+            <h3 i18n:translate="">Trainings</h3>
             <table class="grid" id="trainings_registering">
                 <thead>
                     <tr>
