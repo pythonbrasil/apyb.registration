@@ -7,9 +7,6 @@
   <type type_id="apyb.registration.attendee">
    <bound-workflow workflow_id="attendee_workflow"/>
   </type>
-  <type type_id="apyb.registration.training">
-   <bound-workflow workflow_id="attendee_workflow"/>
-  </type>
   <type type_id="apyb.registration.registration">
    <bound-workflow workflow_id="registration_workflow"/>
   </type>
