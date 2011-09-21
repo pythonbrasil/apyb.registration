@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-09-03 04:23+0000\n"
+"POT-Creation-Date: 2011-09-21 02:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,11 +22,11 @@ msgstr ""
 msgid "A registration in a conference"
 msgstr ""
 
-#: ../browser/register.py:284
+#: ../browser/register.py:303
 msgid "APyB Member Registration"
 msgstr ""
 
-#: ../vocabulary.py:33
+#: ../vocabulary.py:40
 msgid "APyB Members"
 msgstr ""
 
@@ -36,6 +36,14 @@ msgstr ""
 
 #: ../behavior/optininformation.py:20
 msgid "Accept to be contacted by conference partners"
+msgstr ""
+
+#: ../registrations_templates/view.pt:90
+msgid "Add Organization Registration and Attendees"
+msgstr ""
+
+#: ../registrations_templates/view.pt:86
+msgid "Add Sponsor Registration and Attenddees"
 msgstr ""
 
 #: ../profiles/default/workflows/registrations_workflow/definition.xml
@@ -68,7 +76,7 @@ msgid "Attendee workflow"
 msgstr ""
 
 #: ../browser/register.py:149
-#: ../registration_templates/view.pt:33
+#: ../registration_templates/view.pt:38
 #: ../registrations_templates/attendeesview.pt:24
 msgid "Attendees"
 msgstr ""
@@ -77,15 +85,15 @@ msgstr ""
 msgid "Attendees Stats"
 msgstr ""
 
-#: ../registrations_templates/attendeesview.pt:33
+#: ../registrations_templates/attendeesview.pt:32
 msgid "Badge Name"
 msgstr ""
 
-#: ../attendee.py:46
+#: ../attendee.py:45
 msgid "Badge name"
 msgstr ""
 
-#: ../registration_templates/view.pt:30
+#: ../registration_templates/view.pt:31
 msgid "Base price"
 msgstr ""
 
@@ -180,7 +188,7 @@ msgstr ""
 msgid "Contact e-mail"
 msgstr ""
 
-#: ../registrations_templates/attendeesview.pt:29
+#: ../registrations_templates/attendeesview.pt:60
 #: ../registrations_templates/registrationsview.pt:63
 msgid "Date"
 msgstr ""
@@ -204,11 +212,15 @@ msgstr ""
 msgid "E-mail"
 msgstr ""
 
-#: ../registrations_templates/attendeesview.pt:32
+#: ../registrations_templates/attendeesview.pt:31
 msgid "Email"
 msgstr ""
 
-#: ../vocabulary.py:14
+#: ../attendee_templates/view.pt:27
+msgid "End"
+msgstr ""
+
+#: ../vocabulary.py:21
 msgid "Female"
 msgstr ""
 
@@ -221,35 +233,39 @@ msgstr ""
 msgid "Folderish content that contains registrations"
 msgstr ""
 
-#: ../attendee.py:40
+#: ../attendee.py:39
 #: ../attendee_templates/view.pt:16
 #: ../browser/register.py:80
 msgid "Fullname"
 msgstr ""
 
-#: ../attendee.py:60
+#: ../attendee.py:61
 #: ../browser/register.py:92
-#: ../registrations_templates/attendeesview.pt:34
+#: ../registrations_templates/attendeesview.pt:33
 msgid "Gender"
 msgstr ""
 
-#: ../vocabulary.py:36
+#: ../vocabulary.py:43
 msgid "Government"
 msgstr ""
 
-#: ../browser/register.py:326
+#: ../browser/register.py:353
 msgid "Government registration"
 msgstr ""
 
-#: ../browser/register.py:311
+#: ../browser/register.py:340
 msgid "Group / Corporate registration"
 msgstr ""
 
-#: ../browser/register.py:318
+#: ../browser/register.py:361
+msgid "Group registration for sponsors"
+msgstr ""
+
+#: ../browser/register.py:347
 msgid "Group registration for students"
 msgstr ""
 
-#: ../vocabulary.py:37
+#: ../vocabulary.py:44
 msgid "Group/Corporate"
 msgstr ""
 
@@ -273,11 +289,11 @@ msgstr ""
 msgid "In order to register to this conference you need to create an account on this site (so you can manage your registration details later on)."
 msgstr ""
 
-#: ../vocabulary.py:35
+#: ../vocabulary.py:42
 msgid "Individual"
 msgstr ""
 
-#: ../browser/register.py:298
+#: ../browser/register.py:327
 msgid "Individual registration"
 msgstr ""
 
@@ -293,7 +309,7 @@ msgstr ""
 msgid "Is this paid?"
 msgstr ""
 
-#: ../vocabulary.py:24
+#: ../vocabulary.py:31
 msgid "Large"
 msgstr ""
 
@@ -307,11 +323,11 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
-#: ../vocabulary.py:13
+#: ../vocabulary.py:20
 msgid "Male"
 msgstr ""
 
-#: ../vocabulary.py:23
+#: ../vocabulary.py:30
 msgid "Medium"
 msgstr ""
 
@@ -320,7 +336,7 @@ msgstr ""
 msgid "My Registrations"
 msgstr ""
 
-#: ../registration_templates/view.pt:38
+#: ../registration_templates/view.pt:45
 msgid "Name"
 msgstr ""
 
@@ -339,7 +355,7 @@ msgstr ""
 
 #: ../attendee.py:53
 #: ../browser/register.py:131
-#: ../registration_templates/view.pt:39
+#: ../registration_templates/view.pt:46
 msgid "Organization"
 msgstr ""
 
@@ -347,11 +363,15 @@ msgstr ""
 msgid "Organization info"
 msgstr ""
 
+#: ../browser/register.py:369
+msgid "Organizers registration"
+msgstr ""
+
 #: ../registrations_templates/registrationsview.pt:19
 msgid "PagSeguro"
 msgstr ""
 
-#: ../vocabulary.py:47
+#: ../vocabulary.py:56
 msgid "Pagseguro"
 msgstr ""
 
@@ -372,7 +392,7 @@ msgid "Participation pending confirmation."
 msgstr ""
 
 #: ../registrations_templates/registrationsview.pt:14
-#: ../vocabulary.py:46
+#: ../vocabulary.py:55
 msgid "PayPal"
 msgstr ""
 
@@ -380,7 +400,7 @@ msgstr ""
 msgid "PayPal Update"
 msgstr ""
 
-#: ../registration_templates/view.pt:54
+#: ../registration_templates/view.pt:61
 msgid "Payment options"
 msgstr ""
 
@@ -402,12 +422,15 @@ msgstr ""
 msgid "Personal information"
 msgstr ""
 
-#: ../attendee.py:54
 #: ../browser/register.py:132
 msgid "Please inform the name of the organization you will represent"
 msgstr ""
 
-#: ../attendee.py:47
+#: ../attendee.py:54
+msgid "Please inform the name of the organization youwill represent"
+msgstr ""
+
+#: ../attendee.py:46
 msgid "Please inform the name that will appear on your badge -- Leave it blank to use your fullname in the badge"
 msgstr ""
 
@@ -415,7 +438,7 @@ msgstr ""
 msgid "Please inform who will attendee this conference."
 msgstr ""
 
-#: ../attendee.py:41
+#: ../attendee.py:40
 #: ../browser/register.py:81
 msgid "Please inform your fullname"
 msgstr ""
@@ -442,11 +465,16 @@ msgstr ""
 msgid "Price (est.)"
 msgstr ""
 
+#: ../registration_templates/view.pt:35
+msgid "Price paid"
+msgstr ""
+
 #: ../registration_templates/view.pt:29
 msgid "Pricing"
 msgstr ""
 
-#: ../browser/register.py:218
+#: ../attendee_templates/view.pt:57
+#: ../browser/register.py:223
 msgid "Register"
 msgstr ""
 
@@ -462,6 +490,10 @@ msgstr ""
 msgid "Register as an Individual"
 msgstr ""
 
+#: ../attendee_templates/view.pt:50
+msgid "Register for trainings"
+msgstr ""
+
 #: ../registrations.py:87
 msgid "Register member(s) of Brazilian Government"
 msgstr ""
@@ -470,7 +502,7 @@ msgstr ""
 msgid "Register members of a group or organization (Group registration)"
 msgstr ""
 
-#: ../browser/register.py:219
+#: ../browser/register.py:224
 msgid "Register to this conference"
 msgstr ""
 
@@ -479,7 +511,6 @@ msgid "Register!"
 msgstr ""
 
 #: ../profiles/default/types/apyb.registration.registration.xml
-#: ../registrations_templates/attendeesview.pt:31
 msgid "Registration"
 msgstr ""
 
@@ -545,24 +576,35 @@ msgstr ""
 msgid "Registrations workflow"
 msgstr ""
 
-#: ../attendee.py:34
+#: ../attendee.py:33
 #: ../registration.py:41
 msgid "Select the category of your registration"
 msgstr ""
 
-#: ../vocabulary.py:22
+#: ../attendee.py:75
+msgid "Select trainings"
+msgstr ""
+
+#: ../vocabulary.py:29
 msgid "Small"
 msgstr ""
 
-#: ../vocabulary.py:38
+#: ../vocabulary.py:45
 msgid "Speaker"
 msgstr ""
 
-#: ../browser/register.py:304
+#: ../browser/register.py:333
 msgid "Speaker registration"
 msgstr ""
 
-#: ../registrations_templates/attendeesview.pt:36
+#: ../vocabulary.py:46
+msgid "Sponsor"
+msgstr ""
+
+#: ../attendee_templates/view.pt:26
+msgid "Start"
+msgstr ""
+
 #: ../registrations_templates/registrationsview.pt:69
 msgid "State"
 msgstr ""
@@ -571,11 +613,11 @@ msgstr ""
 msgid "State /Province"
 msgstr ""
 
-#: ../vocabulary.py:34
+#: ../vocabulary.py:41
 msgid "Student"
 msgstr ""
 
-#: ../browser/register.py:291
+#: ../browser/register.py:320
 msgid "Student registration"
 msgstr ""
 
@@ -587,11 +629,11 @@ msgstr ""
 msgid "Submit registration"
 msgstr ""
 
-#: ../registrations_templates/attendeesview.pt:35
+#: ../registrations_templates/attendeesview.pt:34
 msgid "T-Shirt"
 msgstr ""
 
-#: ../attendee.py:66
+#: ../attendee.py:67
 #: ../browser/register.py:98
 msgid "T-Shirt Size"
 msgstr ""
@@ -604,20 +646,35 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
+#: ../registration_templates/view.pt:39
+msgid "To register to a training, click on the name of an attendee and then select the desired sessions"
+msgstr ""
+
 #: ../registrations_templates/registrationsview.pt:35
 msgid "Total"
 msgstr ""
 
-#: ../registration_templates/view.pt:31
+#: ../registration_templates/view.pt:32
 msgid "Total price"
 msgstr ""
 
-#: ../attendee.py:33
+#: ../attendee.py:77
+#: ../attendee_templates/view.pt:28
+msgid "Training"
+msgstr ""
+
+#: ../attendee.py:74
+#: ../attendee_templates/view.pt:22
+msgid "Trainings"
+msgstr ""
+
+#: ../attendee.py:32
 #: ../registration.py:40
+#: ../registrations_templates/attendeesview.pt:29
 msgid "Type"
 msgstr ""
 
-#: ../registrations_templates/view.pt:87
+#: ../registrations_templates/view.pt:95
 msgid "View attendees"
 msgstr ""
 
@@ -645,11 +702,11 @@ msgstr ""
 msgid "Workflow to manage registrations to a conference."
 msgstr ""
 
-#: ../vocabulary.py:25
+#: ../vocabulary.py:32
 msgid "X-Large"
 msgstr ""
 
-#: ../attendee.py:28
+#: ../attendee.py:27
 #: ../registration.py:29
 msgid "uid"
 msgstr ""
