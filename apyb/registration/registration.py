@@ -192,7 +192,10 @@ class View(grok.View):
     @property
     def price_paid(self):
         view = self.price_view
-        amount = self.context.amount
+        try:
+            amount = self.context.amount
+        except:
+            amount = 0
         fmtPrice = view.fmtPrice(amount)
         return fmtPrice
     #
