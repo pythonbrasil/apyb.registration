@@ -54,7 +54,7 @@ class PriceView(grok.View):
         # Price is **always** int
         return int(price)
     
-    def fmtPrice(self,price):
+    def fmtPrice(self, price):
         return ('R$%.2f' % (price/100.0)).replace('.',',')
     
     def render(self):
