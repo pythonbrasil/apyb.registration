@@ -13,9 +13,5 @@
       <role name="Manager"/>
       <role name="Editor"/>
     </permission>
-    <permission name="apyb.registration: Add Training Registration" acquire="False">
-      <role name="Manager"/>
-      <role name="Editor"/>
-    </permission>
   </permissions>
 </rolemap>
