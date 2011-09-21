@@ -265,6 +265,18 @@ class GroupAddForm(form.SchemaAddForm):
         del base_attendee['attendees']
         del base_attendee['email']
         attendees = []
+        if not data['attendees']:
+            form = self.request.form
+            line = {'fullname':
+                     form['form.widgets.attendees.AA.widgets.fullname'],
+                    'gender':
+                     form['form.widgets.attendees.AA.widgets.gender'][0],
+                    't_shirt_size':
+                     form['form.widgets.attendees.AA.widgets.t_shirt_size'][0],
+                    'email':
+                     form['form.widgets.attendees.AA.widgets.email']}
+            data['attendees'].append(line)
+
         for line in data['attendees']:
             line.update(base_attendee)
             # Create attendee object
