@@ -36,6 +36,7 @@
         </div>
     </div>
     <h2 i18n:translate="">Attendees</h2>
+    <p tal:condition="view/paid" i18n:translate="">To register to a training, click on the name of an attendee and then select the desired sessions</p>
     <div id="attendees">
         <table  class="listing">
             <thead>
