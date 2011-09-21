@@ -3,7 +3,6 @@
     <permission>Access contents information</permission>
     <permission>View</permission>
     <permission>apyb.registration: Add Attendee</permission>
-    <permission>apyb.registration: Add Training Registration</permission>
     <permission>Modify portal content</permission>
     <state state_id="cancelled" title="Cancelled" i18n:attributes="title">
         <description i18n:translate="">Registration cancelled.</description>
@@ -22,8 +21,6 @@
          <permission-role>Owner</permission-role>
         </permission-map>
         <permission-map name="apyb.registration: Add Attendee" acquired="False">
-        </permission-map>
-        <permission-map name="apyb.registration: Add Training Registration" acquired="False">
         </permission-map>
     </state>
     <state state_id="confirmed" title="Confirmed" i18n:attributes="title">
@@ -46,11 +43,6 @@
         <permission-map name="apyb.registration: Add Attendee" acquired="False">
          <permission-role>Editor</permission-role>
          <permission-role>Manager</permission-role>
-        </permission-map>
-        <permission-map name="apyb.registration: Add Training Registration" acquired="False">
-         <permission-role>Editor</permission-role>
-         <permission-role>Manager</permission-role>
-         <permission-role>Owner</permission-role>
         </permission-map>
     </state>
     <state state_id="new" title="New" i18n:attributes="title">
@@ -78,10 +70,6 @@
          <permission-role>Manager</permission-role>
          <permission-role>Owner</permission-role>
         </permission-map>
-        <permission-map name="apyb.registration: Add Training Registration" acquired="False">
-         <permission-role>Editor</permission-role>
-         <permission-role>Manager</permission-role>
-        </permission-map>
     </state>
     <state state_id="pending" title="Pending" i18n:attributes="title">
         <description i18n:translate="">Registration pending confirmation.</description>
@@ -103,10 +91,6 @@
          <permission-role>Owner</permission-role>
         </permission-map>
         <permission-map name="apyb.registration: Add Attendee" acquired="False">
-         <permission-role>Editor</permission-role>
-         <permission-role>Manager</permission-role>
-        </permission-map>
-        <permission-map name="apyb.registration: Add Training Registration" acquired="False">
          <permission-role>Editor</permission-role>
          <permission-role>Manager</permission-role>
         </permission-map>
