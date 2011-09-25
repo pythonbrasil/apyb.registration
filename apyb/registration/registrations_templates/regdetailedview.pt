@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="apyb.registration">
+<body>
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+    
+    <div tal:condition="view/listing_enabled">
+        <div class="clear"> </div>
+        <h3 i18n:translate="">Registrations</h3>
+        <table class="listing">
+            <thead>
+                <tr>
+                    <th i18n:translate="">Code</th>
+                    <th i18n:translate="">Date</th>
+                    <th i18n:translate="">Category</th>
+                    <th i18n:translate="">#</th>
+                    <th i18n:translate="">code</th>
+                    <th i18n:translate="">Paid</th>
+                    <th i18n:translate="">$</th>
+                    <th i18n:translate="">Serv</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr tal:repeat="reg view/registrations">
+                    <td><a href="" tal:attributes="href reg/url" tal:content="reg/id">23dsvfr2</a></td>
+                    <td tal:content="reg/date">2011-07-13</td>
+                    <td tal:content="reg/type">APyB</td>
+                    <td tal:content="reg/num_attendees">1</td>
+                    <td tal:content="reg/discount_code">1</td>
+                    <td tal:content="reg/paid">False</td>
+                    <td tal:content="reg/amount">0000</td>
+                    <td tal:content="reg/service">paypal</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

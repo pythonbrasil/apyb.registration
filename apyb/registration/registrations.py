@@ -215,6 +215,45 @@ class RegistrationsView(View):
         self.request['disable_plone.leftcolumn']=1
         self.request['disable_plone.rightcolumn']=1
 
+class RegDetailedView(View):
+    grok.context(IRegistrations)
+    grok.name('registrations_detailed')
+    grok.require('cmf.ReviewPortalContent')
+    
+    def update(self):
+        super(RegDetailedView,self).update()
+        self.request['disable_plone.leftcolumn']=1
+        self.request['disable_plone.rightcolumn']=1
+
+    def registrations(self):
+        ''' List registrations'''
+        ct = self._ct
+        results = ct.searchResults(portal_type='apyb.registration.registration',
+                                   sort_on='created',
+                                   sort_order='reverse',
+                                   review_state='confirmed',
+                                   path=self._path)
+        regs = []
+        for brain in results:
+            regObj = brain.getObject()
+            reg = {}
+            reg['id'] = brain.getId
+            reg['url'] = brain.getURL()
+            reg['email'] = brain.email
+            reg['date'] = DateTime(brain.created).strftime('%Y/%m/%d')
+            reg['title'] = brain.Title
+            reg['type'] = brain.Subject[0]
+            reg['num_attendees'] = brain.num_attendees
+            reg['price_est'] = brain.price_est
+            reg['amount'] = brain.amount or '0000'
+            reg['state'] = brain.review_state
+            reg['paid'] = getattr(regObj, 'paid',False)
+            reg['service'] = getattr(regObj, 'service','----')
+            reg['discount_code'] = regObj.discount_code
+            regs.append(reg)
+        return regs
+
+
 class ManagePagSeguroView(grok.View):
     grok.context(IRegistrations)
     grok.name('registrations_pagseguro')
