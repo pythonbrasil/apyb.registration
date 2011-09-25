@@ -52,6 +52,7 @@ registerSimpleVocabulary(
 registerSimpleVocabulary(
     "PaymentServices", u"apyb.registration",
     [
+     ('cash', _(u'Cash / At the conference')),
      ('paypal', _(u'PayPal')),
      ('pagseguro', _(u'Pagseguro')),
     ],
