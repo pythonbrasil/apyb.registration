@@ -225,14 +225,15 @@ class RegDetailedView(View):
         self.request['disable_plone.leftcolumn']=1
         self.request['disable_plone.rightcolumn']=1
 
-    def registrations(self):
+    def registrations(self, state='confirmed'):
         ''' List registrations'''
         ct = self._ct
-        results = ct.searchResults(portal_type='apyb.registration.registration',
-                                   sort_on='created',
-                                   sort_order='reverse',
-                                   review_state='confirmed',
-                                   path=self._path)
+        results = ct.searchResults(portal_type =
+                                   'apyb.registration.registration',
+                                   sort_on = 'created',
+                                   sort_order = 'reverse',
+                                   review_state = state,
+                                   path = self._path)
         regs = []
         for brain in results:
             regObj = brain.getObject()
@@ -252,6 +253,9 @@ class RegDetailedView(View):
             reg['discount_code'] = regObj.discount_code
             regs.append(reg)
         return regs
+
+    def pending(self):
+        return self.registrations(state='pending')
 
 
 class ManagePagSeguroView(grok.View):
