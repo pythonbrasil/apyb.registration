@@ -168,7 +168,7 @@ class View(grok.View):
     #
     @property
     def allow_training_registering(self):
-        if not 'Owner' in self.roles_context:
+        if not 'Manager' in self.roles_context:
             return False
         state = self.state
         review_state = state.workflow_state()
@@ -183,7 +183,7 @@ class View(grok.View):
 
 class RegisterView(View):
     grok.context(IAttendee)
-    grok.require('cmf.ModifyPortalContent')
+    grok.require('cmf.ReviewPortalContent')
     grok.name('register_trainings')
 
     template = None
