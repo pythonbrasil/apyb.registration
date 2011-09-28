@@ -244,6 +244,7 @@ class AttendeesCSVView(View):
             att['gender'] = voc['gender'].getTerm(brain.gender).title
             att['t_shirt_size'] = voc['tshirt'].getTerm(brain.t_shirt_size).title
             att['state'] = REVIEW_STATE.get(brain.review_state,brain.review_state)
+            att['organization'] = brain.organization
             atts.append(att)
         return atts
 
@@ -251,7 +252,7 @@ class AttendeesCSVView(View):
         self.request.response.setHeader('Content-Type',
                                         'text/plain;charset=utf-8')
         data = []
-        data.append('initial;cod;state;type;fullname;badge_name;gender;t_shirt_size;email')
+        data.append('initial;cod;state;type;fullname;badge_name;gender;t_shirt_size;email;organization')
         ct = self._ct
         results = ct.searchResults(portal_type='apyb.registration.attendee',
                                    sort_on='created',
@@ -259,7 +260,7 @@ class AttendeesCSVView(View):
                                    path=self._path)
         for att in self._att_as_dict(results):
             line = []
-            initial = self.normalizeString(str(att['fullname'][1]))
+            initial = self.normalizeString(att['fullname'][0])
             line.append('"%s"' % initial)
             line.append('"%s"' % str(att['uid']))
             line.append('"%s"' % str(att['state']))
@@ -269,6 +270,7 @@ class AttendeesCSVView(View):
             line.append('"%s"' % str(att['gender']))
             line.append('"%s"' % str(att['t_shirt_size']))
             line.append('"%s"' % str(att['email']))
+            line.append('"%s"' % str(att['organization']))
             data.append(';'.join(line))
         return '\n'.join(data)
 
