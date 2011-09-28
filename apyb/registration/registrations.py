@@ -229,6 +229,8 @@ class AttendeesCSVView(View):
                 raw_type = reg_type
                 if reg_type == 'speaker_c':
                     reg_type = u'Palestrante'
+                elif reg_type == 'organizer':
+                    reg_type = u'Organização'
                 else:
                     reg_type = u'Participante'
             att = {}
