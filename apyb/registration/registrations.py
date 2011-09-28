@@ -39,9 +39,12 @@ class View(grok.View):
     def update(self):
         context = aq_inner(self.context)
         self._path = '/'.join(context.getPhysicalPath())
-        self.state = getMultiAdapter((context, self.request), name=u'plone_context_state')
-        self.tools = getMultiAdapter((context, self.request), name=u'plone_tools')
-        self.portal = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+        self.state = getMultiAdapter((context, self.request),
+                                    name=u'plone_context_state')
+        self.tools = getMultiAdapter((context, self.request),
+                                    name=u'plone_tools')
+        self.portal = getMultiAdapter((context, self.request),
+                                    name=u'plone_portal_state')
         self._ct = self.tools.catalog()
         self.is_anonymous = self.portal.anonymous()
         self.mt = self.tools.membership()
@@ -205,6 +208,34 @@ class AttendeesView(View):
         self.request['disable_plone.rightcolumn']=1
     
 
+
+class AttendeesCSVView(View):
+    grok.name('attendees-csv')
+
+    template = None
+
+    def update(self):
+        super(AttendeesCSVView, self).update()
+        #HACK
+        portal = self.portal.portal()
+        edition = portal['2011']
+        program = edition['programacao']['grade-de-programacao']
+        #HACK
+        self.program_helper = getMultiAdapter((context, self.request),
+                                              name=u'helper')
+        self.speakers = 
+
+    def render(self):
+        data = {'tracks': self.tracks()}
+        data['url'] = self.context.absolute_url()
+        data['title'] = self.context.title
+
+        self.request.response.setHeader('Content-Type',
+                                        'application/json;charset=utf-8')
+        return json.dumps(data,
+                          encoding='utf-8',
+                          ensure_ascii=False)
+
 class RegistrationsView(View):
     grok.context(IRegistrations)
     grok.name('registrations_view')
@@ -219,7 +250,7 @@ class RegDetailedView(View):
     grok.context(IRegistrations)
     grok.name('registrations_detailed')
     grok.require('cmf.ReviewPortalContent')
-    
+
     def update(self):
         super(RegDetailedView,self).update()
         self.request['disable_plone.leftcolumn']=1

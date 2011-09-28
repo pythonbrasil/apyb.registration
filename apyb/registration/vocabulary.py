@@ -43,6 +43,7 @@ registerSimpleVocabulary(
      ('government', _(u'Government')),
      ('group', _(u'Group/Corporate')),
      ('speaker', _(u'Speaker')),
+     ('speaker_c', _(u'Speaker')),
      ('sponsor', _(u'Sponsor')),
      ('organizer', _(u'Organization')),
     ],
