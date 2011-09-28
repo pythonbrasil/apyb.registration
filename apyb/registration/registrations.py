@@ -245,7 +245,7 @@ class AttendeesCSVView(View):
             att['badge_name'] = brain.badge_name or att['fullname']
             att['gender'] = voc['gender'].getTerm(brain.gender).title
             att['t_shirt_size'] = voc['tshirt'].getTerm(brain.t_shirt_size).title
-            att['state'] = REVIEW_STATE.get(brain.review_state,brain.review_state)
+            att['rev_state'] = REVIEW_STATE.get(brain.review_state,brain.review_state)
             att['organization'] = brain.organization
             att['lat'] = brain.latitude
             att['long'] = brain.longitude
@@ -270,7 +270,7 @@ class AttendeesCSVView(View):
             initial = self.normalizeString(att['fullname'][0])
             line.append('"%s"' % initial)
             line.append('"%s"' % str(att['uid']))
-            line.append('"%s"' % str(att['state']))
+            line.append('"%s"' % str(att['rev_state']))
             line.append('"%s"' % str(att['type']))
             line.append('"%s"' % str(att['raw_type']))
             line.append('"%s"' % str(att['fullname']).strip())
