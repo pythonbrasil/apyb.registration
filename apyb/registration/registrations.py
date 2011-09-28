@@ -281,6 +281,8 @@ class ManagePagSeguroView(grok.View):
     
     def fix_value(self,value):
         ''' Convert string from PagSeguro to an int representing cents '''
+        # If there is a thousands separator, kill it
+        value = value.replace('.','')
         return int(value.replace(',','')[:-2])
     
     def process_file(self,pfile=None):
