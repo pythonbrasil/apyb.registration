@@ -216,13 +216,8 @@ class AttendeesCSVView(View):
 
     def update(self):
         super(AttendeesCSVView, self).update()
-        #HACK
-        portal = self.portal.portal()
-        edition = portal['2011']
-        program = edition['programacao']['grade-de-programacao']
-        #HACK
-        self.program_helper = getMultiAdapter((context, self.request),
-                                              name=u'helper')
+        self.normalizeString = self.context.plone_utils.normalizeString
+
     def _att_as_dict(self,attendees):
         ''' Given a list of brains, we return proper dictionaries '''
         voc = self.vocabs
@@ -256,10 +251,16 @@ class AttendeesCSVView(View):
         self.request.response.setHeader('Content-Type',
                                         'text/plain;charset=utf-8')
         data = []
-        data.append('cod;state;type;fullname;badge_name;gender;t_shirt_size;email')
-        attendees = self.attendees()
-        for att in self._att_as_dict(attendees):
+        data.append('initial;cod;state;type;fullname;badge_name;gender;t_shirt_size;email')
+        ct = self._ct
+        results = ct.searchResults(portal_type='apyb.registration.attendee',
+                                   sort_on='created',
+                                   sort_order='reverse',
+                                   path=self._path)
+        for att in self._att_as_dict(results):
             line = []
+            initial = self.normalizeString(str(att['fullname'][1]))
+            line.append('"%s"' % initial)
             line.append('"%s"' % str(att['uid']))
             line.append('"%s"' % str(att['state']))
             line.append('"%s"' % str(att['type']))
