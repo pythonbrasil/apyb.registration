@@ -259,7 +259,7 @@ class AttendeesCSVView(View):
         self.request.response.setHeader('Content-Type',
                                         'text/plain;charset=utf-8')
         data = []
-        data.append('initial;cod;state;type;fullname;badge_name;gender;t_shirt_size;email;organization;lat;lgn;city;state;country')
+        data.append('initial;cod;state;type;raw_type;fullname;badge_name;gender;t_shirt_size;email;organization;lat;lgn;city;state;country')
         ct = self._ct
         results = ct.searchResults(portal_type='apyb.registration.attendee',
                                    sort_on='created',
