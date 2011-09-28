@@ -223,9 +223,10 @@ class AttendeesCSVView(View):
         voc = self.vocabs
         atts = []
         for brain in attendees:
-            reg_type = ''
+            reg_type = raw_type = ''
             if brain.Subject:
                 reg_type = brain.Subject[0]
+                raw_type = reg_type
                 if reg_type == 'speaker_c':
                     reg_type = u'Palestrante'
                 else:
@@ -239,6 +240,7 @@ class AttendeesCSVView(View):
             att['date'] = DateTime(brain.created).strftime('%Y-%m-%d %H:%M')
             att['fullname'] = brain.Title
             att['type'] = reg_type
+            att['raw_type'] = raw_type
             att['email'] = brain.email
             att['badge_name'] = brain.badge_name or att['fullname']
             att['gender'] = voc['gender'].getTerm(brain.gender).title
@@ -270,6 +272,7 @@ class AttendeesCSVView(View):
             line.append('"%s"' % str(att['uid']))
             line.append('"%s"' % str(att['state']))
             line.append('"%s"' % str(att['type']))
+            line.append('"%s"' % str(att['raw_type']))
             line.append('"%s"' % str(att['fullname']).strip())
             line.append('"%s"' % str(att['badge_name']).strip())
             line.append('"%s"' % str(att['gender']))
