@@ -128,6 +128,12 @@ class View(grok.View):
                                       name=u'plone_portal_state')
         self.helper = getMultiAdapter((registrations, self.request),
                                       name=u'helper')
+        
+        #HACK
+        portal = self.portal.portal()
+        edition = portal['2011']
+        self.certificate_url = '%s/certificate/%s' % (edition.absolute_url(),
+                                                      self.context.uid)
         self._ct = self.tools.catalog()
         self.member = self.portal.member()
         voc_factory = queryUtility(IVocabularyFactory,
@@ -167,12 +173,22 @@ class View(grok.View):
         return data
     #
     @property
-    def allow_training_registering(self):
-        if not 'Manager' in self.roles_context:
-            return False
+    def confirmed(self):
         state = self.state
         review_state = state.workflow_state()
         return review_state == 'confirmed'
+    #
+    @property
+    def attended(self):
+        state = self.state
+        review_state = state.workflow_state()
+        return review_state == 'attended'
+    #
+    @property
+    def allow_training_registering(self):
+        if not 'Manager' in self.roles_context:
+            return False
+        return self.confirmed
     #
     @property
     def fmt_registration_type(self):

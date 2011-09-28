@@ -17,6 +17,11 @@
             <span i18n:translate="">E-mail</span>:&nbsp;<strong><span tal:content="context/email">deo@x3ng.com.br</span></strong><br/>
             <span i18n:translate="">Location</span>:&nbsp;<strong><span tal:content="context/city">Garibaldi</span>,<span tal:content="context/state">Rio Grande do Sul</span>, <span tal:content="python:context.country.upper()">BR</span> </strong><br/>
         </div>
+        <div id="attendee_details" tal:condition="python:view.confirmed or view.attended">
+            <h3 i18n:translate="">Certificate</h3>
+            <div tal:condition="view/confirmed"><span i18n:translate="">Certificate will be available after conference in this url</span>&nbsp;&nbsp;<span tal:content="view/certificate_url">foo bar</span></div>
+            <div tal:condition="view/attended"><span i18n:translate="">Certificate is available at</span>&nbsp;&nbsp;<a href="" target="_blank" tal:attributes="href view/certificate_url" tal:content="view/certificate_url">foo bar</a></div>
+        </div>
         <div id="training_list" tal:condition="context/trainings">
             <br/>
             <h3 i18n:translate="">Trainings</h3>
