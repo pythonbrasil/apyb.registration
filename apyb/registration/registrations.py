@@ -223,18 +223,53 @@ class AttendeesCSVView(View):
         #HACK
         self.program_helper = getMultiAdapter((context, self.request),
                                               name=u'helper')
-        self.speakers = 
+    def _att_as_dict(self,attendees):
+        ''' Given a list of brains, we return proper dictionaries '''
+        voc = self.vocabs
+        atts = []
+        for brain in attendees:
+            reg_type = ''
+            if brain.Subject:
+                reg_type = brain.Subject[0]
+                if reg_type == 'speaker_c':
+                    reg_type = u'Palestrante'
+                else:
+                    reg_type = u'Participante'
+            att = {}
+            att['id'] = brain.getId
+            att['uid'] = brain.UID
+            att['reg'] = brain.getPath().split('/')[-2]
+            att['reg_url'] = '/'.join(brain.getURL().split('/')[:-1])
+            att['url'] = brain.getURL()
+            att['date'] = DateTime(brain.created).strftime('%Y-%m-%d %H:%M')
+            att['fullname'] = brain.Title
+            att['type'] = reg_type
+            att['email'] = brain.email
+            att['badge_name'] = brain.badge_name or att['fullname']
+            att['gender'] = voc['gender'].getTerm(brain.gender).title
+            att['t_shirt_size'] = voc['tshirt'].getTerm(brain.t_shirt_size).title
+            att['state'] = REVIEW_STATE.get(brain.review_state,brain.review_state)
+            atts.append(att)
+        return atts
 
     def render(self):
-        data = {'tracks': self.tracks()}
-        data['url'] = self.context.absolute_url()
-        data['title'] = self.context.title
-
         self.request.response.setHeader('Content-Type',
-                                        'application/json;charset=utf-8')
-        return json.dumps(data,
-                          encoding='utf-8',
-                          ensure_ascii=False)
+                                        'text/plain;charset=utf-8')
+        data = []
+        data.append('cod;state;type;fullname;badge_name;gender;t_shirt_size;email')
+        attendees = self.attendees()
+        for att in self._att_as_dict(attendees):
+            line = []
+            line.append('"%s"' % str(att['uid']))
+            line.append('"%s"' % str(att['state']))
+            line.append('"%s"' % str(att['type']))
+            line.append('"%s"' % str(att['fullname']))
+            line.append('"%s"' % str(att['badge_name']))
+            line.append('"%s"' % str(att['gender']))
+            line.append('"%s"' % str(att['t_shirt_size']))
+            line.append('"%s"' % str(att['email']))
+            data.append(';'.join(line))
+        return '\n'.join(data)
 
 class RegistrationsView(View):
     grok.context(IRegistrations)
